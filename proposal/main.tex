@@ -1,0 +1,145 @@
+% ============================================================
+% eRUPT Academic Research Collaboration Proposal
+% Template: eRUPT 2026/27
+% ============================================================
+
+\documentclass[11pt, letterpaper]{article}
+
+% --- Page layout (matches docx: 1" left/right, 0.75" top/bottom) ---
+\usepackage[letterpaper, margin=1in, top=0.75in, bottom=0.75in]{geometry}
+
+% --- Font setup (Proxima Nova substitute: modern sans + serif) ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% --- Packages ---
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsmath, amssymb}
+\usepackage{parskip}
+
+% --- Colors from template ---
+\definecolor{ebay-dark}{HTML}{353744}
+\definecolor{ebay-green}{HTML}{00ab44}
+\definecolor{ebay-gray}{HTML}{444444}
+
+% --- Headings ---
+\usepackage{titlesec}
+\titleformat{\section}
+  {\normalfont\bfseries\fontsize{14}{17}\selectfont\color{ebay-dark}}
+  {\thesection}{0.5em}{}
+\titleformat{\subsection}
+  {\normalfont\bfseries\fontsize{12}{15}\selectfont\color{ebay-dark}}
+  {\thesubsection}{0.5em}{}
+
+% --- Title ---
+\makeatletter
+\renewcommand{\maketitle}{%
+  {\parindent0pt\relax
+   \fontsize{36}{43}\selectfont\color{ebay-dark}\bfseries\raggedright
+   \@title\par}%
+  {\color{gray!60}\hrule height 1.5pt\par}%
+}
+\makeatother
+
+% --- Horizontal rule macro ---
+\newcommand{\ehr}{{\color{gray!60}\hrule height 1.5pt}}
+
+% --- Metadata ---
+\title{Agentic Knowledge Graphs for Deterministic Code Generation}
+\author{}
+\date{}
+
+% ============================================================
+\begin{document}
+
+\maketitle
+
+% ------------------------------------------------------------
+\section*{Engagement Structure}
+\label{sec:engagement}
+% ------------------------------------------------------------
+
+\noindent
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{0.45\textwidth} X}
+  \toprule
+  \textbf{University Principal Investigator, Professor and Researcher(s)} & \\
+  \midrule
+  \textbf{University} & \\
+  \midrule
+  \textbf{eBay Co-Investigator(s)} & \\
+  \midrule
+  \textbf{eBay VP/Head of Department} & \\
+  \midrule
+  \textbf{Grant Amount Requested} & \\
+  \bottomrule
+\end{tabularx}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{Objectives}
+\label{sec:objectives}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}What are you trying to do? What is the problem? Why is it useful / interesting? Why is it a good candidate for academic research rather than doing it in-house?}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{Previous Work}
+\label{sec:previous}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}Describe any relevant previous project and/or publication. If this is the continuation of a project, show previous results (business impact if applicable).}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{Methodologies / Approaches}
+\label{sec:method}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}How is it done today, and what are the limits of current practice? What is new in your approach and why do you think it will be successful?}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{Impact}
+\label{sec:impact}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}How does it relate to the problems eBay is trying to solve? If you are successful, what difference will it make? What applications are enabled as a result? What are the risks?}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{Expected Product / Output / Milestones}
+\label{sec:output}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}PoC models and algorithms, reports, publications, experiments, learnings\ldots What are the midterm and final checks / metrics for success? How long is the work expected to take? Is there a possibility of tiered funding corresponding to progressive research outcomes?}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{University / Lab / Researcher Qualification}
+\label{sec:qualification}
+% ------------------------------------------------------------
+
+\textit{\color{ebay-gray}Who will be the university researchers eBay will engage with? Description of their work, links etc.}
+
+\ehr
+
+% ------------------------------------------------------------
+\section*{References}
+\label{sec:references}
+% ------------------------------------------------------------
+
+\end{document}

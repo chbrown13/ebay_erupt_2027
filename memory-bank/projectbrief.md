@@ -2,37 +2,41 @@
 
 ## Overview
 
-{{PAPER_TITLE}}
+Provenance-Aware Agentic Knowledge Graphs for eBay (come up with better title later)
 
 ## Objectives
 
-- {{OBJECTIVE_1}}
-- {{OBJECTIVE_2}}
+- Design provenance-aware agentic knowledge graph infrastructure to incorporate contexts from specific organizations
+- Evaluate the effectiveness of this approach against existing agentic development techniques (i.e., baseline, RAG, etc.)
 
 ## Target Venue
 
-- **Name**: {{VENUE_NAME}}
-- **Type**: {{conference / journal / workshop / funding agency}}
-- **Deadline**: {{SUBMISSION_DEADLINE}}
-- **Page Limit**: {{PAGE_LIMIT}}
-- **Format**: {{FORMAT_TEMPLATE}}
+- **Name**: eBay ERUPT  Academic Research Grants
+- **Type**: company
+- **Deadline**: July 8
+- **Page Limit**: Not specified
+- **Format**: files/eRUPT 2026_27 Template for Academic Research Collaboration Proposals.docx
 
 ## Research Questions
 
-1. {{RQ1}}
-2. {{RQ2}}
+1. TODO: add research questions
 
 ## Scope
 
 ### In Scope
-- {{IN_SCOPE}}
+- Provenance-aware agentic knowledge graph infrastructure
+- eBay
+- code generation
 
 ### Out of Scope
-- {{OUT_OF_SCOPE}}
+- knowledge accumulation
+- scientific research
+- HPC
 
 ## Success Criteria
 
 - [ ] Paper compiles cleanly with target venue template
+- [ ] Content relevant to the call for papers and eBay goals
 - [ ] All claims supported by citations or evidence
 - [ ] Within page limit
 - [ ] Submitted before deadline

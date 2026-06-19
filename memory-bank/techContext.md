@@ -2,7 +2,7 @@
 
 ## Methodology
 
-{{Research methodology and technical approach}}
+Create provenance-aware agentic knowledge graphs for eBay agentic development. Will use a benchmarking study to evaluate our tool against existing approaches. May also use a user study to obtain feedback from software engineers/developers.
 
 ## Tools & Technologies
 

@@ -1,8 +1,8 @@
-# {{PROJECT_NAME}}
+# Agentic Knowledge Graphs for Code Generation
 
 ## Project Overview
 
-{{PROJECT_DESCRIPTION}}
+This project will explore using agentic knowledge graphs for supporting agentic software development at eBay. The goal is to have a knowledge graph of prior issues, PRs, commits, bug reports, etc. and see if knowledge graphs can support agents in deterministically generating solutions for future bug reports, issues, and features.
 
 ## Documentation System
 
@@ -22,7 +22,7 @@ This project uses a **memory-bank** documentation approach:
 ## Paper Type
 
 <!-- Uncomment the paper type you are writing -->
-<!-- type: proposal -->
+type: proposal
 <!-- type: research-paper -->
 <!-- type: position-paper -->
 
@@ -30,15 +30,17 @@ This project uses a **memory-bank** documentation approach:
 
 | Date | Milestone |
 |------|-----------|
-| {{DATE}} | {{MILESTONE}} |
+| September 21 | eRUPT Ebay deadline |
+| July 8 | Send draft to Ramesh at Ebay |
+| June 22 | Send proposal draft to Jason |
 
 ## Submission Requirements
 
-- **Venue/Target**: {{VENUE_NAME}}
-- **Page Limit**: {{PAGE_LIMIT}}
-- **Format**: {{FORMAT}} (e.g., ACM, IEEE, custom LaTeX template)
-- **Submission Portal**: {{URL}}
-- **Additional Requirements**: {{REQUIREMENTS}}
+- **Venue/Target**: eBay
+- **Page Limit**: Not specified
+- **Format**: custom (see files/eRUPT 2026_27 Template for Academic Research Collaboration Proposals.docx)
+- **Submission Portal**: erupt@ebay.com
+- **Additional Requirements**: All proposals will be considered, provided they are relevant to eBay and have the potential to advance the state of the art. eBay is interested in the practical application of the results and expects to, at a minimum, have royalty free license rights to the resulting project IP without additional licensing costs. Open sourcing results under a permissive license may be an option as well depending on the nature of the research.
 
 ## Key Locations
 
@@ -48,6 +50,9 @@ This project uses a **memory-bank** documentation approach:
 | `memory-bank/` | Living project documentation |
 | `construction/` | Design workspace |
 | `.claude/agents/` | Agent configurations |
+| call for papers | see ./files/2027 eRUPT Academic Research Grants - External (1).pdf |
+| prior ebay eRUPT example | see ./files/eRupt_exampple.docx |
+| approach background | see ./files/cusati-brown-fose2026-preprint.pdf, ./files/doe-genesis.tex, ./files/doe-abstract.pdf, and ./files/amazon.pdf |
 
 ## Agent Reference
 
