@@ -8,16 +8,16 @@ This project will explore using agentic knowledge graphs for supporting agentic 
 
 This project uses a **memory-bank** documentation approach:
 
-- `memory-bank/` — Living documentation (project context, decisions, progress)
-- `construction/` — Design-first development workspace (designs, requirements, sprints)
+- `llm/memory-bank/` — Living documentation (project context, decisions, progress)
+- `llm/construction/` — Design-first development workspace (designs, requirements, sprints)
 - `.claude/agents/` — Specialized agent configurations
 
 ## Quick Start
 
-1. Read `memory-bank/activeContext.md` for current status
-2. Read `memory-bank/projectbrief.md` for core objectives
-3. Read `memory-bank/progress.md` for task tracking
-4. Check `construction/` for active design work
+1. Read `llm/memory-bank/activeContext.md` for current status
+2. Read `llm/memory-bank/projectbrief.md` for core objectives
+3. Read `llm/memory-bank/progress.md` for task tracking
+4. Check `llm/construction/` for active design work
 
 ## Paper Type
 
@@ -47,8 +47,8 @@ type: proposal
 | Path | Description |
 |------|-------------|
 | `files/` | Reference materials, CFP docs, venue guidelines |
-| `memory-bank/` | Living project documentation |
-| `construction/` | Design workspace |
+| `llm/memory-bank/` | Living project documentation |
+| `llm/construction/` | Design workspace |
 | `.claude/agents/` | Agent configurations |
 | call for papers | see ./files/2027 eRUPT Academic Research Grants - External (1).pdf |
 | prior ebay eRUPT example | see ./files/eRupt_exampple.docx |

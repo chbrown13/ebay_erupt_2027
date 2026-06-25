@@ -39,9 +39,9 @@ grep -r "{{" --include="*.md" .
 
 Key files to update:
 - `CLAUDE.md` — Project name, description, deadlines, submission requirements
-- `memory-bank/projectbrief.md` — Objectives, venue, research questions, scope
-- `memory-bank/productContext.md` — Problem statement, approach, audience
-- `memory-bank/techContext.md` — Methodology, tools
+- `llm/memory-bank/projectbrief.md` — Objectives, venue, research questions, scope
+- `llm/memory-bank/productContext.md` — Problem statement, approach, audience
+- `llm/memory-bank/techContext.md` — Methodology, tools
 
 ### 4. Add venue materials
 
@@ -76,7 +76,7 @@ Depending on your paper type:
 │   ├── position-paper-agent.md       # Position/vision paper workflow
 │   ├── memory-agent.md               # Memory-bank maintenance
 │   └── review-agent.md               # Quality gate (citations, compile, content)
-├── memory-bank/                       # Living documentation
+├── llm/memory-bank/                       # Living documentation
 │   ├── projectbrief.md               # Core objectives
 │   ├── productContext.md             # Problem & approach
 │   ├── techContext.md                # Technical details
@@ -86,7 +86,7 @@ Depending on your paper type:
 │   ├── phases.md                    # Phase coordination
 │   ├── architecturalDecisions.md    # Decision log
 │   └── archive/                     # Completed phases
-├── construction/                      # Design-first workspace
+├── llm/construction/                      # Design-first workspace
 │   ├── spec_builder.md              # Design document template
 │   ├── design/                      # Design docs (before writing)
 │   ├── requirements/                # Submission requirements
@@ -117,7 +117,7 @@ Depending on your paper type:
 
 ## Tips
 
-- Always design before writing — create a doc in `construction/design/` first
+- Always design before writing — create a doc in `llm/construction/design/` first
 - Keep the citation matrix updated as you add references
 - Run `@review-agent validate` before any PR or submission
 - Use sprints to break large writing tasks into manageable pieces
