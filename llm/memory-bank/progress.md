@@ -17,7 +17,8 @@
 - [x] Memory bank re-established with accurate, current content (2026-06-25)
 
 ## In Progress
-- [ ] Fill blank Engagement Structure fields: **Grant Amount**, **eBay VP/Head**
+- [x] Fill Engagement Structure fields: **Grant Amount = $120,000**; VP/Head left
+      as a visible placeholder pending Ramesh
 - [ ] Flesh out **References** (only 2 entries; add Compass, DOE, others)
 
 ## Upcoming

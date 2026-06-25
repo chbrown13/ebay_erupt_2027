@@ -27,16 +27,15 @@ re-established to reflect actual state (it had been stale at "initialization").
 ### Immediate next steps (the user's stated agenda)
 1. ✅ Install latest constellize plugins.
 2. ✅ Refresh the stale memory bank (this pass).
-3. **NEXT:** Fill the blank proposal fields — **Grant Amount** and
-   **eBay VP/Head of Department** in the Engagement Structure table
-   (`proposal/main.tex` lines ~79–81).
-4. Flesh out the **References** section (currently only 2 entries; Compass and the
-   DOE work are mentioned but not formally cited).
+3. ✅ Filled proposal Engagement fields — **Grant Amount = $120,000** (one-year);
+   **VP/Head** left as a visible `[To be confirmed with Ramesh]` placeholder.
+4. **NEXT:** Flesh out the **References** section (currently only 2 entries;
+   Compass and the DOE work are mentioned but not formally cited).
 
 ### Open questions / blockers
-- **Grant amount?** eRUPT range is ~$30K–$120K (per `project_notes.md`). Need
-  Ramesh to confirm the right ask.
-- **eBay VP/Head name?** Needs Ramesh.
+- **Grant amount** set to $120,000 (top of eRUPT range) — confirm with Ramesh it's
+  the right ask before submission.
+- **eBay VP/Head name?** Still needs Ramesh; placeholder in the draft.
 - **Terminology accuracy:** are "signal / signal handler / ViewItem" the exact
   internal terms? Confirm with Ramesh.
 - **Internal review dates** in CLAUDE.md (Jason June 22, Ramesh July 8) are at/past

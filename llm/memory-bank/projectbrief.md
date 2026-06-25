@@ -31,8 +31,8 @@ is what the grant would fund.
 | PI | Dr. Chris Brown (Virginia Tech) |
 | GRA / lead researcher | Jason Cusati (VT PhD candidate) |
 | eBay Co-Investigator | Ramesh Periyathambi |
-| eBay VP/Head | TBD — needs Ramesh's input |
-| Grant amount | TBD — eRUPT range ~$30K–$120K (confirm with Ramesh) |
+| eBay VP/Head | TBD — needs Ramesh's input (placeholder in draft) |
+| Grant amount | **$120,000** (one-year grant); top of eRUPT range |
 
 ## Target Venue
 
