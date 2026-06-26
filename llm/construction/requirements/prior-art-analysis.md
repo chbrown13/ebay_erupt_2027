@@ -142,8 +142,41 @@ feature conjunction" advice.
 **New must-cite (problem-side):** PyCraft (Dilhara 2024), ICR (Nimraka 2025),
 Knowledge Activation/AKUs (Bakal 2026).
 
-## Open follow-up
-- [ ] Targeted Consensus pass on SLSA / build-provenance for AI-generated code
-      (move 6) to confirm the provenance/audit gap holds.
-- [ ] Read the AKUs (Bakal 2026) paper in full — closest on problem and eBay-
-      adjacent (Yahoo); confirm exactly how its substrate differs from ours.
+## Follow-up findings (2026-06-26) — both resolved
+
+### AKUs (Bakal 2026, arXiv:2603.14805) — full read
+Closest work on PROBLEM ("institutional impedance mismatch" + the
+"institutional knowledge tax" on senior engineers; a composable knowledge graph
+agents traverse; Yahoo deployment: 67 engineers, **2.6 hrs/week saved, NPS +35**).
+Three **decisive** differences from ours, confirmed in the full text:
+1. **Substrate is human-authored / curated** ("codify the top five to ten
+   skills"), **NOT mined from version-control history.** Ours auto-mines
+   git/PR/review history. *(The core differentiator.)*
+2. **Does NOT generate code** — delivers "action-ready specifications" / guidance
+   to agents and engineers. Ours generates the recurring code change.
+3. **"Validators" are deterministic scripts inside a skill** (execution-time),
+   **not PR-level validation against historical team conventions / CI.**
+- **Wedge:** AKUs explicitly lists "plugin **staleness** detection" as unresolved
+  future work — a history-mined, continuously-updated KG directly attacks the
+  staleness that curated knowledge suffers. Strong positioning point.
+- **Use:** cite as motivation/validation of the problem (the knowledge-tax + the
+  Yahoo numbers prove eBay-relevance and value) and distinguish on
+  substrate + generation + PR-convention gate.
+
+### SLSA / build-provenance — does NOT pre-empt our provenance claim
+Supply-chain frameworks (SLSA, SBOM, in-toto, Sigstore) provide **build-integrity
+provenance for security**; a 2025 agentic-supply-chain paper notes they "mainly
+provide provenance and traceability but cannot actively identify or remove
+vulnerabilities." That is a **different layer** from ours: our provenance =
+traceability of a generated change to the **historical patterns/decisions** that
+produced it (*generation* provenance), not cryptographic *build* attestation.
+They **compose** rather than compete (a generated PR could carry both). No
+repositioning needed; one clarifying sentence pre-empts the objection.
+
+### Net effect on the verdict
+The problem-led framing holds and is now well-defended on every flagged neighbor.
+Closest-on-problem (AKUs) differs decisively on substrate + generation + gate;
+closest-on-mechanism (GRACG/SemanticForge) solves codegen-accuracy, not our
+problem; the provenance/audit claim is a different layer from SLSA. **Defensible
+contribution = auto-mined code-history provenance KG → deterministic, traceable
+generation of recurring changes → PR validation against KG-encoded conventions.**
