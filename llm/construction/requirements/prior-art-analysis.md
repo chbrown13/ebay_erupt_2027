@@ -215,3 +215,65 @@ generation of recurring changes → PR validation against KG-encoded conventions
 (reproducibility motivation), CCT5 (code-change cost). The determinism claim now
 needs **two explicit contrasts** in the proposal: vs. Wang's requirement-traceability
 and vs. Vangala's dependency-reproducibility.
+
+## Full-results synthesis (all three searches at 20/20, 2026-06-26)
+
+Connector reconnected → full result sets retrieved for mechanism, problem, and
+determinism queries. No single hidden "exactly our proposal" competitor appeared,
+but two things sharpen the picture materially.
+
+### A. The problem is heavily validated by INDUSTRY (great for eRUPT)
+Multiple real enterprise deployments with hard numbers — strong "practical
+application" evidence, and the best motivation material we have:
+- **DeputyDev** (Kumar et al., 2025) — 300 engineers, 1 yr, codegen + automated
+  review; **31.8% reduction in PR review cycle time**, 85% satisfaction.
+- **DeputyDev @ TATA 1mg** (Khare et al., 2025) — A/B over 200 engineers;
+  **23% per-PR / 40% per-LOC review-time reduction**; baseline PR cycle 6.2 days.
+- **Repo Analyzer / KT assistant** (Akalanka et al., 2025) — onboarding;
+  **reduces senior-developer involvement 50–60%**, doc effort −90%.
+- (Plus AKUs/Yahoo: 2.6 hrs/week, NPS +35.)
+→ Use these to prove the velocity / review-bottleneck / onboarding problem is
+real and valuable. **Lead with this.**
+
+### B. The mechanism AND the determinism pillar are both crowded
+- **Mechanism** (cede, cite): Athale & Vaddina, GRACG, SemanticForge,
+  GraphCodeAgent; plus **AutoCodeRover** (Zhang et al., 2024, 233 cites) — strong
+  AST-based SWE-agent that turns GitHub issues into patches (4 min vs devs'
+  2.68 days). All static-structure/AST, not history-provenance.
+- **Code-review automation** (cite, distinguish): **Tufano et al. 2021 & 2022**
+  (ICSE, 198/219 cites) learn review transformations from real reviews;
+  **ICR** (Nimraka 2025) validates PRs against company rules; **Heander et al.
+  2025** argues "support, not automation" to preserve knowledge transfer;
+  **Cihan et al. 2025** (ICSE-SEIP) shows AI review can *raise* PR closure time.
+- **Determinism / traceability** (MOST contested — six neighbors):
+  **Compiled AI** (Trooskens 2026, deterministic enterprise codegen via
+  compile-once + auditability), **Sawadogo 2025** (LLM non-determinism + ToT
+  mitigation), **Wang 2025** (traceability→requirements), **North 2024** "Code
+  Gradients" (traceability→requirements via gradients), **Vangala 2025**
+  (dependency-reproducibility), **Zeng 2025** (functional-reproducibility).
+
+### C. Framing recommendation (refined — supersedes earlier)
+1. **Demote "deterministic" from the headline.** The determinism space is the
+   most crowded and our claim is the riskiest; keep it as a *supporting* property
+   (provenance-reproducibility: frozen KG state → same retrieval → same output),
+   not the banner. Avoids a fight we don't need.
+2. **Lead with the PROBLEM**, backed by the industry numbers above (DeputyDev,
+   Akalanka, AKUs) — plays straight to eRUPT's practical-application criterion.
+3. **Stake novelty on the SUBSTRATE + its dual use:** a provenance-aware KG mined
+   from the org's *own* version-control history (commits + PRs + code reviews),
+   used as the **unified** substrate for *both* generation *and*
+   convention-validation, with provenance traces. Everyone else uses curated
+   knowledge (AKUs), generic LLM training (review tools), static AST (codegen
+   tools), or requirements (traceability tools) — **no one uses the mined
+   code-history-provenance KG as the shared substrate.** That is the kernel.
+4. **Frame the validation gate as "support, not replacement"** (cite Heander) to
+   stay defensible and preserve the knowledge-transfer benefit reviewers value.
+
+### Curated citation set (highest-leverage; trim to ~10–12 for the draft)
+- *Problem/value:* Kumar 2025 (DeputyDev), Khare 2025 (DeputyDev/TATA), Akalanka
+  2025 (onboarding), Bakal 2026 (AKUs), CCT5 (70% cost stat).
+- *Mechanism (cede):* GRACG, SemanticForge, Athale & Vaddina, AutoCodeRover.
+- *Review automation:* Tufano 2021/2022, ICR (Nimraka 2025), Heander 2025.
+- *History mining (premise):* Janke & Mader 2022, PyCraft 2024.
+- *Determinism/traceability (supporting contrasts):* Compiled AI 2026, Wang 2025,
+  Vangala 2025.
