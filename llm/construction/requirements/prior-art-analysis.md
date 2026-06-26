@@ -88,6 +88,62 @@ Priority "must-distinguish-from": **GRACG** (identical agent split),
 **Tao et al.** (landscape/positioning). URLs recorded in the source run /
 references store when sourced.
 
+## Problem-centric re-analysis (2026-06-26)
+
+The first gate compared on **mechanism** (KG + retrieval + agents). But
+mechanism-similarity ≠ problem-similarity. Re-examined by the **problem each work
+targets**:
+
+| Cluster | Works | The problem *they* solve | Their yardstick |
+|---------|-------|--------------------------|-----------------|
+| **Codegen accuracy** | GRACG, GraphCodeAgent, RepoGraph, Athale & Vaddina, SemanticForge | produce more correct / consistent code at repo level | Pass@1, SWE-bench, EvoCodeBench |
+| **Mechanical-change automation** | Janke & Mader, PYEVOLVE, **PyCraft** | apply known, narrow, syntactic transformations at scale | precision/recall, PR acceptance |
+
+**Our problem is neither.** It is enterprise developer **velocity** on recurring
+tasks (weeks→hours), **organizational memory**, and the **AI-PR review/trust
+bottleneck** — grounded in one org's own history. Yardstick = developer-time per
+task, PR acceptance / review burden, convention conformance.
+
+### Problem-occupancy search (second Consensus pass)
+
+Searched for work targeting OUR problem (not the mechanism). The problem **is**
+being actively pursued — which for an eRUPT grant is *good* (it validates
+relevance and value) — but no one occupies our specific synthesis. Closest:
+
+- **PyCraft** (Dilhara et al., 2024) — LLM + Transformation-by-Example automates
+  recurring code-change patterns (CPATs); 83% of submitted PRs merged into
+  projects like Microsoft/DeepSpeed. Closest on "automate recurring changes,"
+  now LLM-augmented — but still semantically-equivalent *transformations*, not
+  open-ended feature authoring; no org-history KG; no convention governance.
+- **ICR — Intelligent Code Reviewer** (Nimraka et al., 2025) — agentic multi-LLM
+  PR review (bugs/security/perf) with GNN duplication detection, dependency-impact
+  analysis, and **PR validation against custom company rules**. Closest on the
+  review-bottleneck + convention-validation pillar — but it *reviews* PRs; it
+  doesn't generate from history or build an org code-pattern KG.
+- **Knowledge Activation / AKUs** (Bakal, 2026) — closest on PROBLEM: enterprise
+  institutional knowledge as a composable knowledge graph agents traverse, to
+  compress onboarding, cut cross-team friction, and reduce the "senior-engineer
+  tax." **Yahoo deployment: 2.6 hrs/week saved, NPS +35.** But its substrate is
+  *curated* knowledge units (architecture/deploy/compliance/playbooks), not
+  code-history-mined patterns for deterministic generation, and it has no
+  PR-convention-validation gate.
+
+### Refined verdict
+
+The **problem is validated and valuable** (industry is investing, with measured
+DX gains — notably the Yahoo/AKU result), the **mechanism is crowded**, and the
+**specific contribution remains open**: a provenance-aware KG over the org's *own*
+version-control history (commits/PRs/reviews) → deterministic, traceable
+generation of recurring changes → validated against KG-encoded conventions.
+Honest framing = **problem-led**, not a defensive novelty stack. This is stronger
+and more defensible than the first gate's "cede everything / claim a narrow
+feature conjunction" advice.
+
+**New must-cite (problem-side):** PyCraft (Dilhara 2024), ICR (Nimraka 2025),
+Knowledge Activation/AKUs (Bakal 2026).
+
 ## Open follow-up
 - [ ] Targeted Consensus pass on SLSA / build-provenance for AI-generated code
       (move 6) to confirm the provenance/audit gap holds.
+- [ ] Read the AKUs (Bakal 2026) paper in full — closest on problem and eBay-
+      adjacent (Yahoo); confirm exactly how its substrate differs from ours.
