@@ -44,10 +44,11 @@ without inventing sources or leaking eBay-internal detail.
   cite a graph-mining or code-KG reference.
 - **FR-007 (Should):** Agentic / multi-agent LLM code generation (ranking,
   generation, validation roles) — cite ≥1 representative agentic-coding work.
-- **FR-008 (Nice):** RAG and vanilla-LLM baselines named in the evaluation —
-  cite the canonical RAG reference so the baseline comparison is grounded.
-- **FR-009 (Nice):** AI-generated-PR / automated code-review bottleneck claim in
-  "Impact" — cite supporting evidence if a credible source exists.
+- ~~FR-008 (Nice): RAG baseline citation~~ — **Dropped 2026-06-25** (keep the list
+  lean for a 2–3 page proposal; revisit only if the eval section explicitly names
+  RAG as a baseline — it currently does not).
+- ~~FR-009 (Nice): AI-PR / code-review-bottleneck citation~~ — **Dropped
+  2026-06-25** (optional, low leverage).
 
 ### 1.3 Mechanics
 - **FR-010 (Must):** Every in-text marker `[n]` resolves to exactly one entry;
@@ -70,6 +71,36 @@ without inventing sources or leaking eBay-internal detail.
 - **FR-015 (Must):** No entry may carry fabricated bibliographic metadata. A
   planned-but-unwritten reference is recorded under `planned` (role + candidate
   source only), never as a fake complete entry.
+
+---
+
+## 1A. Reference Impact Ranking (inclusion scoring)
+
+The final list is **budget-limited** (~5–8 entries, NFR-002), so inclusion of the
+*Should* candidates is decided by **impact score**, not guesswork. Score each
+candidate on four factors (1–3 each; max 12):
+
+| Factor | 3 | 2 | 1 |
+|--------|---|---|---|
+| **Claim criticality** | backs a Must claim | backs a Should claim | backs a Nice claim |
+| **Source strength** | peer-reviewed, strong venue / well-cited | solid peer-reviewed or widely-cited preprint | low-cited / preprint / non-archival |
+| **Novelty positioning** | defines the gap / state-of-the-art we advance | contextualizes the approach | tangential background |
+| **Reviewer salience** | an eRUPT reviewer would expect this cite | helpful, not expected | unlikely to be missed |
+
+**Tiers → inclusion:**
+- **A (10–12):** Must include.
+- **B (7–9):** Include by rank until the ~5–8 budget is full.
+- **C (4–6):** Optional; only with spare space and clear value.
+- **D (≤3):** Exclude.
+
+**Rules:**
+- Must-claim references (FR-001–003) auto-qualify regardless of score — coverage
+  requires them. The ranking governs the *Should* candidates competing for the
+  remaining slots.
+- **FR-016 (Must):** Every candidate gets an impact score recorded in its store
+  entry (`impact` block: the four sub-scores + total + tier). Final inclusion of
+  Should-tier refs follows rank within the NFR-002 budget. **Excluded candidates
+  are logged** (no silent drops) with their score and the reason.
 
 ---
 
@@ -146,11 +177,50 @@ supports the no-hallucination requirement (NFR-001).
 - **CR-002 (Must):** Consensus output (paper title, authors, year, venue, link)
   is recorded in the entry's `source`/`verification.notes` so the trail is
   auditable.
-- **Connectivity note:** Consensus is **not currently connected** as an MCP
-  connector in this Claude Code session. It must be added (claude.ai connector /
-  MCP) before the agent can call it. **Fallback** until then: Hugging Face
-  `paper_search` + `WebSearch`/WebFetch against arXiv/DOI — clearly marked as
-  fallback in `verification.notes` so it can be re-confirmed via Consensus later.
+- **Connectivity:** Consensus is **connected** (`mcp__consensus__search`, user
+  scope, OAuth) as of 2026-06-25 — it is the **primary** literature-review tool.
+  **Backup only** (if Consensus is unavailable or rate-limited): Hugging Face
+  `paper_search` + `WebSearch`/WebFetch against arXiv/DOI, marked as backup in
+  `verification.notes` for later Consensus re-confirmation. Note Consensus rate
+  limits: batch ≤3 searches at a time; on a rate-limit error, wait ~30s.
+
+## 4C. Prior-Art & Problem Validation (novelty gate)
+
+Before sinking effort into references and the proposal narrative, the literature
+review must answer two questions the proposal's credibility depends on — using
+Consensus (§4B) as the primary search:
+
+1. **Is this already solved?** Search for existing agentic-KG / code-KG /
+   repository-pattern-mining approaches to (deterministic) code generation.
+   Identify the **closest competing systems** and exactly what they do.
+2. **Are we solving the right problem?** Confirm the framed problem (recurring
+   code patterns; weeks→hours; deterministic generation from organizational
+   history; PR-validation bottleneck) is **real, valued, and unsolved at the
+   scope claimed** — not a strawman or a niche already covered.
+
+**Deliverable:** `llm/construction/requirements/prior-art-analysis.md` containing:
+closest related work (with citations), a one-paragraph **gap statement** (what is
+genuinely new vs. existing work), and a **verdict**:
+- **(a) novel / right problem** → proceed to reference writing;
+- **(b) partial overlap** → reposition (state how, and which framing to sharpen);
+- **(c) already solved / major overlap** → **STOP and escalate to the user/Ramesh**
+  before investing further.
+
+**Requirements:**
+- **PA-001 (Must):** Dedicated prior-art search via Consensus on the core claim
+  (agentic KG for deterministic code generation) **and** adjacent areas (code
+  knowledge graphs, retrieval-augmented code generation, repo-level/issue-driven
+  code agents, frequent-pattern mining of code, LLM PR generation & review).
+- **PA-002 (Must):** Produce `prior-art-analysis.md` with closest work + gap
+  statement + verdict.
+- **PA-003 (Must):** If verdict is (c) already-solved / major overlap, **do not
+  paper over it** — surface to the user before proceeding.
+- **PA-004 (Should):** Feed the closest related work into the reference list
+  (these are usually high-impact, Tier-A/B cites) and into the proposal's
+  *Previous Work* / *Methodologies* positioning.
+
+This gate runs **first** in execution: novelty is validated before references are
+sourced, since a failed verdict changes (or halts) everything downstream.
 
 ## 4. Acceptance Criteria
 
@@ -172,8 +242,15 @@ supports the no-hallucination requirement (NFR-001).
   reference not fully passing is `verified: false` and excluded from the final
   draft or explicitly flagged (NFR-001).
 - **AC-010:** Each newly sourced reference was found/confirmed via Consensus
-  (§4B), with the Consensus trail recorded; fallback-only entries are flagged for
+  (§4B), with the Consensus trail recorded; backup-only entries are flagged for
   later Consensus re-confirmation (CR-001, CR-002).
+- **AC-011:** Impact scores (§1A) recorded for every candidate; Should-tier
+  inclusion follows rank within the ~5–8 budget; **excluded candidates logged**
+  with score + reason (FR-016).
+- **AC-012:** `prior-art-analysis.md` exists with closest related work, a gap
+  statement, and a novelty verdict (PA-001, PA-002).
+- **AC-013:** If the novelty verdict is "already solved / major overlap," it is
+  **surfaced to the user**, not silently absorbed (PA-003).
 
 ---
 
@@ -181,9 +258,9 @@ supports the no-hallucination requirement (NFR-001).
 
 | Priority | Requirements |
 |----------|--------------|
-| **Must** | FR-001, FR-002, FR-003, FR-010, FR-011, FR-012, FR-014, FR-015; NFR-001–004; §4A verification |
-| **Should** | FR-004, FR-005, FR-006, FR-007, FR-013; NFR-005, NFR-006 |
-| **Nice** | FR-008, FR-009 |
+| **Must** | FR-001, FR-002, FR-003, FR-010, FR-011, FR-012, FR-014, FR-015, FR-016; NFR-001–004; §4A verification; **PA-001, PA-002, PA-003** (novelty gate) |
+| **Should** | FR-004, FR-005, FR-006, FR-007, FR-013; NFR-005, NFR-006; PA-004 |
+| **Dropped** | ~~FR-008~~, ~~FR-009~~ (2026-06-25) |
 
 ## 6. Out of Scope
 - Writing the actual reference entries (next step, gated on this spec).

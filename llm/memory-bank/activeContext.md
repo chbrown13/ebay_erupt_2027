@@ -34,14 +34,25 @@ re-established to reflect actual state (it had been stale at "initialization").
    verification protocol) and `references.json` (source of truth; `citation-
    matrix.md` is the mirror). Captured the 2 existing refs (unverified) + 7
    planned roles.
-5. **NEXT (gated on approval):** Write the planned references into the store
-   (literature review via **Consensus**, per spec §4B), then run the §4A
-   verification pass using our **`review-agent verify-citations`** (Exists /
-   no-hallucination / correct-citation) before syncing into `proposal/main.tex`.
-   No reference ships until all three checks pass.
-   - **Verifier = our review-agent**, not a constellize skill (we own the agents).
-   - **Consensus is not yet connected** as an MCP connector in this session —
-     needs adding; fallback = HF `paper_search` + WebSearch until then.
+5. **NEXT (ultracode workflow, gated on approval):**
+   1. **Novelty gate FIRST** (spec §4C) — prior-art search via Consensus →
+      `prior-art-analysis.md` with closest work + gap statement + verdict. If
+      "already solved / major overlap," STOP and escalate.
+   2. **Source** the planned references via **Consensus** (connected), scoring
+      each by **impact** (spec §1A) to decide Should-tier inclusion within the
+      ~5–8 budget; log exclusions.
+   3. **Verify** via `review-agent verify-citations` (Exists / no-hallucination /
+      correct-citation) — nothing ships until all three pass.
+   4. Sync `references.json` → `proposal/main.tex` (split FOSE/DOE) + matrix.
+   - **Verifier = our review-agent** (we own the agents; no constellize skill).
+   - **Consensus connected** (`mcp__consensus__search`, user scope). Backup = HF
+     `paper_search` + WebSearch only if rate-limited.
+
+### Decisions (2026-06-25)
+- Dropped Nice cites FR-008 (RAG) and FR-009 (AI-PR review) — keep list lean.
+- Compass cited honestly as eBay-internal / personal communication (no fake paper).
+- Keep manual `[n]` references (no BibTeX) for ~6 entries.
+- Added impact-ranking (§1A) + prior-art/novelty gate (§4C) to the spec.
 
 ### Open questions / blockers
 - **Grant amount** set to $120,000 (top of eRUPT range) — confirm with Ramesh it's

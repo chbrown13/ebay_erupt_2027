@@ -1,5 +1,5 @@
 {
-  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. No fabricated metadata: unwritten references live under 'planned' (role only). A reference ships only when all three verification checks = 'pass'.",
+  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. No fabricated metadata: unwritten references live under 'planned' (role only). A reference ships only when all three verification checks = 'pass'. Should-tier inclusion is decided by an 'impact' score (spec §1A) recorded per entry. Lit review runs through Consensus (connected). Novelty is validated first via prior-art-analysis.md (spec §4C) before references are written.",
   "lastUpdated": "2026-06-25",
   "references": [
     {
@@ -76,14 +76,10 @@
     {
       "role": "Agentic / multi-agent LLM code generation (FR-007, Should)",
       "candidateSource": "TBD — representative agentic-coding work"
-    },
-    {
-      "role": "RAG baseline (FR-008, Nice)",
-      "candidateSource": "TBD — canonical RAG reference (Lewis et al. 2020 candidate; verify)"
-    },
-    {
-      "role": "AI-generated-PR / automated code-review bottleneck (FR-009, Nice)",
-      "candidateSource": "TBD — only if a credible source exists"
     }
+  ],
+  "dropped": [
+    {"role": "RAG baseline (FR-008)", "reason": "Dropped 2026-06-25 — keep list lean; eval section does not name RAG as a baseline"},
+    {"role": "AI-PR / code-review bottleneck (FR-009)", "reason": "Dropped 2026-06-25 — optional, low leverage"}
   ]
 }
