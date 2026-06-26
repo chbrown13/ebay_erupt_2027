@@ -29,8 +29,19 @@ re-established to reflect actual state (it had been stale at "initialization").
 2. ✅ Refresh the stale memory bank (this pass).
 3. ✅ Filled proposal Engagement fields — **Grant Amount = $120,000** (one-year);
    **VP/Head** left as a visible `[To be confirmed with Ramesh]` placeholder.
-4. **NEXT:** Flesh out the **References** section (currently only 2 entries;
-   Compass and the DOE work are mentioned but not formally cited).
+4. ✅ Wrote the **references spec** + canonical store (constellize design flow):
+   `llm/construction/requirements/references-spec.md` (incl. §4A skill-driven
+   verification protocol) and `references.json` (source of truth; `citation-
+   matrix.md` is the mirror). Captured the 2 existing refs (unverified) + 7
+   planned roles.
+5. **NEXT (gated on approval):** Write the planned references into the store
+   (literature review via **Consensus**, per spec §4B), then run the §4A
+   verification pass using our **`review-agent verify-citations`** (Exists /
+   no-hallucination / correct-citation) before syncing into `proposal/main.tex`.
+   No reference ships until all three checks pass.
+   - **Verifier = our review-agent**, not a constellize skill (we own the agents).
+   - **Consensus is not yet connected** as an MCP connector in this session —
+     needs adding; fallback = HF `paper_search` + WebSearch until then.
 
 ### Open questions / blockers
 - **Grant amount** set to $120,000 (top of eRUPT range) — confirm with Ramesh it's

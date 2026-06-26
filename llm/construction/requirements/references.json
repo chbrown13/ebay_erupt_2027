@@ -1,0 +1,89 @@
+{
+  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. No fabricated metadata: unwritten references live under 'planned' (role only). A reference ships only when all three verification checks = 'pass'.",
+  "lastUpdated": "2026-06-25",
+  "references": [
+    {
+      "id": "fose2026",
+      "marker": "[1]",
+      "status": "present-in-draft",
+      "verified": false,
+      "authors": "J. Cusati and C. Brown",
+      "title": "A Case for Structured Knowledge Accumulation in Software Engineering Research",
+      "venue": "Proceedings of ICSE-FOSE",
+      "year": 2026,
+      "arxiv": null,
+      "doi": null,
+      "url": null,
+      "source": "files/cusati-brown-fose2026-preprint.pdf",
+      "supportsClaims": [
+        "Previous Work: FOSE 2026 intellectual foundation",
+        "Previous Work: PA-AKG/DOE Genesis (currently conflated here; see FR-002 — split out)"
+      ],
+      "verification": {
+        "existsCheck": "pending",
+        "metadataCheck": "pending",
+        "citationCorrectness": "pending",
+        "checkedBy": null,
+        "checkedAt": null,
+        "notes": "Local preprint present in files/. [1] is double-used for FOSE and DOE Genesis; must split (FR-002)."
+      }
+    },
+    {
+      "id": "versicode",
+      "marker": "[2]",
+      "status": "present-in-draft",
+      "verified": false,
+      "authors": "T. Wu et al.",
+      "title": "VersiCode: Towards Version-controllable Code Generation",
+      "venue": "arXiv preprint",
+      "year": 2024,
+      "arxiv": "2406.07411",
+      "doi": null,
+      "url": "https://arxiv.org/abs/2406.07411",
+      "source": "public:arxiv",
+      "supportsClaims": [
+        "Methodologies/Previous Work: version-aware code knowledge, API evolution"
+      ],
+      "verification": {
+        "existsCheck": "pending",
+        "metadataCheck": "pending",
+        "citationCorrectness": "pending",
+        "checkedBy": null,
+        "checkedAt": null,
+        "notes": "Verify arXiv id 2406.07411 resolves and authors/title/year match exactly."
+      }
+    }
+  ],
+  "planned": [
+    {
+      "role": "DOE Genesis / PA-AKG project — distinct from FOSE (FR-002, Must)",
+      "candidateSource": "files/doe-genesis.tex, files/doe-abstract.pdf",
+      "notes": "Derive an accurate project/grant citation; do not reuse [1]."
+    },
+    {
+      "role": "Compass — eBay enterprise knowledge graph (FR-004, Should)",
+      "candidateSource": "confirm with Ramesh; public eBay reference if one exists",
+      "notes": "If no public source, cite honestly as eBay-internal / personal communication. NFR-004: no proprietary detail."
+    },
+    {
+      "role": "AST-based code structure extraction (FR-005, Should)",
+      "candidateSource": "TBD — foundational AST/code-representation reference"
+    },
+    {
+      "role": "Frequent-subgraph / code-pattern mining (FR-006, Should)",
+      "candidateSource": "TBD — graph-mining or code-KG reference"
+    },
+    {
+      "role": "Agentic / multi-agent LLM code generation (FR-007, Should)",
+      "candidateSource": "TBD — representative agentic-coding work"
+    },
+    {
+      "role": "RAG baseline (FR-008, Nice)",
+      "candidateSource": "TBD — canonical RAG reference (Lewis et al. 2020 candidate; verify)"
+    },
+    {
+      "role": "AI-generated-PR / automated code-review bottleneck (FR-009, Nice)",
+      "candidateSource": "TBD — only if a credible source exists"
+    }
+  ]
+}

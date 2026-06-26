@@ -19,7 +19,11 @@
 ## In Progress
 - [x] Fill Engagement Structure fields: **Grant Amount = $120,000**; VP/Head left
       as a visible placeholder pending Ramesh
-- [ ] Flesh out **References** (only 2 entries; add Compass, DOE, others)
+- [x] **References spec + store** written (`references-spec.md`,
+      `references.json`, citation-matrix mirror) with §4A skill-driven
+      verification protocol
+- [ ] Flesh out **References** per spec, then run §4A verification (no ref ships
+      until exists + no-hallucination + correct-citation all pass)
 
 ## Upcoming
 - [ ] Confirm grant amount + VP name + terminology with Ramesh
