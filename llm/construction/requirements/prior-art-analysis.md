@@ -180,3 +180,38 @@ closest-on-mechanism (GRACG/SemanticForge) solves codegen-accuracy, not our
 problem; the provenance/audit claim is a different layer from SLSA. **Defensible
 contribution = auto-mined code-history provenance KG → deterministic, traceable
 generation of recurring changes → PR validation against KG-encoded conventions.**
+
+## Deeper re-search (retargeted queries, 2026-06-26)
+
+> Note: the Consensus connector remained capped at top-3 results per query
+> (website login did not propagate to the MCP session), so ranks 4–20 are unseen;
+> "View all 20" browser links exist per query. Retargeted queries still surfaced
+> new top-ranked neighbors. **Verdict unchanged (partial-overlap, problem-led);**
+> two important new must-cites added on the traceability/determinism pillar.
+
+- **Embedding Traceability in LLM Code Generation** (Wang et al., 2025, FSE) —
+  **closest neighbor on our auditability/traceability pillar.** Makes traceability
+  a first-class objective in LLM codegen (structured requirement prompting,
+  metadata-aware fine-tuning, retrieval-augmented validation) for "audit-ready
+  code generation," explicitly naming LLMs' non-determinism ("divergent outputs
+  from identical prompts"). **Distinguish:** it traces to *requirements*, not to
+  *historical code patterns/decisions mined from the org's VCS*. Must-cite.
+- **AI-Generated Code Is Not Reproducible (Yet)** (Vangala et al., 2025) —
+  empirical evidence that LLM coding agents (Claude Code, Codex, Gemini) produce
+  non-reproducible code (68.3% run out-of-box; 13.5× hidden-dependency expansion).
+  **Strong motivation** that AI-codegen reproducibility is a real open problem —
+  but its "reproducibility" = dependency/execution, a *different sense* than our
+  provenance-reproducibility (same KG state → same output). Cite as motivation
+  AND to disambiguate our determinism claim.
+- **CCT5: A Code-Change-Oriented Pre-trained Model** (Lin et al., 2023, FSE,
+  61 cites) — models code changes from 1.5M commit/message pairs; notes
+  code-change tasks are ~**70% of development expenditure**. Cite for the
+  cost-of-recurring-change motivation and as code-change-modeling prior art (no
+  KG / agentic generation+validation loop / determinism).
+- Mechanism re-run reconfirmed Athale & Vaddina and GRACG as the closest; nothing
+  nearer surfaced in top-3.
+
+**Refined must-cite additions:** Wang 2025 (traceability), Vangala 2025
+(reproducibility motivation), CCT5 (code-change cost). The determinism claim now
+needs **two explicit contrasts** in the proposal: vs. Wang's requirement-traceability
+and vs. Vangala's dependency-reproducibility.
