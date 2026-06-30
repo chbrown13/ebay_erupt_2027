@@ -43,9 +43,9 @@ jobs:
         run: |
           echo "## Citation Matrix Check" >> $GITHUB_STEP_SUMMARY
           if [ -f llm/construction/requirements/citation-matrix.md ]; then
-            UNVERIFIED=$(grep -c '| N |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            FAILED=$(grep -c '| X |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            TOTAL=$(grep -c '^|' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
+            UNVERIFIED=$(grep -c '| N |' llm/construction/requirements/citation-matrix.md 2>/dev/null || true)
+            FAILED=$(grep -c '| X |' llm/construction/requirements/citation-matrix.md 2>/dev/null || true)
+            TOTAL=$(grep -c '^|' llm/construction/requirements/citation-matrix.md 2>/dev/null || true)
             TOTAL=$((TOTAL > 3 ? TOTAL - 3 : 0))
             echo "Total entries: $TOTAL" >> $GITHUB_STEP_SUMMARY
             echo "Unverified: $UNVERIFIED" >> $GITHUB_STEP_SUMMARY
@@ -88,8 +88,8 @@ jobs:
               echo "::error::LaTeX compilation failed"
               echo "Compilation: FAILED" >> $GITHUB_STEP_SUMMARY
             fi
-            WARNINGS=$(grep -c "^LaTeX Warning" compile.log 2>/dev/null || echo "0")
-            UNDEF_REFS=$(grep -c "undefined references" compile.log 2>/dev/null || echo "0")
+            WARNINGS=$(grep -c "^LaTeX Warning" compile.log 2>/dev/null || true)
+            UNDEF_REFS=$(grep -c "undefined references" compile.log 2>/dev/null || true)
             echo "Warnings: $WARNINGS" >> $GITHUB_STEP_SUMMARY
             echo "Undefined refs: $UNDEF_REFS" >> $GITHUB_STEP_SUMMARY
             echo "errors=$ERRORS" >> $GITHUB_OUTPUT
