@@ -22,19 +22,23 @@ Two complementary approaches (deliberately redundant to mitigate risk):
   filtering noise.
 - **Generation agents** — produce code conditioned on the ranked patterns, using
   the KG as structured context instead of LLM priors alone.
-- **Validation agents** — check generated PRs against KG-encoded patterns; flag
-  convention deviations and breaking dependency changes.
+- **Validation gate** — checks generated PRs against KG-encoded *historical*
+  conventions; flags deviations and breaking dependency changes, **supporting
+  reviewers, not replacing them** (preserves knowledge transfer).
 
-Together → deterministic (same KG state, same output) and auditable (traceable to
-historical patterns).
+The single substrate is the point: the same provenance-tagged history that
+conditions generation also defines what conformance means at review time. Outputs
+are auditable and reproducible from a fixed KG state (**determinism = a supporting
+property, not the headline** — reframed 2026-06-30, see `prior-art-analysis.md`).
 
 ### Relationship to existing infrastructure
 - **Compass** (eBay's enterprise KG): connects Jira → repos → commits → PRs →
   deployments → microservices. Our KG *extends* it with code-level pattern
   knowledge tickets don't capture.
-- **PA-AKG / DOE Genesis** (VT): provenance-aware agentic KG for scientific
-  software; its architecture (AST extraction, ranking/validation agents,
-  provenance tracking) transfers directly to eBay's Java context.
+- **Provenance-aware agentic-KG prior work** (team's own): architecture (AST
+  extraction, ranking/validation agents, provenance tracking) transfers to eBay's
+  Java context. **Used as uncited background only** — the DOE Genesis proposal it
+  comes from is under submission at another venue and is **not** cited (PR #1).
 
 ## B. Documentation / Writing Workflow (how this proposal is produced)
 
@@ -55,6 +59,28 @@ historical patterns).
 ### Review patterns
 - Self-review → review-agent (citations, compilation, content) → iterate.
 - Human review: Jason, then Ramesh at eBay.
+
+## C. Research & Verification Workflow (established 2026-06-30)
+
+A reusable process for grounding research-claim novelty and citations — used to
+reposition this proposal and worth repeating for any new claim:
+
+1. **Spec the deliverable first** (constellize design flow) →
+   `references-spec.md` defines coverage, an impact-ranking rubric (§1A), a
+   verification protocol (§4A: exists / no-hallucination / correct-citation), and
+   a prior-art/novelty gate (§4C).
+2. **Novelty gate FIRST** — fan-out prior-art search (Consensus) across facets +
+   adversarial synthesis → `prior-art-analysis.md` with a verdict
+   (novel / partial-overlap / already-solved). A bad verdict halts/repositions
+   everything downstream. *Our verdict was partial-overlap → problem-led reframe.*
+2a. **Problem-vs-mechanism distinction matters:** compare prior work by the
+   *problem it solves*, not just architecture. Mechanism can be crowded while the
+   problem is open (or vice-versa).
+3. **Source references** via Consensus (real papers only; no fabricated metadata).
+4. **§4A verification** via the project **`review-agent`** (`verify-citations`):
+   each ref's three checks recorded in `references.json`; ship only on all-pass.
+5. **Canonical store** `references.json` is the source of truth; `main.tex` and
+   `citation-matrix.md` are derived views kept in sync. Renumber on add/remove.
 
 ## Constellize tooling (installed 2026-06-25)
 This repo uses the **constellize** plugin suite (memory, design, grow, craft,
