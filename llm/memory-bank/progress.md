@@ -17,31 +17,31 @@
 - [x] Memory bank re-established with accurate, current content (2026-06-25)
 
 ## Completed (continued)
+- [x] Connected **Consensus** MCP (lit-review tool); installed constellize suite
 - [x] Prior-art review via Consensus → `prior-art-analysis.md` (verdict:
-      partial-overlap; reframed problem-led)
+      partial-overlap; reframed problem-led; SLSA + AKUs full-read follow-ups)
 - [x] **Repositioned proposal** (problem-led, history-KG substrate, determinism
-      demoted); 15 real references sourced + stored
-- [x] **PR #1 opened, approved, and merged** to `main` (2026-06-30)
-- [x] Actioned PR #1 review: **removed DOE/PA-AKG citation**, renumbered to 14 refs,
-      updated store + matrix
+      demoted, support-not-replacement gate); 15 real references sourced + stored
+- [x] **PR #1 merged** to `main` (2026-06-30) — reposition
+- [x] **PR #2 merged** to `main` (2026-06-30) — actioned PR #1 review: removed
+      DOE/PA-AKG citation, renumbered to 14 refs, synced store + matrix
+- [x] **§4A citation verification pass complete** (2026-06-30, review-agent via
+      Consensus): all 14 exist + metadata-accurate + correctly cited. 13
+      `verified:true`; [8] ICR flagged (small venue), kept per decision.
 
 ## In Progress
-- [ ] **§4A citation-correctness pass** (`review-agent verify-citations`) over the
-      14 refs — existence/metadata confirmed via Consensus; correctness pending.
-      Chris will also verify/trim — coordinate.
+- [ ] (External) Chris emailing Ramesh for VP name / $120K / terminology
+- [ ] (External) Chris's reference verify/trim pass — [8] ICR is the cut candidate
 
 ## Upcoming
-- [ ] Confirm with Ramesh (OUT after July 8): VP/Head name, grant amount,
-      signal/ViewItem terminology
 - [ ] Convert LaTeX draft → eBay **.docx** template for submission
-- [ ] Final compile / proofread
-- [ ] Submit to erupt@ebay.com before **Sept 21, 2026**
+- [ ] Final compile / proofread → submit to erupt@ebay.com before **Sept 21, 2026**
 
 ## Known issues / risks
 - "Signal / signal handler / ViewItem" terms are illustrative, not eBay-verified.
 - Final submission format is .docx, but the draft lives in LaTeX — conversion step
   not yet done.
-- References `verified:false` — §4A correctness pass still owed before submission.
+- [8] ICR (SLAAI-ICAI) is a weak venue; likely trim.
 
 ## Milestone timeline (from the proposal itself)
 | Window | Deliverable |
