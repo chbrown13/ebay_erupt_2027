@@ -1,0 +1,151 @@
+{
+  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. Metadata sourced/confirmed via Consensus (2026-06-27) except [2] (local DOE source). existsCheck/metadataCheck = pass via that source; citationCorrectness still needs the review-agent §4A pass + team review, so verified stays false until then. Reference count (15) intentionally exceeds NFR-002 (~5-8); team to advise on cuts.",
+  "lastUpdated": "2026-06-27",
+  "references": [
+    {
+      "id": "fose2026", "marker": "[1]", "verified": false,
+      "authors": "J. Cusati and C. Brown",
+      "title": "A Case for Structured Knowledge Accumulation in Software Engineering Research",
+      "venue": "Proc. ICSE-FOSE", "year": 2026, "url": null,
+      "source": "files/cusati-brown-fose2026-preprint.pdf",
+      "role": "Our foundation: structured knowledge accumulation (intellectual basis)",
+      "verification": {"existsCheck": "pass (local)", "metadataCheck": "pass (local)", "citationCorrectness": "pending", "checkedBy": "local file", "notes": "Ours."}
+    },
+    {
+      "id": "paakg", "marker": "[2]", "verified": false,
+      "authors": "C. Brown and J. Cusati",
+      "title": "PA-AKG: Provenance-Aware Agentic Knowledge Graphs",
+      "venue": "DOE Genesis Mission project, Virginia Tech", "year": 2026, "url": null,
+      "source": "files/doe-genesis.tex, files/doe-abstract.pdf",
+      "role": "Our architecture (AST extraction, ranking/validation agents, provenance) that transfers to eBay",
+      "verification": {"existsCheck": "pass (local)", "metadataCheck": "pending", "citationCorrectness": "pending", "checkedBy": "local file", "notes": "Project/proposal, not a published paper. Confirm exact citation wording with C. Brown."}
+    },
+    {
+      "id": "versicode", "marker": "[3]", "verified": false,
+      "authors": "T. Wu et al.",
+      "title": "VersiCode: Towards Version-controllable Code Generation",
+      "venue": "arXiv", "year": 2024, "arxiv": "2406.07411", "url": "https://arxiv.org/abs/2406.07411",
+      "source": "public:arxiv",
+      "role": "Version-aware code knowledge can be structured",
+      "verification": {"existsCheck": "pass (arxiv)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "Confirm arXiv id."}
+    },
+    {
+      "id": "gracg", "marker": "[4]", "verified": false,
+      "authors": "K. Fedorov et al.",
+      "title": "GRACG: Graph Retrieval Augmented Code Generation",
+      "venue": "IEEE/ACM ASEW", "year": 2025,
+      "url": "https://consensus.app/papers/details/0fdb247789cf541db5c4c99a0b4259c0/",
+      "role": "Mechanism (cede): architectural twin, same retrieval/generation/verification agent split",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "Must-distinguish-from."}
+    },
+    {
+      "id": "semanticforge", "marker": "[5]", "verified": false,
+      "authors": "W. Zhang et al.",
+      "title": "SemanticForge: Repository-Level Code Generation through Semantic Knowledge Graphs and Constraint Satisfaction",
+      "venue": "arXiv", "year": 2025,
+      "url": "https://consensus.app/papers/details/5cfa424313ca5871bc6ed2877fcea2fb/",
+      "role": "Mechanism + determinism contrast (constraint-correctness vs our provenance-reproducibility)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": ""}
+    },
+    {
+      "id": "athale", "marker": "[6]", "verified": false,
+      "authors": "M. Athale and V. Vaddina",
+      "title": "Knowledge Graph Based Repository-Level Code Generation",
+      "venue": "IEEE/ACM Wksp. on LLMs for Code (LLM4Code)", "year": 2025,
+      "url": "https://consensus.app/papers/details/c4302807d3c7559bb4f6b976a0bbcf04/",
+      "role": "Mechanism (cede): canonical KG + repo-level codegen",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": ""}
+    },
+    {
+      "id": "autocoderover", "marker": "[7]", "verified": false,
+      "authors": "Y. Zhang et al.",
+      "title": "AutoCodeRover: Autonomous Program Improvement",
+      "venue": "Proc. ACM ISSTA", "year": 2024,
+      "url": "https://consensus.app/papers/details/fcabd95011765eea90d57a6b2f3af957/",
+      "role": "Mechanism (cede): well-cited AST-based SWE-agent (issue -> patch)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "233 cites."}
+    },
+    {
+      "id": "tufano2022", "marker": "[8]", "verified": false,
+      "authors": "R. Tufano et al.",
+      "title": "Using Pre-Trained Models to Boost Code Review Automation",
+      "venue": "Proc. ICSE", "year": 2022,
+      "url": "https://consensus.app/papers/details/6ac4ca78d2495f15ad8234fb9f8c0071/",
+      "role": "Review automation: learning review edits from history",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "219 cites."}
+    },
+    {
+      "id": "icr2025", "marker": "[9]", "verified": false,
+      "authors": "T. M. N. Nimraka et al.",
+      "title": "An Agentic-AI Solution for Intelligent Code Review",
+      "venue": "SLAAI-ICAI", "year": 2025,
+      "url": "https://consensus.app/papers/details/c7834c4afc385d7cba2b5c96b49edf08/",
+      "role": "Review automation: agentic PR review against custom company rules",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "Smaller venue; team to confirm fit."}
+    },
+    {
+      "id": "heander2025", "marker": "[10]", "verified": false,
+      "authors": "L. Heander et al.",
+      "title": "Support, Not Automation: Towards AI-supported Code Review for Code Quality and Beyond",
+      "venue": "Proc. ACM FSE", "year": 2025,
+      "url": "https://consensus.app/papers/details/4989fd853fe6500386a7e2c270fcf38d/",
+      "role": "Framing: gate as support, not replacement (preserve knowledge transfer)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": ""}
+    },
+    {
+      "id": "janke2022", "marker": "[11]", "verified": false,
+      "authors": "M. Janke and P. Mader",
+      "title": "Graph Based Mining of Code Change Patterns From Version Control Commits",
+      "venue": "IEEE Trans. Softw. Eng.", "year": 2022,
+      "url": "https://consensus.app/papers/details/9d16163d5cac5869a13e38b1f86bb222/",
+      "role": "Substrate premise: frequent-subgraph mining over commit history (traceable patterns)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": ""}
+    },
+    {
+      "id": "pycraft2024", "marker": "[12]", "verified": false,
+      "authors": "M. Dilhara et al.",
+      "title": "Unprecedented Code Change Automation: The Fusion of LLMs and Transformation by Example",
+      "venue": "Proc. ACM Softw. Eng. (FSE)", "year": 2024,
+      "url": "https://consensus.app/papers/details/12355982ae0a561eaf323612ca21a738/",
+      "role": "Substrate premise: LLM+TBE automates recurring changes accepted in real projects",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "PyCraft; 83% PRs merged."}
+    },
+    {
+      "id": "aku2026", "marker": "[13]", "verified": false,
+      "authors": "G. Bakal",
+      "title": "Knowledge Activation: AI Skills as the Institutional Knowledge Primitive for Agentic Software Development",
+      "venue": "arXiv", "year": 2026, "arxiv": "2603.14805", "url": "https://arxiv.org/abs/2603.14805",
+      "role": "Closest on problem (institutional knowledge); curated not mined -> our staleness wedge; Yahoo deployment",
+      "verification": {"existsCheck": "pass (arxiv)", "metadataCheck": "pass (arxiv full read)", "citationCorrectness": "pending", "checkedBy": "consensus + WebFetch 2026-06-27", "notes": "Full text read; substrate is human-curated."}
+    },
+    {
+      "id": "deputydev2025", "marker": "[14]", "verified": false,
+      "authors": "A. Kumar et al.",
+      "title": "Intuition to Evidence: Measuring AI's True Impact on Developer Productivity",
+      "venue": "arXiv", "year": 2025,
+      "url": "https://consensus.app/papers/details/a94ba98d4dc952d3bcf4d39579eb4677/",
+      "role": "Problem/value: enterprise deployment, 31.8% PR review-cycle reduction (300 engineers)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "DeputyDev."}
+    },
+    {
+      "id": "cct5", "marker": "[15]", "verified": false,
+      "authors": "B. Lin et al.",
+      "title": "CCT5: A Code-Change-Oriented Pre-trained Model",
+      "venue": "Proc. ACM ESEC/FSE", "year": 2023,
+      "url": "https://consensus.app/papers/details/656052fc2edc5998b2795d8c1eada4fa/",
+      "role": "Motivation stat: code-change tasks ~70% of development expenditure",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pending", "checkedBy": "consensus 2026-06-27", "notes": "61 cites."}
+    }
+  ],
+  "dropped": [
+    {"role": "RAG baseline (FR-008)", "reason": "Dropped 2026-06-25 — keep list focused"},
+    {"role": "AI-PR / code-review bottleneck generic (FR-009)", "reason": "Dropped 2026-06-25 — superseded by specific review-automation cites [8][9][10]"}
+  ],
+  "candidatesNotYetCited": [
+    {"title": "Embedding Traceability in LLM Code Generation (Wang et al. 2025, FSE)", "note": "Traceability-to-requirements neighbor; add if determinism/traceability is re-emphasized"},
+    {"title": "AI-Generated Code Is Not Reproducible (Yet) (Vangala et al. 2025)", "note": "Reproducibility motivation; add if determinism re-emphasized"},
+    {"title": "Compiled AI (Trooskens et al. 2026)", "note": "Deterministic enterprise codegen contrast; add if determinism re-emphasized"},
+    {"title": "GraphCodeAgent (Li et al. 2025)", "note": "Additional mechanism cite if needed"},
+    {"title": "Repo Analyzer / KT assistant (Akalanka et al. 2025)", "note": "Onboarding 50-60% senior reduction; strong but DeputyDev[14]+AKUs[13] already cover the value claim"}
+  ]
+}

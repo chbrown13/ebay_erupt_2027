@@ -5,7 +5,7 @@ This folder manages the design-before-writing workflow for your paper or proposa
 ## Structure
 
 ```
-construction/
+llm/construction/
 ├── README.md            # This file
 ├── spec_builder.md      # Design document template
 ├── design/              # Design documents (created before writing)
@@ -25,4 +25,4 @@ construction/
 
 - No content is drafted without an approved design document
 - Sprint tasks have clear acceptance criteria
-- Completed sprints are archived to `memory-bank/archive/`
+- Completed sprints are archived to `llm/memory-bank/archive/`

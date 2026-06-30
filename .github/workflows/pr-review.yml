@@ -23,7 +23,7 @@ jobs:
           echo "## Placeholder Scan" >> $GITHUB_STEP_SUMMARY
           PLACEHOLDERS=$(grep -rn --include="*.tex" --include="*.md" --include="*.bib" \
             -E '(TBD|TODO|FIXME|XXX|PLACEHOLDER|Lorem ipsum|\{\{[A-Z_]+\}\})' \
-            paper/ construction/ memory-bank/ 2>/dev/null || true)
+            paper/ llm/construction/ llm/memory-bank/ 2>/dev/null || true)
           if [ -n "$PLACEHOLDERS" ]; then
             echo "::warning::Placeholder text found"
             echo '```' >> $GITHUB_STEP_SUMMARY
@@ -42,10 +42,10 @@ jobs:
         id: citations
         run: |
           echo "## Citation Matrix Check" >> $GITHUB_STEP_SUMMARY
-          if [ -f construction/requirements/citation-matrix.md ]; then
-            UNVERIFIED=$(grep -c '| N |' construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            FAILED=$(grep -c '| X |' construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            TOTAL=$(grep -c '^|' construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
+          if [ -f llm/construction/requirements/citation-matrix.md ]; then
+            UNVERIFIED=$(grep -c '| N |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
+            FAILED=$(grep -c '| X |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
+            TOTAL=$(grep -c '^|' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
             TOTAL=$((TOTAL > 3 ? TOTAL - 3 : 0))
             echo "Total entries: $TOTAL" >> $GITHUB_STEP_SUMMARY
             echo "Unverified: $UNVERIFIED" >> $GITHUB_STEP_SUMMARY

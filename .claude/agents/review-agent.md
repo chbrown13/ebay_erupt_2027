@@ -12,14 +12,26 @@ For every PR, run the following checks and produce a structured report.
 
 ### 1. Citation Verification
 
-Cross-reference every citation against the **Citation Matrix** (`construction/requirements/citation-matrix.md`).
+**Canonical store:** `llm/construction/requirements/references.json` is the source
+of truth (`citation-matrix.md` is its human-readable mirror; see
+`references-spec.md`). Cross-reference every citation against the store and write
+results back into each entry's `verification` block
+(`existsCheck`, `metadataCheck`, `citationCorrectness`, `checkedBy`, `checkedAt`,
+`notes`). A reference may only be set `verified: true` when all three pass.
 
 For each citation, verify:
-- [ ] **Exists**: The reference entry exists in the bibliography
-- [ ] **Accurate**: Authors, title, year, venue are correct
+- [ ] **Exists**: The source resolves — arXiv id loads / DOI or URL returns 200 /
+      named file present in `files/`. For public sources, confirm via **Consensus**
+      (the AI scientific-search engine, Claude integration) as the primary tool;
+      fallback to Hugging Face `paper_search` + `WebSearch`/WebFetch and mark it as
+      fallback in `notes`. (Consensus must be connected as an MCP connector; if it
+      isn't, note that and use the fallback.)
+- [ ] **Accurate (no hallucination)**: Authors, title, year, venue match the
+      resolved source *exactly*
 - [ ] **Accessible**: DOI or URL resolves (where applicable)
 - [ ] **Cited**: The reference is actually cited in the text (no orphans)
-- [ ] **Relevant**: The citation supports the claim it's attached to
+- [ ] **Relevant (correctly cited)**: The citation genuinely supports the claim
+      it's attached to (no misattribution)
 
 Flag any citation that:
 - Is not in the citation matrix (new — needs verification)
@@ -97,7 +109,11 @@ APPROVED / CHANGES REQUESTED
 Run full review on a PR and post the report as a comment.
 
 ### `verify-citations`
-Run citation verification only against the citation matrix.
+Run citation verification only against `references.json` (the canonical store).
+For each entry, run the §1 three-point check (Exists / no-hallucination / correct
+citation) — using **Consensus** for public-source existence + metadata, filesystem
+check for local sources — and write the result into the entry's `verification`
+block. Set `verified: true` only when all three pass. Then sync `citation-matrix.md`.
 
 ### `compile-check`
 Run compile check only.
