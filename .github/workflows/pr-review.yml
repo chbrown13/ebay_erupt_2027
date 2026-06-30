@@ -21,9 +21,11 @@ jobs:
         id: placeholders
         run: |
           echo "## Placeholder Scan" >> $GITHUB_STEP_SUMMARY
+          # Scan the deliverable (the proposal/paper), not internal working docs
+          # (llm/memory-bank & llm/construction legitimately hold TBD/{{...}}/planned notes).
           PLACEHOLDERS=$(grep -rn --include="*.tex" --include="*.md" --include="*.bib" \
             -E '(TBD|TODO|FIXME|XXX|PLACEHOLDER|Lorem ipsum|\{\{[A-Z_]+\}\})' \
-            paper/ llm/construction/ llm/memory-bank/ 2>/dev/null || true)
+            paper/ proposal/ 2>/dev/null || true)
           if [ -n "$PLACEHOLDERS" ]; then
             echo "::warning::Placeholder text found"
             echo '```' >> $GITHUB_STEP_SUMMARY
