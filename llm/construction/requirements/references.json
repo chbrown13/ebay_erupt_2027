@@ -1,6 +1,6 @@
 {
-  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. §4A verification pass run 2026-06-30 (review-agent via Consensus): 13/14 fully verified (all three checks pass), 1 flagged. No hallucinated references, no misattributed claims. Flags: [8] icr2025 passes all checks but is a small non-archival venue (SLAAI-ICAI, 0 cites) -> team to confirm acceptability; [12] aku2026 arXiv id 2603.14805 confirmed by prior full-read but Consensus lists 'Unknown Journal'. DOE/PA-AKG was REMOVED per PR #1 review (separate proposal under submission elsewhere; kept as uncited background). Reference count: 14.",
-  "lastUpdated": "2026-06-30",
+  "_comment": "Canonical references store for the eRUPT proposal. See references-spec.md. proposal/main.tex and citation-matrix.md are derived views and must stay in sync. §4A verification pass run 2026-06-30 (review-agent via Consensus): 13/14 fully verified (all three checks pass), 1 flagged. V2 EXTENSION 2026-07-07 (review-agent §4A via Consensus): added 8 new v2 refs (marker:null, v2:true) from v2-prior-art-analysis.md — ccce2026, learn2commit2026, prometheus2025, enterpriseKG2025, codifiedcontext2026, yates2025onboarding (6 must-cite) + spreadact2025, collinsloftus1975 (2 adopt-cite for FR-014 arm c / FR-020). ALL 8 pass all three §4A checks (verified:true) — no hallucinations, no misattributions. Notes: yates2025onboarding venue is 'Unknown Journal' per Consensus (likely a dissertation; 2019 predecessor is Empirical Software Engineering); ccce2026 & learn2commit2026 are very recent arXiv with 0 citations (recency, not a venue-quality flag) — monitor. Zep (Rasmussen 2025) and H-MEM (Sun 2025) moved to candidatesNotYetCited as CONDITIONAL (not fully verified) — add only if v2 draft keeps decay (FR-018) / multi-resolution (FR-019) as named arms. Flags carried from v1: [8] icr2025 passes all checks but is a small non-archival venue (SLAAI-ICAI, 0 cites) -> team to confirm acceptability; [12] aku2026 arXiv id 2603.14805 confirmed by prior full-read but Consensus lists 'Unknown Journal'. DOE/PA-AKG was REMOVED per PR #1 review (separate proposal under submission elsewhere; kept as uncited background). Reference count: 22 (14 v1 + 8 v2). Verified (all three checks pass): 21; flagged (verified:false): 1 (icr2025).",
+  "lastUpdated": "2026-07-07",
   "references": [
     {
       "id": "fose2026", "marker": "[1]", "verified": true,
@@ -126,6 +126,86 @@
       "url": "https://consensus.app/papers/details/656052fc2edc5998b2795d8c1eada4fa/",
       "role": "Motivation stat: code-change tasks ~70% of development expenditure",
       "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "consensus 2026-06-27", "notes": "61 cites."}
+    },
+    {
+      "id": "ccce2026", "marker": null, "verified": true, "v2": true,
+      "authors": "S. K. K. Parimi",
+      "title": "CCCE: A Continuous Code Calibration Engine for Autonomous Enterprise Codebase Maintenance via Knowledge Graph Traversal and Adaptive Decision Gating",
+      "venue": "arXiv", "year": 2026,
+      "url": "https://consensus.app/papers/details/8cb947a99f695124a84db39ca517f590/",
+      "source": "public:arxiv (consensus)",
+      "role": "Must-distinguish-from: closest cross-repo KG-traversal + adaptive decision-gating neighbor, but maintenance/calibration (security freshness, dependency propagation, remediation), NOT new-feature synthesis",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Abstract confirms enterprise codebases spanning hundreds of repos, dynamic KG with bidirectional traversal (forward impact + backward test adequacy), adaptive multi-stage risk-gating, HITL, end-to-end traceability — matches distinguish role. Very recent arXiv, 0 citations (recency artifact, not a venue flag)."}
+    },
+    {
+      "id": "learn2commit2026", "marker": null, "verified": true, "v2": true,
+      "authors": "M. Li et al.",
+      "title": "Learning to Commit: Generating Organic Pull Requests via Online Repository Memory",
+      "venue": "arXiv", "year": 2026,
+      "url": "https://consensus.app/papers/details/763ee8c76dd253649058a58e70f057fe/",
+      "source": "public:arxiv (consensus)",
+      "role": "Must-distinguish-from: restates our snapshot-vs-history substrate thesis (final state vs the change patterns by which it was reached); single-repo, no cross-repo/graph-of-graphs, no convention-validation gate",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Abstract states our snapshot-vs-history insight near-verbatim and distils earlier commits into reusable skills (style, internal-API usage, architectural invariants). Very recent arXiv, 0 citations (recency artifact)."}
+    },
+    {
+      "id": "prometheus2025", "marker": null, "verified": true, "v2": true,
+      "authors": "Z. Chen et al.",
+      "title": "Prometheus: Unified Knowledge Graphs for Issue Resolution in Multilingual Codebases",
+      "venue": "arXiv", "year": 2025,
+      "url": "https://consensus.app/papers/details/fccf9a596b8057fcb0aeb397cba2ebdb/",
+      "source": "public:arxiv (consensus)",
+      "role": "Mechanism cede: memory-centric coding agent over a unified code KG (working memory retains/reuses explored context; SOTA on SWE-bench Verified)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Confirmed via CCCE search result [3]. Abstract matches memory-centric coding-agent role. 13 citations."}
+    },
+    {
+      "id": "enterpriseKG2025", "marker": null, "verified": true, "v2": true,
+      "authors": "N. Rao et al.",
+      "title": "Scalable and Explainable Enterprise Knowledge Discovery Using Graph-Centric Hybrid Retrieval",
+      "venue": "arXiv", "year": 2025,
+      "url": "https://consensus.app/papers/details/064df93fff385059b593be9630335704/",
+      "source": "public:arxiv (consensus)",
+      "role": "Closest enterprise multi-source substrate (Jira+Git+code+PRs+commit histories+Confluence); distinguish: single unified graph for retrieval/QA, retrieval not generation, not a family of morphing/merging graphs",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Abstract confirms unified KG from Jira/Git/code/PRs/commit histories + query-analysis dynamic routing; retrieval not generation. 1 citation (recent)."}
+    },
+    {
+      "id": "codifiedcontext2026", "marker": null, "verified": true, "v2": true,
+      "authors": "A. Vasilopoulos",
+      "title": "Codified Context: Infrastructure for AI Agents in a Complex Codebase",
+      "venue": "arXiv", "year": 2026,
+      "url": "https://consensus.app/papers/details/a23f5ad94e6b5748bb792aaebb1ed38d/",
+      "source": "public:arxiv (consensus)",
+      "role": "Cede: the memory-bank-directory idea already built (hot-memory constitution + specialized domain agents + cold-memory knowledge base of on-demand spec documents)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Abstract confirms three-component codified-context infrastructure (hot/cold memory + 34 on-demand spec docs) over a 108k-line system — matches memory-bank-directory cede role. 5 citations (recent)."}
+    },
+    {
+      "id": "yates2025onboarding", "marker": null, "verified": true, "v2": true,
+      "authors": "R. Yates",
+      "title": "Onboarding in software engineering",
+      "venue": "Unknown Journal (Consensus; likely dissertation)", "year": 2025,
+      "url": "https://consensus.app/papers/details/1f71ae1e975d5559a7c44400524a44ba/",
+      "source": "public (consensus)",
+      "role": "Impact/motivation anchor: onboarding needs Temporal + Rationale views of code ('what changed and why') beyond Structural/Algorithmic; we auto-mine those views from VCS",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass; abstract confirms the Temporal + Rationale views framing exactly. Minor: Consensus lists venue as 'Unknown Journal' (grounded-theory study, likely a PhD dissertation; the 2019 predecessor is in Empirical Software Engineering). 5 citations."}
+    },
+    {
+      "id": "spreadact2025", "marker": null, "verified": true, "v2": true,
+      "authors": "J. Pavlović et al.",
+      "title": "Leveraging Spreading Activation for Improved Document Retrieval in Knowledge-Graph-Based RAG Systems",
+      "venue": "arXiv", "year": 2025,
+      "url": "https://consensus.app/papers/details/4246c52fb22754ef9c4b73ac4c31dfdb/",
+      "source": "public:arxiv (consensus)",
+      "role": "Adopt-cite (FR-020): the modern spreading-activation retrieval instantiation; a compared retrieval mode in our 3-way benchmark (spreading activation vs similarity/RAG vs graph query)",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Abstract confirms spreading-activation algorithm over an auto-constructed heterogeneous KG, beating similarity RAG on multi-hop QA without LLM-guided traversal — matches adopt-cite role. 2 citations (recent). Pair with collinsloftus1975."}
+    },
+    {
+      "id": "collinsloftus1975", "marker": null, "verified": true, "v2": true,
+      "authors": "A. M. Collins and E. F. Loftus",
+      "title": "A spreading-activation theory of semantic processing",
+      "venue": "Psychological Review", "year": 1975,
+      "url": "https://consensus.app/papers/details/4ced744d741b5d8db32fc1436cb9d8a7/",
+      "source": "public (consensus)",
+      "role": "Adopt-cite (FR-020): classical origin of spreading activation; foundational cite paired with spreadact2025",
+      "verification": {"existsCheck": "pass (consensus)", "metadataCheck": "pass (consensus)", "citationCorrectness": "pass", "checkedBy": "review-agent §4A 2026-07-07 (consensus)", "notes": "All three checks pass. Consensus returns exact match: A. Collins & E. Loftus, 1975, Psychological Review, 8245 citations — the canonical spreading-activation source."}
     }
   ],
   "removed": [
@@ -136,6 +216,8 @@
     {"title": "AI-Generated Code Is Not Reproducible (Yet) (Vangala et al. 2025)", "note": "Reproducibility motivation; add if determinism re-emphasized"},
     {"title": "Compiled AI (Trooskens et al. 2026)", "note": "Deterministic enterprise codegen contrast"},
     {"title": "GraphCodeAgent (Li et al. 2025)", "note": "Additional mechanism cite if needed"},
-    {"title": "Repo Analyzer / KT assistant (Akalanka et al. 2025)", "note": "Onboarding 50-60% senior reduction"}
+    {"title": "Repo Analyzer / KT assistant (Akalanka et al. 2025)", "note": "Onboarding 50-60% senior reduction"},
+    {"title": "Zep: A Temporal Knowledge Graph Architecture for Agent Memory (Rasmussen et al. 2025, arXiv)", "url": "https://consensus.app/papers/details/acb7c16242e750a8b5e3c8cbe18c647d/", "note": "v2 conditional (NOT fully §4A-verified): reference temporal-KG agent-memory system (Graphiti engine), 213 cites. Add only if v2 draft keeps temporal edge decay (FR-018) as a named arm."},
+    {"title": "Hierarchical Memory for High-Efficiency Long-Term Reasoning in LLM Agents / H-MEM (Sun et al. 2025)", "url": "https://consensus.app/papers/details/ba5f4e3a0fa05734b343dea9214c988f/", "note": "v2 conditional (NOT fully §4A-verified): multi-level memory by semantic-abstraction degree (L0/L1/L2 analog). Add only if v2 draft keeps multi-resolution memory nodes (FR-019) as a named arm (alt: HyMem / G-Memory)."}
   ]
 }

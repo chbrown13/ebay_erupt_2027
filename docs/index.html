@@ -1,274 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Project Dashboard</title>
-    <style>
-        :root {
-            --accent: #6366f1;
-            --accent-glow: rgba(99,102,241,0.3);
-            --success: #00c853;
-            --warning: #ff9900;
-            --danger: #ef4444;
-            --bg-dark: #0a0a0a;
-            --bg-card: #141414;
-            --text-primary: #e8e8e8;
-            --text-secondary: #a0a0a0;
-            --border: #2a2a2a;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#353744">
+<meta name="description" content="eBay eRUPT Academic Research Collaboration Proposal v2 — Agentic Knowledge Graphs over Code History for Enterprise Software Automation.">
+<title>eBay eRUPT Proposal v2 — Agentic Knowledge Graphs over Code History</title>
+<style>
+  :root {
+    --paper:#ffffff; --ground:#eef1f3; --band:#353744; --band-ink:#f4f6f8;
+    --ink:#2b2d38; --ink-strong:#353744; --muted:#5c6472;
+    --accent:#00893b; --accent-bright:#00ab44; --accent-soft:rgba(0,171,68,0.10);
+    --border:#e0e4e8; --rule:#353744;
+    --serif:"Charter","Iowan Old Style","Palatino Linotype","Palatino","Georgia",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#1e2027; --ground:#141519; --band:#12131a; --band-ink:#f0f2f5;
+      --ink:#dde1e7; --ink-strong:#f2f4f6; --muted:#9aa1ac;
+      --accent:#33d06d; --accent-bright:#33d06d; --accent-soft:rgba(51,208,109,0.12);
+      --border:#2d313b; --rule:#4a4e5a;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#ffffff; --ground:#eef1f3; --band:#353744; --band-ink:#f4f6f8;
+    --ink:#2b2d38; --ink-strong:#353744; --muted:#5c6472;
+    --accent:#00893b; --accent-bright:#00ab44; --accent-soft:rgba(0,171,68,0.10);
+    --border:#e0e4e8; --rule:#353744;
+  }
+  :root[data-theme="dark"] {
+    --paper:#1e2027; --ground:#141519; --band:#12131a; --band-ink:#f0f2f5;
+    --ink:#dde1e7; --ink-strong:#f2f4f6; --muted:#9aa1ac;
+    --accent:#33d06d; --accent-bright:#33d06d; --accent-soft:rgba(51,208,109,0.12);
+    --border:#2d313b; --rule:#4a4e5a;
+  }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--serif); font-size:18px; line-height:1.7;
+    -webkit-font-smoothing:antialiased; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
+  a { color:var(--accent); text-underline-offset:2px; }
 
-        .header {
-            background: linear-gradient(135deg, #1e1b4b, #312e81);
-            border-bottom: 3px solid var(--accent);
-            padding: 2rem 1rem;
-            text-align: center;
-        }
+  /* ---- Masthead band ---- */
+  .masthead { background:var(--band); color:var(--band-ink); padding:3rem 1.5rem 2.25rem; }
+  .masthead-inner { max-width:760px; margin:0 auto; }
+  .eyebrow { font-family:var(--sans); font-size:0.72rem; font-weight:600;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-bright);
+    display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+  .pill { font-family:var(--sans); font-size:0.66rem; font-weight:700; letter-spacing:0.08em;
+    padding:0.12rem 0.5rem; border-radius:999px; background:var(--accent-bright);
+    color:#06231a; text-transform:uppercase; }
+  h1.title { font-size:2.55rem; line-height:1.12; font-weight:700; margin:0.85rem 0 0;
+    color:#fff; text-wrap:balance; letter-spacing:-0.01em; }
+  .tagline { font-family:var(--sans); font-size:1.02rem; color:rgba(244,246,248,0.82);
+    margin:0.9rem 0 0; max-width:56ch; line-height:1.5; }
 
-        .header h1 { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .header .subtitle { color: var(--accent); font-size: 1rem; font-weight: 500; }
-        .header .venue { margin-top: 0.75rem; font-size: 0.85rem; color: rgba(255,255,255,0.7); }
+  .meta { font-family:var(--sans); display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:0.9rem 1.5rem; margin:1.9rem 0 0; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,0.14); }
+  .meta div { display:flex; flex-direction:column; gap:0.15rem; }
+  .meta dt { font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,246,248,0.55); }
+  .meta dd { margin:0; font-size:0.92rem; color:var(--band-ink); font-weight:500; }
+  .meta dd.tbc { color:rgba(244,246,248,0.6); font-style:italic; font-weight:400; }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 2rem 1rem; }
+  .actions { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.9rem; }
+  .btn { font-family:var(--sans); font-weight:600; font-size:0.92rem; text-decoration:none;
+    display:inline-flex; align-items:center; gap:0.55rem; padding:0.7rem 1.25rem; border-radius:8px;
+    transition:transform .12s ease, box-shadow .12s ease; }
+  .btn-primary { background:var(--accent-bright); color:#06231a; box-shadow:0 1px 0 rgba(0,0,0,0.2); }
+  .btn-primary:hover { transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,171,68,0.35); }
+  .btn-ghost { color:var(--band-ink); border:1px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { border-color:var(--accent-bright); color:#fff; }
 
-        .status-banner {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--accent);
-            border-radius: 6px;
-            padding: 1rem 1.25rem;
-            margin-bottom: 2rem;
-        }
+  /* ---- Paper column ---- */
+  .paper { max-width:760px; margin:1.5rem auto; background:var(--paper);
+    border:1px solid var(--border); border-radius:12px; padding:3rem clamp(1.25rem,5vw,3.25rem); }
+  section { margin:0 0 2.4rem; }
+  section:last-of-type { margin-bottom:0; }
 
-        .status-banner .phase {
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+  h2 { font-size:1.42rem; font-weight:700; color:var(--ink-strong); margin:0 0 1rem;
+    padding-bottom:0.55rem; letter-spacing:-0.01em; text-wrap:balance;
+    border-bottom:2px solid var(--rule); position:relative; }
+  h2::after { content:""; position:absolute; left:0; bottom:-2px; width:64px; height:2px; background:var(--accent-bright); }
 
-        .status-banner .detail { color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem; }
+  p { margin:0 0 1.05rem; max-width:var(--measure); }
+  section p:last-child { margin-bottom:0; }
+  .lead-label { font-family:var(--sans); font-weight:700; color:var(--ink-strong); }
+  em { font-style:italic; }
+  strong { font-weight:700; color:var(--ink-strong); }
 
-        .section { margin-bottom: 2rem; }
+  .cite { font-family:var(--sans); font-size:0.78em; font-weight:600; text-decoration:none;
+    color:var(--accent); padding:0 0.05em; white-space:nowrap; }
+  .cite:hover { text-decoration:underline; }
 
-        .section h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-        }
+  /* engagement table */
+  .engagement { width:100%; border-collapse:collapse; font-family:var(--sans); font-size:0.9rem; }
+  .engagement th, .engagement td { text-align:left; padding:0.7rem 0.9rem; border-bottom:1px solid var(--border); vertical-align:top; }
+  .engagement th { width:44%; color:var(--muted); font-weight:600; }
+  .engagement td { color:var(--ink); }
+  .engagement tr:last-child th, .engagement tr:last-child td { border-bottom:none; }
+  .amount { color:var(--accent); font-weight:700; }
 
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+  ul.deliverables { list-style:none; padding:0; margin:0 0 1.05rem; }
+  ul.deliverables li { position:relative; padding:0.15rem 0 0.15rem 1.5rem; margin-bottom:0.65rem; max-width:var(--measure); }
+  ul.deliverables li::before { content:""; position:absolute; left:0; top:0.72em; width:8px; height:8px;
+    border-radius:2px; background:var(--accent-bright); }
+  ul.deliverables .phase { font-family:var(--sans); font-size:0.72rem; font-weight:700; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--muted); margin-left:0.4rem; }
 
-        .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.25rem;
-            transition: border-color 0.2s;
-        }
+  /* references */
+  .refs { font-family:var(--sans); font-size:0.82rem; line-height:1.5; }
+  .refs ol { margin:0; padding:0; list-style:none; counter-reset:r; }
+  .refs li { position:relative; padding:0.4rem 0 0.4rem 2.6rem; border-bottom:1px solid var(--border); color:var(--muted); }
+  .refs li:last-child { border-bottom:none; }
+  .refs li::before { counter-increment:r; content:"["counter(r)"]"; position:absolute; left:0; top:0.4rem;
+    font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .refs cite { font-style:normal; color:var(--ink); }
+  .refs .flag { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.04em;
+    text-transform:uppercase; color:#a6690a; background:rgba(255,153,0,0.14); padding:0.05rem 0.4rem; border-radius:4px; margin-left:0.35rem; }
+  @media (prefers-color-scheme: dark){ .refs .flag{ color:#e0a94a; background:rgba(255,153,0,0.14);} }
 
-        .card:hover { border-color: var(--accent); }
-        .card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .card p { font-size: 0.85rem; color: var(--text-secondary); }
+  footer { max-width:760px; margin:1.25rem auto 3rem; padding:0 clamp(1.25rem,5vw,3.25rem);
+    font-family:var(--sans); font-size:0.78rem; color:var(--muted); line-height:1.6; }
+  footer .note { padding:1rem 1.15rem; background:var(--paper); border:1px solid var(--border);
+    border-left:3px solid var(--accent-bright); border-radius:8px; }
+  footer strong { color:var(--ink-strong); }
 
-        .badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            padding: 0.15rem 0.5rem;
-            border-radius: 3px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            margin-bottom: 0.5rem;
-        }
-
-        .badge-pending { background: rgba(255,153,0,0.15); color: var(--warning); border: 1px solid rgba(255,153,0,0.3); }
-        .badge-complete { background: rgba(0,200,83,0.15); color: var(--success); border: 1px solid rgba(0,200,83,0.3); }
-        .badge-active { background: rgba(99,102,241,0.15); color: var(--accent); border: 1px solid rgba(99,102,241,0.3); }
-
-        .downloads { list-style: none; }
-        .downloads li { margin-bottom: 0.5rem; }
-
-        .downloads a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            padding: 0.5rem 0.75rem;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            transition: all 0.2s;
-            width: 100%;
-        }
-
-        .downloads a:hover { border-color: var(--accent); background: rgba(99,102,241,0.05); }
-        .downloads .dl-icon { font-size: 1.1rem; }
-        .downloads .dl-size { margin-left: auto; color: var(--text-secondary); font-size: 0.75rem; }
-
-        .timeline { position: relative; padding-left: 1.5rem; }
-        .timeline::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--border); }
-
-        .timeline-item { position: relative; margin-bottom: 1rem; padding-left: 1rem; }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -1.55rem;
-            top: 0.5rem;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            border: 2px solid var(--bg-dark);
-        }
-
-        .timeline-item.active::before { background: var(--accent); box-shadow: 0 0 6px var(--accent-glow); }
-        .timeline-item.done::before { background: var(--success); }
-        .timeline-date { font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; }
-        .timeline-label { font-size: 0.9rem; }
-
-        .phase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.75rem; }
-
-        .phase-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .phase-card .phase-num { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }
-        .phase-card .phase-name { font-size: 0.9rem; font-weight: 600; margin-top: 0.25rem; }
-        .phase-card.active { border-color: var(--accent); }
-        .phase-card.done { border-color: var(--success); }
-
-        .footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-        }
-    </style>
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+  @media (max-width:520px){ h1.title{ font-size:2rem; } body{ font-size:17px; } }
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>{{PROJECT_TITLE}}</h1>
-        <div class="subtitle">{{PAPER_TYPE}}</div>
-        <div class="venue">{{VENUE_NAME}}</div>
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow"><span>eBay eRUPT · Academic Research Collaboration Proposal</span><span class="pill">v2</span></div>
+    <h1 class="title">Agentic Knowledge Graphs over Code History for Enterprise Software Automation</h1>
+    <p class="tagline">Mining a provenance-aware knowledge graph from eBay's own multi-repository version-control history — and settling, empirically, how a coding agent should retrieve from it.</p>
+
+    <dl class="meta">
+      <div><dt>Principal Investigator</dt><dd>Dr. Chris Brown · Virginia Tech</dd></div>
+      <div><dt>Lead Researcher (GRA)</dt><dd>Jason Cusati · Virginia Tech</dd></div>
+      <div><dt>eBay Co-Investigator</dt><dd>Ramesh Periyathambi</dd></div>
+      <div><dt>eBay VP / Head</dt><dd class="tbc">To be confirmed</dd></div>
+      <div><dt>Grant Requested</dt><dd>$120,000 · one year</dd></div>
+      <div><dt>Deadline</dt><dd>September 21, 2026</dd></div>
+    </dl>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="proposal-v2.pdf" download="ebay-erupt-proposal-v2.pdf">↓ Download PDF · 5 pp</a>
+      <a class="btn btn-ghost" href="#references">Jump to references</a>
     </div>
+  </div>
+</header>
 
-    <div class="container">
-        <div class="status-banner">
-            <div class="phase">Current Phase: Initialization</div>
-            <div class="detail">Setting up project structure and filling in templates.</div>
-        </div>
+<main class="paper">
 
-        <!-- Downloads Section -->
-        <div class="section">
-            <h2>Downloads</h2>
-            <ul class="downloads">
-                <li>
-                    <a href="#">
-                        <span class="dl-icon">&#128196;</span>
-                        <span>Paper / Proposal PDF</span>
-                        <span class="badge badge-pending">Coming Soon</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <span class="dl-icon">&#127916;</span>
-                        <span>Presentation Slides</span>
-                        <span class="badge badge-pending">Coming Soon</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+  <section>
+    <h2>Engagement Structure</h2>
+    <table class="engagement">
+      <tr><th>University Principal Investigator &amp; Researchers</th><td>Dr. Chris Brown (PI, Virginia Tech); Jason Cusati (GRA, Virginia Tech)</td></tr>
+      <tr><th>University</th><td>Virginia Tech, USA</td></tr>
+      <tr><th>eBay Co-Investigator</th><td>Ramesh Periyathambi</td></tr>
+      <tr><th>eBay VP / Head of Department</th><td><em>[To be confirmed with Ramesh Periyathambi]</em></td></tr>
+      <tr><th>Grant Amount Requested</th><td class="amount">$120,000 (one-year grant)</td></tr>
+    </table>
+  </section>
 
-        <!-- Phases Section -->
-        <div class="section">
-            <h2>Progress</h2>
-            <div class="phase-grid">
-                <div class="phase-card active">
-                    <div class="phase-num">Phase 1</div>
-                    <div class="phase-name">Setup</div>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-num">Phase 2</div>
-                    <div class="phase-name">Design</div>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-num">Phase 3</div>
-                    <div class="phase-name">Drafting</div>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-num">Phase 4</div>
-                    <div class="phase-name">Review</div>
-                </div>
-                <div class="phase-card">
-                    <div class="phase-num">Phase 5</div>
-                    <div class="phase-name">Submit</div>
-                </div>
-            </div>
-        </div>
+  <section>
+    <h2>Objectives</h2>
+    <p>At eBay, shipping a feature rarely touches a single codebase. Taking a <em>codebase</em> to be one repository, a feature is precisely what spans several of them — at eBay, typically five or more: changing how an item is displayed, priced, or measured propagates across separate services, owned by separate teams, and a developer must understand each one's APIs, conventions, and history before writing a line. On a large, long-lived codebase this <em>understanding</em> is the dominant cost: code-change tasks account for roughly 70% of development expenditure <a class="cite" href="#ref-14">[14]</a>, a single feature can take a year or more once A/B testing is included, and the effort of bringing a developer — or a coding agent — up to speed on an unfamiliar repository is repeated from scratch every time <a class="cite" href="#ref-20">[20]</a>. The most acute bottleneck is review: every change, and increasingly every AI-generated change, must still be read and approved by a human.</p>
+    <p>This proposal asks one research question: <strong>how can a coding agent be made genuinely efficient at understanding a large, multi-repository codebase</strong> — learning its features, styles, and cross-team collaboration patterns not from a static snapshot of the current code, but from the <em>history</em> that produced it — its commits, GitHub pull requests, and JIRA work items, together with the code patterns and external resources they reference? Enterprise deployments of AI developer tools already report substantial reductions in review-cycle time and onboarding load once that historical context is made available <a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-13">[13]</a>, which tells us the leverage is real; what is not yet known is <em>how</em> an agent should represent and retrieve that history to capture it.</p>
+    <p>Our answer has two parts. The first is a <em>substrate</em>: an <strong>agentic knowledge graph</strong> (KG) mined from eBay's own version-control history, spanning multiple repositories, rather than from current code alone. The second is the contribution we propose to eBay, and it is deliberately empirical: <strong>a systematic comparison of how an agent should retrieve from that history</strong>. We build the substrate once and evaluate three retrieval strategies over it, reporting which makes an agent most efficient at multi-repository understanding — a result eBay can learn from and extend regardless of which internal system eventually adopts it. A single, provenance-tagged history serves the work twice over: it is the substrate an agent uses to <em>synthesize</em> a change spanning several repositories, and the reference an automated gate uses to <em>validate</em> the resulting pull requests against the team's own conventions.</p>
+    <p>Why academic research? Representing a multi-repository code history as a family of queryable graphs, and determining empirically which retrieval strategy best supports a coding agent, are open problems spanning software engineering, AI, and knowledge representation. They require systematic investigation, not engineering alone, and exceed what an in-house team has the bandwidth to explore.</p>
+  </section>
 
-        <!-- Timeline Section -->
-        <div class="section">
-            <h2>Timeline</h2>
-            <div class="timeline">
-                <div class="timeline-item active">
-                    <div class="timeline-date">{{DATE}}</div>
-                    <div class="timeline-label"><strong>Project started</strong></div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">{{DATE}}</div>
-                    <div class="timeline-label">First draft complete</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">{{DATE}}</div>
-                    <div class="timeline-label">Internal review</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">{{DATE}}</div>
-                    <div class="timeline-label"><strong>Submission deadline</strong></div>
-                </div>
-            </div>
-        </div>
+  <section>
+    <h2>Previous Work</h2>
+    <p>Developed with Ramesh Periyathambi at eBay, this proposal engages a fast-moving literature; we position our contribution by what it does <em>not</em> claim as much as by what it does.</p>
+    <p><span class="lead-label">KG-grounded code generation is established — we extend it to history and to multiple repositories.</span> Repository-level generation grounded in a code graph, with retrieval, generation, and verification agents, is an active 2024–2025 area: GRACG <a class="cite" href="#ref-3">[3]</a> proposes the same agent decomposition, SemanticForge <a class="cite" href="#ref-4">[4]</a> adds constraint-guided generation over a repository KG, and Athale and Vaddina <a class="cite" href="#ref-5">[5]</a> and the SWE-agent AutoCodeRover <a class="cite" href="#ref-6">[6]</a> show graph- and AST-grounded agents resolving real tasks. We adopt this machinery rather than reinvent it. What these systems encode is a current-code snapshot within a single repository — not the commits, PRs, and reviews that record how the code reached its present form, and not the relationships <em>across</em> repositories that an eBay feature must cross.</p>
+    <p><span class="lead-label">Enterprise and multi-repository code graphs are being built — we differ in purpose.</span> The closest neighbors are recent and strong. Rao et al. <a class="cite" href="#ref-18">[18]</a> build a unified KG from Jira, Git, code, and PRs for enterprise knowledge discovery, but for retrieval and question answering over one fused graph, not code generation. Prometheus <a class="cite" href="#ref-17">[17]</a> gives a coding agent a memory-centric unified code KG for issue resolution. CCCE <a class="cite" href="#ref-15">[15]</a> is the sharpest neighbor: it traverses a dynamic KG across enterprise codebases spanning hundreds of repositories, with adaptive risk-gating and end-to-end traceability — but for autonomous <em>maintenance and calibration</em> (dependency propagation, security freshness, remediation), not for synthesizing a <em>new</em> feature from mined historical patterns. Our target is the opposite end of the lifecycle.</p>
+    <p><span class="lead-label">Repository memory and history mining — our substrate.</span> Codified Context <a class="cite" href="#ref-19">[19]</a> equips agents with a directory of on-demand specification documents over a complex codebase, and Learning to Commit <a class="cite" href="#ref-16">[16]</a> states our core premise almost verbatim — that a repository snapshot reveals the final state but not the change patterns by which it was reached — distilling earlier commits into reusable skills. Both are single-repository. Frequent-subgraph mining over commit history yields interpretable, traceable change patterns <a class="cite" href="#ref-10">[10]</a>, and LLM-augmented transformation-by-example automates recurring changes accepted into real projects <a class="cite" href="#ref-11">[11]</a>. For institutional knowledge, Knowledge Activation <a class="cite" href="#ref-12">[12]</a> turns enterprise knowledge into a graph agents traverse — but from <em>human-curated</em> units, and it flags staleness as unsolved. A KG mined continuously from version control, across repositories, is exactly the missing, self-updating substrate.</p>
+    <p><span class="lead-label">Automated code review is maturing — we make it convention-aware.</span> Learning review edits from history <a class="cite" href="#ref-7">[7]</a> and agentic PR review against company rules <a class="cite" href="#ref-8">[8]</a> are established; recent work argues such tools should <em>support</em> rather than replace reviewers, to preserve knowledge transfer and shared ownership <a class="cite" href="#ref-9">[9]</a>. Our validation gate follows that principle, generalized to <em>cross-repository</em> conventions.</p>
+    <p><span class="lead-label">Our foundations.</span> Our ICSE-FOSE 2026 position paper <a class="cite" href="#ref-1">[1]</a> argues for structured knowledge accumulation in software engineering, and our prior work on provenance-aware agentic knowledge graphs contributes the core architecture — AST extraction, ranking/validation agents, provenance tracking — that transfers to eBay's Java context; VersiCode <a class="cite" href="#ref-2">[2]</a> shows version-aware code knowledge can be structured. eBay's enterprise KG, <strong>Compass</strong>, already links Jira, repos, commits, PRs, and deployments; our KG extends it with the code-level pattern knowledge tickets don't capture.</p>
+    <p><em>The gap.</em> Prior systems build a code KG for one repository, or a maintenance engine across many; none establishes <strong>which history-retrieval strategy makes a coding agent most efficient at multi-repository understanding</strong>, nor uses a provenance-aware, cross-repository history KG to <em>synthesize</em> features and validate them against team conventions. That comparison, and that substrate, are the contributions of this proposal.</p>
+  </section>
 
-        <!-- Key Topics Section -->
-        <div class="section">
-            <h2>Key Topics</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <span class="badge badge-active">Primary</span>
-                    <h3>{{PRIMARY_TOPIC}}</h3>
-                    <p>{{DESCRIPTION}}</p>
-                </div>
-                <div class="card">
-                    <span class="badge badge-pending">Secondary</span>
-                    <h3>{{SECONDARY_TOPIC}}</h3>
-                    <p>{{DESCRIPTION}}</p>
-                </div>
-            </div>
-        </div>
+  <section>
+    <h2>Methodologies &amp; Approaches</h2>
+    <p><span class="lead-label">A family of history-mined graphs.</span> We construct, over a bounded set of eBay's Java repositories, not one monolithic graph but a small family of interlinked graphs, because a multi-repository codebase has distinct kinds of structure that a single graph flattens. A <em>Repo Graph</em> relates services and repositories — dependencies, shared libraries, cross-team ownership, and call relationships — so that a feature's blast radius across repositories is explicit. A <em>JIRA Graph</em> links work items to the commits and pull requests that resolved them, and out to the external resources they cite. A <em>Memory-Bank Graph</em> holds per-repository living documentation an agent can traverse. The graphs share entities (the same service, commit, or ticket appears in more than one), and the agent projects the task-relevant view — onboarding, feature design, or review — rather than querying everything at once. Two design choices keep this tractable at codebase scale: history edges are <em>time-weighted</em> so recent conventions outrank stale ones, and Memory-Bank nodes are stored at multiple resolutions (summary for cheap traversal, full detail on demand). Every pattern is provenance-tagged — for example, the recurring pattern of adding a signal to an item-display service, linked back to the commits and reviews that established it — so an agent's output is auditable against the history that justified it.</p>
+    <p><span class="lead-label">The core experiment: how should an agent retrieve from history?</span> Our central contribution is empirical. Holding the substrate fixed, we compare three retrieval strategies for supplying an agent with the right historical context for a task: <em>(a) structured graph queries</em> over the graph family; <em>(b) similarity search</em> (embedding/RAG retrieval); and <em>(c) spreading activation</em>, in which activation diffuses from the task prompt across graph edges to surface related patterns — a classical model of associative recall <a class="cite" href="#ref-22">[22]</a> recently shown to beat similarity retrieval on multi-hop questions over a knowledge graph <a class="cite" href="#ref-21">[21]</a>. Each is evaluated on the same tasks and the same metrics, so the comparison isolates the retrieval strategy rather than the model or the data. This head-to-head — which no prior work has run for multi-repository coding-agent understanding — is what we deliver back to eBay. (Graph backend and topology choices, e.g. property-graph versus alternative query engines, are treated as implementation details, not experimental variables.)</p>
+    <p><span class="lead-label">Cross-repository synthesis and convention validation.</span> On top of the best-performing retrieval strategy, we task an agent with the multi-repository work that motivates the proposal: synthesizing a feature that spans several repositories from mined historical patterns, and validating the resulting PRs against KG-encoded conventions — including <em>cross-repository</em> conventions, where a change in one service breaks an implicit contract with another. The validation gate surfaces deviations and breaking dependency changes for human attention, supporting reviewers <a class="cite" href="#ref-9">[9]</a> rather than replacing them, and directly targeting eBay's review bottleneck for AI-generated PRs.</p>
+  </section>
+
+  <section>
+    <h2>Impact</h2>
+    <p>If successful, this project turns eBay's multi-repository code history into persistent organizational memory and cuts the cost of the three things that dominate feature work today. <strong>Onboarding:</strong> new hires, offshore teams, and internal transfers query a repository's conventions, dependency owners, and rationale — the "what changed and why" views onboarding demonstrably needs <a class="cite" href="#ref-20">[20]</a> — instead of shadowing senior engineers. <strong>Cross-repository features:</strong> an agent grounded in mined history scaffolds changes that correctly span the services a feature touches, attacking the year-plus feature cycle at its most error-prone seam. <strong>Review:</strong> rather than manually reading every agentic change, reviewers see automated, convention-grounded conformance checks and focus on genuine anomalies — the same lever enterprise tools report using to reduce review-cycle time <a class="cite" href="#ref-13">[13]</a> and ease onboarding <a class="cite" href="#ref-12">[12]</a>. Beyond eBay, the retrieval comparison itself is a transferable result: any organization mining its own version control benefits from knowing which strategy makes an agent most efficient.</p>
+    <p><span class="lead-label">Risks.</span> eBay's codebase is large, and a single feature typically spans five or more repositories; we de-risk by scoping to a bounded set of roughly ten related repositories — enough to contain a realistic cross-repository feature end to end — as a case study, with the architecture designed to generalize. KG extraction reliability is an open problem, addressed with staged evaluation and manual validation. The nearest systems target single-repository generation or cross-repository <em>maintenance</em> <a class="cite" href="#ref-15">[15]</a>; our bet is that a cross-repository version-control history is the higher-leverage, self-updating substrate for <em>building</em> features, and that the right retrieval strategy over it is an empirical question worth settling.</p>
+  </section>
+
+  <section>
+    <h2>Expected Product, Output &amp; Milestones</h2>
+    <ul class="deliverables">
+      <li><strong>Multi-graph history substrate</strong><span class="phase">Months 1–5</span><br>the Repo, Issue, and Memory-Bank graphs mined over a bounded set of related repositories, with provenance tagging and time-weighted history edges.</li>
+      <li><strong>Retrieval-strategy comparison</strong><span class="phase">Months 6–9</span><br>the head-to-head evaluation of graph-query, similarity, and spreading-activation retrieval — the core research result.</li>
+      <li><strong>Cross-repository synthesis &amp; validation gate</strong><span class="phase">Months 10–12</span><br>agentic synthesis of a feature spanning several repositories, with automated convention checking of the resulting PRs.</li>
+      <li><strong>Publications</strong><span class="phase">Ongoing</span><br>findings disseminated at venues such as ICSE, FSE, and MSR.</li>
+    </ul>
+    <p><span class="lead-label">Metrics for success:</span> <em>primary</em> — reduction in review-cycle time / review comments per agent-generated PR; <em>secondary</em> — cross-repository feature-scaffold accuracy; <em>supporting</em> — retrieval precision/recall and onboarding-task success. Tiered funding could support progressive expansion to additional repositories and pattern types across eBay's organization.</p>
+  </section>
+
+  <section>
+    <h2>University / Lab / Researcher Qualification</h2>
+    <p><strong>Dr. Chris Brown (PI, Virginia Tech).</strong> Dr. Brown leads the Software Engineering and Digital Society lab, researching human-centered AI for software engineering and the use of historical development data to support developers. He has published at ICSE, FSE, ESEM, and CSCW, and leads related work on provenance-aware agentic knowledge graphs whose architecture directly informs this proposal.</p>
+    <p><strong>Jason Cusati (GRA, Virginia Tech).</strong> Mr. Cusati is a PhD candidate whose research focuses on provenance-aware knowledge graphs over code history and AI-assisted software engineering. He co-authored the ICSE-FOSE 2026 paper on structured knowledge accumulation <a class="cite" href="#ref-1">[1]</a> and leads the team's work on provenance-aware agentic knowledge graphs, the architectural basis for the history-grounded substrate proposed here.</p>
+  </section>
+
+  <section id="references">
+    <h2>References</h2>
+    <div class="refs">
+      <ol>
+        <li id="ref-1"><cite>J. Cusati and C. Brown.</cite> "A Case for Structured Knowledge Accumulation in Software Engineering Research." Proc. ICSE-FOSE, 2026.</li>
+        <li id="ref-2"><cite>T. Wu et al.</cite> "VersiCode: Towards Version-controllable Code Generation." arXiv:2406.07411, 2024.</li>
+        <li id="ref-3"><cite>K. Fedorov et al.</cite> "GRACG: Graph Retrieval Augmented Code Generation." IEEE/ACM ASEW, 2025.</li>
+        <li id="ref-4"><cite>W. Zhang et al.</cite> "SemanticForge: Repository-Level Code Generation through Semantic Knowledge Graphs and Constraint Satisfaction." arXiv, 2025.</li>
+        <li id="ref-5"><cite>M. Athale and V. Vaddina.</cite> "Knowledge Graph Based Repository-Level Code Generation." IEEE/ACM Wksp. on LLMs for Code (LLM4Code), 2025.</li>
+        <li id="ref-6"><cite>Y. Zhang et al.</cite> "AutoCodeRover: Autonomous Program Improvement." Proc. ACM ISSTA, 2024.</li>
+        <li id="ref-7"><cite>R. Tufano et al.</cite> "Using Pre-Trained Models to Boost Code Review Automation." Proc. ICSE, 2022.</li>
+        <li id="ref-8"><cite>T. M. N. Nimraka et al.</cite> "An Agentic-AI Solution for Intelligent Code Review." SLAAI-ICAI, 2025.<span class="flag">venue under review</span></li>
+        <li id="ref-9"><cite>L. Heander et al.</cite> "Support, Not Automation: Towards AI-supported Code Review for Code Quality and Beyond." Proc. ACM FSE, 2025.</li>
+        <li id="ref-10"><cite>M. Janke and P. Mäder.</cite> "Graph Based Mining of Code Change Patterns From Version Control Commits." IEEE Trans. Softw. Eng., 2022.</li>
+        <li id="ref-11"><cite>M. Dilhara et al.</cite> "Unprecedented Code Change Automation: The Fusion of LLMs and Transformation by Example." Proc. ACM Softw. Eng. (FSE), 2024.</li>
+        <li id="ref-12"><cite>G. Bakal.</cite> "Knowledge Activation: AI Skills as the Institutional Knowledge Primitive for Agentic Software Development." arXiv:2603.14805, 2026.</li>
+        <li id="ref-13"><cite>A. Kumar et al.</cite> "Intuition to Evidence: Measuring AI's True Impact on Developer Productivity." arXiv, 2025.</li>
+        <li id="ref-14"><cite>B. Lin et al.</cite> "CCT5: A Code-Change-Oriented Pre-trained Model." Proc. ACM ESEC/FSE, 2023.</li>
+        <li id="ref-15"><cite>S. K. K. Parimi.</cite> "CCCE: A Continuous Code Calibration Engine for Autonomous Enterprise Codebase Maintenance via Knowledge Graph Traversal and Adaptive Decision Gating." arXiv, 2026.</li>
+        <li id="ref-16"><cite>M. Li et al.</cite> "Learning to Commit: Generating Organic Pull Requests via Online Repository Memory." arXiv, 2026.</li>
+        <li id="ref-17"><cite>Z. Chen et al.</cite> "Prometheus: Unified Knowledge Graphs for Issue Resolution in Multilingual Codebases." arXiv, 2025.</li>
+        <li id="ref-18"><cite>N. Rao et al.</cite> "Scalable and Explainable Enterprise Knowledge Discovery Using Graph-Centric Hybrid Retrieval." arXiv, 2025.</li>
+        <li id="ref-19"><cite>A. Vasilopoulos.</cite> "Codified Context: Infrastructure for AI Agents in a Complex Codebase." arXiv, 2026.</li>
+        <li id="ref-20"><cite>R. Yates.</cite> "Onboarding in Software Engineering." 2025.</li>
+        <li id="ref-21"><cite>J. Pavlović et al.</cite> "Leveraging Spreading Activation for Improved Document Retrieval in Knowledge-Graph-Based RAG Systems." arXiv, 2025.</li>
+        <li id="ref-22"><cite>A. M. Collins and E. F. Loftus.</cite> "A Spreading-Activation Theory of Semantic Processing." Psychological Review, 1975.</li>
+      </ol>
     </div>
+  </section>
 
-    <div class="footer">
-        {{PROJECT_TITLE}} &middot; Built with template-paper
-    </div>
+</main>
+
+<footer>
+  <div class="note">
+    <strong>Working draft — v2.</strong> Scaled from a single ViewItem page to the whole multi-repository codebase. Rendered from <code>proposal/v2-main.tex</code>; all 22 references §4A-verified (exists · no-hallucination · correct-citation) against Consensus. The eBay VP/Head name is pending confirmation with Ramesh Periyathambi. Prepared for eBay eRUPT · target <strong>erupt@ebay.com</strong> · deadline September 21, 2026.
+  </div>
+</footer>
+
 </body>
 </html>
