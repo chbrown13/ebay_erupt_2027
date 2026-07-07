@@ -76,7 +76,7 @@
   \midrule
   \textbf{eBay Co-Investigator(s)} & Ramesh Periyathambi \\
   \midrule
-  \textbf{eBay VP/Head of Department} & \emph{[To be confirmed with Ramesh Periyathambi]} \\
+  \textbf{eBay VP/Head of Department} & Rami El-Charif \\
   \midrule
   \textbf{Grant Amount Requested} & \$120,000 (one-year grant) \\
   \bottomrule
@@ -89,13 +89,10 @@
 \label{sec:objectives}
 % ------------------------------------------------------------
 
-<<<<<<< HEAD
 Software systems in large enterprises evolve through thousands of incremental changes---bug fixes, feature additions, API migrations, etc. Each change is guided by organizational conventions, dependency constraints, and historical decisions that are documented implicitly across diverse sources such as commit messages, pull request threads, and review comments. When a developer needs to re-apply a recurring change---nominally the same task repeated across different files---they must rediscover the correct APIs, team conventions, and dependency chains from scratch, consuming weeks of effort per instance. When an LLM-based agent is asked to automate the same change, the problem compounds: without access to the organization's development history, the agent generates code from internet-scale patterns that violate team-specific conventions or miss subtle dependency constraints. In both cases, institutional knowledge that could accelerate the change is scattered and inaccessible at the moment of need.
 
 For example, at eBay adding a new signal to a ViewItem page may take developers 2--4 weeks. Every time, the files differ, the APIs have shifted, and the team conventions are undocumented, so someone rediscovers all of it from scratch. Across a codebase of this scale the pattern repeats hundreds of times a year. The cost is not hypothetical---code-change tasks account for roughly 70\% of development expenditure [15], and enterprise deployments of AI developer tools report substantial reductions in review-cycle time and onboarding load once that historical context is made available [13, 14].
-=======
-At eBay, adding a new signal to a ViewItem page or wiring up an A/B-test variant takes developers 2--4 weeks, every time: the files differ, the APIs have shifted, and the team conventions are undocumented, so someone rediscovers all of it from scratch. Across a codebase of this scale the pattern repeats hundreds of times a year. The cost is not hypothetical---code-change tasks account for roughly 70\% of development expenditure [14], and enterprise deployments of AI developer tools report substantial reductions in review-cycle time and onboarding load once that historical context is made available [12, 13].
->>>>>>> eeeabd5e3ca1d90d3aef4bee8517acac2db41247
+
 
 Our central idea is a \emph{substrate}: an \textbf{agentic knowledge graph} (KG) mined from eBay's own version-control history---git commits, pull requests, and code-review discussions---rather than from a static snapshot of current code. This history-grounded KG serves one purpose twice over. It is the retrieval substrate an AI agent uses to \emph{generate} a recurring change consistent with past practice, and the reference an automated gate uses to \emph{validate} the resulting pull request against the team's own historical conventions. Because every recommendation traces to specific historical artifacts, generations are auditable and reproducible from a fixed KG state.
 
@@ -110,19 +107,18 @@ Why academic research? Mining actionable patterns from a production codebase's h
 
 % Developed with Ramesh Periyathambi at eBay, this proposal engages a fast-moving literature; we position our contribution by what it does \emph{not} claim as much as by what it does.
 
-<<<<<<< HEAD
 \textbf{KG-grounded code generation.} Repository-level code generation grounded in a code graph, with retrieval/generation/verification agents, is an active 2024--2025 area: GRACG [4] already proposes the same agent decomposition; SemanticForge [5] adds constraint-guided generation over a repository KG; Athale and Vaddina [6] and the SWE-agent AutoCodeRover [7] show graph- and AST-grounded agents resolving real tasks. We adopt this machinery rather than reinvent it. What these systems do not do is build the graph from version-control \emph{history}---they encode a current-code snapshot, not the commits, PRs, and reviews that record how and why the code reached its present form.
 
 \textbf{Automated code review.} Learning review edits from history [8] and agentic PR review against company rules [9] are established; recent work argues such tools should \emph{support} rather than replace reviewers, to preserve knowledge transfer and shared ownership [10]. Our validation gate follows that principle, checking generated PRs against conventions mined from the team's own review history rather than generic best practices.
 
 \textbf{History mining and institutional knowledge.} Frequent-subgraph mining over commit history yields interpretable, traceable change patterns [11], and LLM-augmented transformation-by-example automates recurring changes accepted into real projects [12]. For institutional knowledge, the closest work, Knowledge Activation [13], turns enterprise knowledge into a graph that agents traverse---but from \emph{human-curated} units, and it explicitly flags staleness as unsolved. A KG mined continuously from version control is exactly the missing, self-updating substrate.
-=======
+
 \textbf{KG-grounded code generation is established---we extend it.} Repository-level code generation grounded in a code graph, with retrieval/generation/verification agents, is an active 2024--2025 area: GRACG [3] already proposes the same agent decomposition; SemanticForge [4] adds constraint-guided generation over a repository KG; Athale and Vaddina [5] and the SWE-agent AutoCodeRover [6] show graph- and AST-grounded agents resolving real tasks. We adopt this machinery rather than reinvent it. What these systems do not do is build the graph from version-control \emph{history}---they encode a current-code snapshot, not the commits, PRs, and reviews that record how and why the code reached its present form.
 
 \textbf{Automated code review is maturing---we make it convention-aware.} Learning review edits from history [7] and agentic PR review against company rules [8] are established; recent work argues such tools should \emph{support} rather than replace reviewers, to preserve knowledge transfer and shared ownership [9]. Our validation gate follows that principle, checking generated PRs against conventions mined from the team's own review history rather than generic best practices.
 
 \textbf{History mining and institutional knowledge---our substrate.} Frequent-subgraph mining over commit history yields interpretable, traceable change patterns [10], and LLM-augmented transformation-by-example automates recurring changes accepted into real projects [11]. For institutional knowledge, the closest work, Knowledge Activation [12], turns enterprise knowledge into a graph that agents traverse---but from \emph{human-curated} units, and it explicitly flags staleness as unsolved. A KG mined continuously from version control is exactly the missing, self-updating substrate.
->>>>>>> eeeabd5e3ca1d90d3aef4bee8517acac2db41247
+
 
 \textbf{Our foundations.} Our ICSE-FOSE 2026 position paper [1] argues for structured knowledge accumulation in software engineering, and our prior work on provenance-aware agentic knowledge graphs contributes the core architecture---AST extraction, ranking/validation agents, and provenance tracking---that transfers to eBay's Java context; VersiCode [2] shows version-aware code knowledge can be structured. eBay's enterprise KG, \textbf{Compass}, already links Jira, repos, commits, PRs, and deployments; our KG extends it with the code-level pattern knowledge tickets don't capture.
 
@@ -180,7 +176,7 @@ The validation gate directly targets eBay's review bottleneck for AI-generated P
 \label{sec:qualification}
 % ------------------------------------------------------------
 
-\textbf{Dr.~Chris Brown (PI, Virginia Tech).} Dr.~Brown leads the Software Engineering and Digital Society lab, researching human-centered AI for software engineering and the use of historical development data to support developers. He has published at ICSE, FSE, ESEM, and CSCW, and leads related work on provenance-aware agentic knowledge graphs whose architecture directly informs this proposal.
+\textbf{Dr.~Chris Brown (PI, Virginia Tech).} Dr.~Brown leads a software engineering research lab at Virginia Tech, researching methods to improve the behavior, productivity, and decision making of developers. His recent work investigates the application of generative AI in development contexts, and he has published work at ICSE, FSE, ESEM, and CHASE, among other research venues.
 
 \textbf{Jason Cusati (GRA, Virginia Tech).} Mr.~Cusati is a PhD candidate whose research focuses on provenance-aware knowledge graphs over code history and AI-assisted software engineering. He co-authored the ICSE-FOSE 2026 paper on structured knowledge accumulation [1] and leads the team's work on provenance-aware agentic knowledge graphs, the architectural basis for the history-grounded substrate proposed here.
 
