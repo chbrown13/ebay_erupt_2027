@@ -1,9 +1,9 @@
 # Progress
 
 > Historical record + status. Read every session with `activeContext.md`.
-> Updated 2026-06-25.
+> Updated 2026-06-30.
 
-## Current Phase: Drafting / Revision
+## Current Phase: Revision after first team review
 
 ## Completed
 - [x] Project scaffolded from paper-template (memory-bank, construction, agents)
@@ -16,28 +16,32 @@
 - [x] constellize plugin suite installed (2026-06-25)
 - [x] Memory bank re-established with accurate, current content (2026-06-25)
 
+## Completed (continued)
+- [x] Connected **Consensus** MCP (lit-review tool); installed constellize suite
+- [x] Prior-art review via Consensus → `prior-art-analysis.md` (verdict:
+      partial-overlap; reframed problem-led; SLSA + AKUs full-read follow-ups)
+- [x] **Repositioned proposal** (problem-led, history-KG substrate, determinism
+      demoted, support-not-replacement gate); 15 real references sourced + stored
+- [x] **PR #1 merged** to `main` (2026-06-30) — reposition
+- [x] **PR #2 merged** to `main` (2026-06-30) — actioned PR #1 review: removed
+      DOE/PA-AKG citation, renumbered to 14 refs, synced store + matrix
+- [x] **§4A citation verification pass complete** (2026-06-30, review-agent via
+      Consensus): all 14 exist + metadata-accurate + correctly cited. 13
+      `verified:true`; [8] ICR flagged (small venue), kept per decision.
+
 ## In Progress
-- [x] Fill Engagement Structure fields: **Grant Amount = $120,000**; VP/Head left
-      as a visible placeholder pending Ramesh
-- [x] **References spec + store** written (`references-spec.md`,
-      `references.json`, citation-matrix mirror) with §4A skill-driven
-      verification protocol
-- [ ] Flesh out **References** per spec, then run §4A verification (no ref ships
-      until exists + no-hallucination + correct-citation all pass)
+- [ ] (External) Chris emailing Ramesh for VP name / $120K / terminology
+- [ ] (External) Chris's reference verify/trim pass — [8] ICR is the cut candidate
 
 ## Upcoming
-- [ ] Confirm grant amount + VP name + terminology with Ramesh
-- [ ] Internal review pass (Jason → Ramesh)
-- [ ] Convert LaTeX draft to the required eBay **.docx** template
-- [ ] Final compile / proofread
-- [ ] Submit to erupt@ebay.com before **Sept 21, 2026**
+- [ ] Convert LaTeX draft → eBay **.docx** template for submission
+- [ ] Final compile / proofread → submit to erupt@ebay.com before **Sept 21, 2026**
 
 ## Known issues / risks
-- Memory-bank had drifted badly (now fixed); keep it current going forward.
 - "Signal / signal handler / ViewItem" terms are illustrative, not eBay-verified.
 - Final submission format is .docx, but the draft lives in LaTeX — conversion step
-  is not yet done.
-- Thin reference list weakens the "Previous Work" credibility.
+  not yet done.
+- [8] ICR (SLAAI-ICAI) is a weak venue; likely trim.
 
 ## Milestone timeline (from the proposal itself)
 | Window | Deliverable |

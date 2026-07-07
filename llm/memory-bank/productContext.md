@@ -46,10 +46,23 @@ historical pattern.
 
 ## Key Differentiators
 
-- **Provenance-aware** KG: outputs trace back to specific historical patterns.
-- **Determinism**: same KG state → same generated code (vs. RAG / vanilla LLM).
-- **Practical, eBay-grounded**: extends eBay's existing Compass KG with
-  code-level pattern knowledge that tickets don't capture.
+> Reframed 2026-06-30 after the prior-art review (`prior-art-analysis.md`). The
+> *mechanism* (KG + agents + codegen) is established 2024–25 work — do **not**
+> claim it. Novelty is the substrate and its dual use.
+
+- **History-mined substrate (THE differentiator):** the KG is built from eBay's
+  *own version-control history* (commits + PRs + reviews), not a static AST
+  snapshot, and is the **single substrate** for *both* generation *and*
+  convention-validation. No prior system does this — closest works use curated
+  knowledge (AKUs), generic LLM training (review tools), static AST (codegen), or
+  requirements (traceability tools).
+- **Provenance & auditability:** every output traces to the specific historical
+  patterns/decisions that produced it.
+- **Practical, eBay-grounded:** extends Compass; the *problem* is validated by
+  real industry deployments (e.g., DeputyDev: 31.8% PR-review-cycle reduction).
+- **Determinism (supporting, not headline):** provenance-reproducibility — same
+  frozen KG state → same retrieval → same output. Demoted because it is the most
+  crowded claim (constraint/compile-based determinism already exists elsewhere).
 
 ## Value Propositions (the eRUPT "Impact" pitch)
 

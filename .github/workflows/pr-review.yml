@@ -42,24 +42,34 @@ jobs:
         id: citations
         run: |
           echo "## Citation Matrix Check" >> $GITHUB_STEP_SUMMARY
-          if [ -f llm/construction/requirements/citation-matrix.md ]; then
-            UNVERIFIED=$(grep -c '| N |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            FAILED=$(grep -c '| X |' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            TOTAL=$(grep -c '^|' llm/construction/requirements/citation-matrix.md 2>/dev/null || echo "0")
-            TOTAL=$((TOTAL > 3 ? TOTAL - 3 : 0))
-            echo "Total entries: $TOTAL" >> $GITHUB_STEP_SUMMARY
-            echo "Unverified: $UNVERIFIED" >> $GITHUB_STEP_SUMMARY
-            echo "Failed: $FAILED" >> $GITHUB_STEP_SUMMARY
+          MATRIX=llm/construction/requirements/citation-matrix.md
+          if [ -f "$MATRIX" ]; then
+            # Verified column markers: [x]=verified, [~]=flagged (checks pass, team decision), [ ]=unverified
+            VERIFIED=$(grep -cF '| [x] |' "$MATRIX" || true)
+            FLAGGED=$(grep -cF '| [~] |' "$MATRIX" || true)
+            UNVERIFIED=$(grep -cF '| [ ] |' "$MATRIX" || true)
+            TOTAL=$((VERIFIED + FLAGGED + UNVERIFIED))
+            {
+              echo "Total entries: $TOTAL"
+              echo "Verified: $VERIFIED"
+              echo "Flagged (team decision): $FLAGGED"
+              echo "Unverified: $UNVERIFIED"
+            } >> $GITHUB_STEP_SUMMARY
+            echo "verified=$VERIFIED" >> $GITHUB_OUTPUT
+            echo "flagged=$FLAGGED" >> $GITHUB_OUTPUT
             echo "unverified=$UNVERIFIED" >> $GITHUB_OUTPUT
-            echo "failed=$FAILED" >> $GITHUB_OUTPUT
             echo "total=$TOTAL" >> $GITHUB_OUTPUT
-            if [ "$FAILED" -gt 0 ]; then
-              echo "::error::$FAILED citations failed verification"
+            if [ "$UNVERIFIED" -gt 0 ]; then
+              echo "::warning::$UNVERIFIED citation(s) not yet verified ([ ]) in citation-matrix.md"
+            fi
+            if [ "$FLAGGED" -gt 0 ]; then
+              echo "::warning::$FLAGGED citation(s) flagged ([~]) for team decision in citation-matrix.md"
             fi
           else
             echo "Citation matrix not found." >> $GITHUB_STEP_SUMMARY
+            echo "verified=0" >> $GITHUB_OUTPUT
+            echo "flagged=0" >> $GITHUB_OUTPUT
             echo "unverified=0" >> $GITHUB_OUTPUT
-            echo "failed=0" >> $GITHUB_OUTPUT
             echo "total=0" >> $GITHUB_OUTPUT
           fi
 
@@ -88,8 +98,8 @@ jobs:
               echo "::error::LaTeX compilation failed"
               echo "Compilation: FAILED" >> $GITHUB_STEP_SUMMARY
             fi
-            WARNINGS=$(grep -c "^LaTeX Warning" compile.log 2>/dev/null || echo "0")
-            UNDEF_REFS=$(grep -c "undefined references" compile.log 2>/dev/null || echo "0")
+            WARNINGS=$(grep -c "^LaTeX Warning" compile.log 2>/dev/null || true)
+            UNDEF_REFS=$(grep -c "undefined references" compile.log 2>/dev/null || true)
             echo "Warnings: $WARNINGS" >> $GITHUB_STEP_SUMMARY
             echo "Undefined refs: $UNDEF_REFS" >> $GITHUB_STEP_SUMMARY
             echo "errors=$ERRORS" >> $GITHUB_OUTPUT
@@ -109,27 +119,29 @@ jobs:
             const placeholders = '${{ steps.placeholders.outputs.found }}' === 'true';
             const placeholderDetails = `${{ steps.placeholders.outputs.details }}` || 'None';
             const citTotal = '${{ steps.citations.outputs.total }}';
+            const citVerified = '${{ steps.citations.outputs.verified }}';
+            const citFlagged = '${{ steps.citations.outputs.flagged }}';
             const citUnverified = '${{ steps.citations.outputs.unverified }}';
-            const citFailed = '${{ steps.citations.outputs.failed }}';
             const compErrors = '${{ steps.compile.outputs.errors }}';
             const compWarnings = '${{ steps.compile.outputs.warnings }}';
             const compUndef = '${{ steps.compile.outputs.undef_refs }}';
 
-            const hasIssues = placeholders || citFailed > 0 || compErrors > 0;
+            const hasIssues = placeholders || Number(citUnverified) > 0 || Number(compErrors) > 0;
             const verdict = hasIssues ? 'CHANGES REQUESTED' : 'APPROVED';
             const verdictEmoji = hasIssues ? '&#10060;' : '&#9989;';
 
             let issues = [];
             if (placeholders) issues.push('Placeholder text found in document files');
-            if (citFailed > 0) issues.push(`${citFailed} citation(s) failed verification`);
-            if (compErrors > 0) issues.push('LaTeX compilation failed');
+            if (Number(citUnverified) > 0) issues.push(`${citUnverified} citation(s) not yet verified ([ ])`);
+            if (Number(compErrors) > 0) issues.push('LaTeX compilation failed');
 
             const body = `## Paper Review Report
 
             ### Citation Matrix
             - Total entries: ${citTotal}
+            - Verified: ${citVerified}
+            - Flagged (team decision, non-blocking): ${citFlagged}
             - Unverified: ${citUnverified}
-            - Failed: ${citFailed}
 
             ### Compile Status
             - Errors: ${compErrors}

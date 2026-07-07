@@ -2,66 +2,62 @@
 
 > Current focus. Changes frequently. Read this every session (with `progress.md`).
 
-## As of 2026-06-25
+## As of 2026-06-30
 
 ### Current Phase
-**Drafting / Revision.** A complete first draft of the proposal exists at
-`proposal/main.tex` covering all 7 eRUPT sections. Memory bank was just
-re-established to reflect actual state (it had been stale at "initialization").
+**Post-review revision — repositioning landed.** The proposal was repositioned
+based on a prior-art review and **two PRs are now merged to `main`**
+(chbrown13/ebay_erupt_2027): PR #1 (reposition) and PR #2 (DOE-ref removal +
+§4A citation verification). Remaining work is mostly external (Ramesh's answers,
+Chris's trim) plus the eventual `.docx` conversion.
 
 ### What's true right now
-- Proposal title: **"Agentic Knowledge Graphs for Deterministic Code Generation."**
-- All 7 CFP sections drafted: Objectives, Previous Work, Methodologies, Impact,
-  Output/Milestones, Qualifications, References.
-- 12-month milestone plan present (PoC M1–7, Validation M8–10, Eval M11–12).
-- Running example throughout: ViewItem signals / signal handler.
+- **Title:** "Agentic Knowledge Graphs over Code History for Enterprise Software
+  Automation" (determinism demoted out of the headline).
+- **Framing** (validated by `llm/construction/requirements/prior-art-analysis.md`):
+  lead with the *industry-validated problem*; novelty = a provenance KG mined from
+  the org's *own* version-control history as the **unified substrate** for
+  generation + convention-validation; determinism is a *supporting* property;
+  validation gate framed as *support, not replacement*.
+- **14 references**, all **§4A-verified** (see Recent decisions). Store =
+  `references.json`; mirror = `citation-matrix.md`. 13 `verified:true`,
+  [8] ICR `verified:false` (flagged, small venue, kept per user's call).
+- Proposal compiles clean; markers [1]–[14] sequential and correct.
+- Running example: ViewItem signals / signal handler (still eBay-unverified).
 
-### Recent decisions
-- **Decision:** Re-establish (repopulate) the memory bank instead of creating new
-  files. **Rationale:** all 6 core files existed but were stale stubs carrying an
-  obsolete scientific-software/HPC framing from before the eBay pivot.
-  **Date:** 2026-06-25.
-- **Decision:** Installed the constellize plugin suite (memory/design/grow/craft/
-  deliver/harness) at user request. **Date:** 2026-06-25.
+### Recent decisions (this session, 2026-06-25 → 06-30)
+- **Repositioned the proposal** problem-led after the novelty gate returned
+  **partial-overlap**. Rationale: the *mechanism* (KG + agents + codegen) is
+  established 2024–25 prior art (GRACG is an architectural twin), but the
+  *problem* (enterprise recurring-task velocity / org memory / AI-PR review
+  governance) is validated by industry yet unoccupied at our specific synthesis.
+  Determinism demoted because it is the most crowded, riskiest claim.
+- **Removed DOE/PA-AKG as a reference** (was [2]) per Chris's PR #1 review — it's
+  a separate proposal under submission at another venue. Work kept as *uncited*
+  background in Previous Work + Quals. Renumbered 15 → 14 refs.
+- **Kept all references for now** (user + Chris) — Chris will verify/trim later;
+  [8] ICR is the obvious cut candidate.
+- **Connected Consensus** as the literature-review tool (MCP, user scope, OAuth)
+  and ran the **§4A verification pass** via the review-agent: all 14 exist with
+  accurate metadata and correct citation usage — **no hallucinations, no
+  misattributions** (13 clean, [8] flagged on venue only).
+- **Chris will email Ramesh** for the open items (so no Gmail draft needed; a draft
+  is saved in the session scratchpad as `ramesh-email.md` if useful).
 
-### Immediate next steps (the user's stated agenda)
-1. ✅ Install latest constellize plugins.
-2. ✅ Refresh the stale memory bank (this pass).
-3. ✅ Filled proposal Engagement fields — **Grant Amount = $120,000** (one-year);
-   **VP/Head** left as a visible `[To be confirmed with Ramesh]` placeholder.
-4. ✅ Wrote the **references spec** + canonical store (constellize design flow):
-   `llm/construction/requirements/references-spec.md` (incl. §4A skill-driven
-   verification protocol) and `references.json` (source of truth; `citation-
-   matrix.md` is the mirror). Captured the 2 existing refs (unverified) + 7
-   planned roles.
-5. **NEXT (ultracode workflow, gated on approval):**
-   1. **Novelty gate FIRST** (spec §4C) — prior-art search via Consensus →
-      `prior-art-analysis.md` with closest work + gap statement + verdict. If
-      "already solved / major overlap," STOP and escalate.
-   2. **Source** the planned references via **Consensus** (connected), scoring
-      each by **impact** (spec §1A) to decide Should-tier inclusion within the
-      ~5–8 budget; log exclusions.
-   3. **Verify** via `review-agent verify-citations` (Exists / no-hallucination /
-      correct-citation) — nothing ships until all three pass.
-   4. Sync `references.json` → `proposal/main.tex` (split FOSE/DOE) + matrix.
-   - **Verifier = our review-agent** (we own the agents; no constellize skill).
-   - **Consensus connected** (`mcp__consensus__search`, user scope). Backup = HF
-     `paper_search` + WebSearch only if rate-limited.
-
-### Decisions (2026-06-25)
-- Dropped Nice cites FR-008 (RAG) and FR-009 (AI-PR review) — keep list lean.
-- Compass cited honestly as eBay-internal / personal communication (no fake paper).
-- Keep manual `[n]` references (no BibTeX) for ~6 entries.
-- Added impact-ranking (§1A) + prior-art/novelty gate (§4C) to the spec.
+### Immediate next steps
+1. **Ramesh's answers** (Chris is handling the email): eBay VP/Head name, $120K
+   sanity-check, and whether "signal / signal handler / ViewItem" are the real
+   internal terms. He's out after **July 8** — tight window.
+2. **Reference trim** — Chris's pass; drop [8] ICR unless a second
+   convention-validation cite is wanted (Tufano [7] + Heander [9] already cover it).
+3. **`.docx` conversion** — final artifact must use `files/eRUPT 2026_27
+   Template...docx`; the LaTeX is the working draft. Main remaining build step.
+4. Final proofread → submit to `erupt@ebay.com`.
 
 ### Open questions / blockers
-- **Grant amount** set to $120,000 (top of eRUPT range) — confirm with Ramesh it's
-  the right ask before submission.
-- **eBay VP/Head name?** Still needs Ramesh; placeholder in the draft.
-- **Terminology accuracy:** are "signal / signal handler / ViewItem" the exact
-  internal terms? Confirm with Ramesh.
-- **Internal review dates** in CLAUDE.md (Jason June 22, Ramesh July 8) are at/past
-  today — confirm where those stand. Ramesh is off starting July 8.
+- **eBay VP/Head name** — placeholder in the draft; needs Ramesh.
+- **Terminology accuracy** — signal/ViewItem terms unverified; needs Ramesh.
+- None blocking locally; the proposal is in a clean, compiling, verified state.
 
 ### Hard deadline
 **September 21, 2026** — submit to `erupt@ebay.com` via Ramesh.

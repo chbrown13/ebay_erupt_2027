@@ -5,11 +5,16 @@
 ## Overview
 
 Write and submit a research-collaboration **grant proposal** to eBay's eRUPT
-program for a project titled **"Agentic Knowledge Graphs for Deterministic Code
-Generation."** The proposed research builds an agentic knowledge graph (KG) over
-eBay's historical code — git history, PRs, code reviews, dependency structure —
-so that an AI agent can generate code for recurring patterns *deterministically*:
-same task + same KG state → same output.
+program for a project titled **"Agentic Knowledge Graphs over Code History for
+Enterprise Software Automation."** The proposed research mines a provenance-aware
+knowledge graph (KG) from eBay's *own version-control history* — git commits, PRs,
+code reviews (plus AST structure) — and uses that single substrate both to
+*generate* recurring code changes consistent with past practice and to *validate*
+the resulting PRs against the team's historical conventions. Generation is
+auditable and reproducible from a fixed KG state — but **determinism is a
+supporting property, not the headline** (the headline is the history-mined
+substrate; see `productContext.md` for the framing and `prior-art-analysis.md`
+for why).
 
 This repo produces the **proposal artifact**, not the system itself. The system
 is what the grant would fund.
@@ -21,8 +26,10 @@ is what the grant would fund.
   deterministically automatable.
 - Map cleanly onto eBay eRUPT's required 7-section structure (see
   `llm/construction/requirements/cfp-analysis.md`).
-- Demonstrate fit with eBay's real infrastructure (Compass KG) and our prior work
-  (DOE Genesis PA-AKG, FOSE 2026).
+- Demonstrate fit with eBay's real infrastructure (Compass KG) and the team's
+  prior work: FOSE 2026 (cited [1]) and provenance-aware agentic-KG work (used as
+  **uncited background** — the DOE Genesis proposal is under submission at another
+  venue and must **not** be cited, per PR #1 review).
 
 ## Engagement Structure
 
@@ -48,10 +55,12 @@ is what the grant would fund.
 
 1. Can historical code patterns be mined from a production codebase and
    represented as a queryable knowledge graph?
-2. Can an agentic workflow use that KG as structured context to generate code
-   *deterministically* (vs. relying on LLM priors alone)?
-3. Can an automated validation pipeline check agent-generated PRs against
-   KG-encoded conventions, reducing the human code-review bottleneck?
+2. Can an agentic workflow use that history-mined KG as the **unified substrate**
+   for both generation (conditioned on provenance-tagged patterns, not LLM priors)
+   and convention-validation of the resulting PR?
+3. Can the convention-validation gate check agent-generated PRs against
+   KG-encoded *historical team conventions* — supporting, not replacing, reviewers
+   — to ease the human code-review bottleneck?
 
 ## Scope
 
@@ -69,11 +78,12 @@ is what the grant would fund.
 
 ## Success Criteria
 
-- [ ] Proposal answers all 7 eRUPT sections in order
-- [ ] Engagement table complete (VP name, grant amount filled in)
-- [ ] Claims supported by references; reference list fleshed out (currently thin)
-- [ ] Compiles cleanly from `proposal/main.tex`
-- [ ] Reviewed by Jason (target was June 22) and Ramesh (target ~July 8)
+- [x] Proposal answers all 7 eRUPT sections in order
+- [~] Engagement table — $120K set; **VP/Head name still a placeholder** (Ramesh)
+- [x] Claims supported by **§4A-verified** references (14: 13 verified, 1 flagged)
+- [x] Compiles cleanly from `proposal/main.tex`
+- [x] Reviewed via PR #1 + #2 (Chris); **Ramesh review pending** (Chris emailing)
+- [ ] Converted to the eBay **.docx** template
 - [ ] Submitted before September 21, 2026
 
 See `productContext.md` for *why*, `systemPatterns.md` for *how the proposed
