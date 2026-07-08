@@ -64,14 +64,13 @@ Remaining work is external (Ramesh's answers, Chris's ref trim) plus the eventua
   Pages myself); Chris then merged PR #8 and enabled Pages.
 
 ### Immediate next steps
-1. **`.docx` conversion** — final submission artifact must use `files/eRUPT
-   2026_27 Template...docx`; LaTeX is the working draft. **Next real build step.**
-   Tools: `pandoc` available (no LibreOffice); use `--reference-doc` against the
-   eBay template. Custom LaTeX macros (\ehr, custom \maketitle, tabularx) need
-   hand-cleanup post-convert.
+1. **`.docx` DONE** → `proposal/eRUPT-proposal-v2.docx` (+ regenerable
+   `proposal/eRUPT-proposal-v2.md` source), built via `pandoc --reference-doc`
+   against the eBay template. **Needs a human Word proofread** (formatting the
+   tooling can't verify).
 2. **Reference trim** (Chris) — 22 is heavy for 2–3 pages; [8] ICR obvious cut.
-3. Decide whether v2 supersedes v1 as the submission (assume yes) — then final
-   proofread → submit to `erupt@ebay.com`.
+3. **$120K** sanity-check (Chris/Ramesh).
+4. Confirm v2 supersedes v1 → final proofread → submit to `erupt@ebay.com`.
 
 ### Resolved 2026-07-07 (from Chris's Overleaf edits, reconciled into v2)
 - **eBay VP/Head = Rami El-Charif** — placeholder filled. Carried into v2

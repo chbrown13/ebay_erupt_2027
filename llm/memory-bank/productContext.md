@@ -1,80 +1,80 @@
 # Product Context
 
 > The *why*. Changes occasionally. Read after `projectbrief.md`.
+> **v2 (2026-07-07):** scaled from a single ViewItem page to the whole
+> multi-repository codebase; novelty relocated to the empirical comparison.
 
 ## Problem Statement
 
-At eBay, recurring code tasks repeat hundreds of times a year and each one is
-slow. Adding a new **signal** to a **ViewItem page** (eBay's product-detail page),
-or wiring up an A/B-test variant, reportedly takes a developer **2–4 weeks every
-time** — because the relevant files, APIs, and undocumented team conventions have
-to be rediscovered from scratch on each iteration. This silently drains
-engineering velocity at scale.
+At eBay, shipping a feature rarely touches a single codebase. A *codebase* is one
+repository; a feature is what spans several of them — **typically 5+, per Ramesh**.
+On a large, long-lived, multi-repository codebase, the dominant cost is
+*understanding*: a developer (or a coding agent) must learn each repository's APIs,
+conventions, dependencies, and history before making a change. Three pains follow:
 
-The deeper problem: a codebase that has existed for years holds enormous
-historical knowledge (which files change together, which APIs are called, what
-review feedback recurs), but that knowledge isn't captured in a form an AI agent
-can use. Today's agents generate code from LLM priors, not from the
-organization's own history — so output is non-deterministic and untrustworthy for
-production.
+1. **Onboarding** — bringing a developer or agent up to speed on an unfamiliar
+   repository is repeated from scratch every time.
+2. **Cross-repo feature velocity** — a single feature can take a year or more
+   (incl. A/B testing) and spans many services owned by many teams.
+3. **Review bottleneck** — every change, and increasingly every AI-generated
+   change, must still be read and approved by a human.
+
+The deeper problem: a multi-repo codebase holds enormous *historical* knowledge
+(which files/services change together, which APIs are called, what review feedback
+recurs) scattered across commits, PRs, JIRA work items, code patterns, and external
+resources — inaccessible to an agent, which instead generates from internet-scale
+priors that violate team conventions.
 
 ## Proposed Approach
 
-Build a **provenance-aware agentic knowledge graph** over eBay's code history.
-Agents *retrieve* relevant prior patterns from the KG and *write* validated
-outcomes back to it. Because generation is conditioned on a concrete KG state
-rather than model priors, the same request against the same KG yields the same
-code — deterministic and auditable, with every recommendation traceable to a
-historical pattern.
+Mine a **provenance-aware agentic knowledge graph** from eBay's *own*
+multi-repository version-control history, and — the contribution — **compare,
+empirically, how an agent should retrieve from it**. Build the substrate once as a
+*family of graphs* (Repo / JIRA / Memory-Bank); then run a head-to-head of three
+retrieval strategies (graph query vs. similarity/RAG vs. spreading activation) to
+find which makes an agent most efficient at multi-repo understanding. On the best
+strategy, the agent *synthesizes* cross-repo features and a gate *validates* the
+resulting PRs against KG-encoded conventions.
 
-## Key Concepts (proposal terminology)
+## Key Concepts (v2 terminology)
 
-- **ViewItem page** — eBay's high-traffic single-listing product page. Constantly
-  modified, heavily instrumented → a good source of recurring patterns.
-- **Signal** — a tracked behavioral/instrumentation event emitted from the page
-  (view events, experiment exposures, feature-flag fires) that feeds
-  recommendations, ranking, experimentation, analytics.
-- **Signal handler** — the code component that receives, transforms, and routes a
-  signal to downstream services (api gateway, metrics client, experimentation
-  platform). In the KG it appears as a recurring sub-graph:
-  `ApiGateway`/`SignalHandler`/`MetricsClient` nodes with typed edges
-  (`imports`, `implements`, `dependsOn`).
+- **Codebase = one repository;** a **feature** spans several (5+).
+- **Family of graphs** — Repo Graph (services/repos), JIRA Graph (work items →
+  commits/PRs → external resources), Memory-Bank Graph (per-repo living docs).
+- **Retrieval strategies (the experiment)** — (a) graph query, (b) similarity/RAG,
+  (c) **spreading activation** (activation diffuses across edges; Collins & Loftus
+  1975; Pavlović 2025). Time-weighted (decay) edges + multi-resolution nodes.
+- **ViewItem / signal / signal handler** — *demoted to a one-line micro-example*
+  (still eBay-unverified terminology; v2 barely leans on it).
 
-> Caveat: these are illustrative terms in the proposal, not yet verified against
-> eBay's actual internal architecture. Confirm exact terminology with Ramesh to
-> strengthen credibility.
+## Key Differentiators (v2)
 
-## Key Differentiators
+> **Novelty gate (v2, `v2-prior-art-analysis.md`): partial-overlap.** Every
+> *mechanism* (graph-of-graphs, memory-bank traversal, decay/multi-resolution/
+> spreading-activation) is crowded 2025–26 prior art — do **not** claim them.
 
-> Reframed 2026-06-30 after the prior-art review (`prior-art-analysis.md`). The
-> *mechanism* (KG + agents + codegen) is established 2024–25 work — do **not**
-> claim it. Novelty is the substrate and its dual use.
-
-- **History-mined substrate (THE differentiator):** the KG is built from eBay's
-  *own version-control history* (commits + PRs + reviews), not a static AST
-  snapshot, and is the **single substrate** for *both* generation *and*
-  convention-validation. No prior system does this — closest works use curated
-  knowledge (AKUs), generic LLM training (review tools), static AST (codegen), or
-  requirements (traceability tools).
-- **Provenance & auditability:** every output traces to the specific historical
-  patterns/decisions that produced it.
-- **Practical, eBay-grounded:** extends Compass; the *problem* is validated by
-  real industry deployments (e.g., DeputyDev: 31.8% PR-review-cycle reduction).
-- **Determinism (supporting, not headline):** provenance-reproducibility — same
-  frozen KG state → same retrieval → same output. Demoted because it is the most
-  crowded claim (constraint/compile-based determinism already exists elsewhere).
+- **The empirical comparison IS the contribution** — nobody has run a head-to-head
+  of retrieval strategies for multi-repo coding-agent understanding. Sidesteps
+  every mechanism-novelty fight.
+- **Cross-repo feature *synthesis*** on the org-history substrate — the sharpest
+  stake-able new claim (distinct from CCCE's *maintenance* and Learning to Commit's
+  *single-repo* mining).
+- **History-mined, cross-repository substrate** — self-updating, provenance-tagged;
+  extends eBay's Compass with code-level pattern knowledge tickets don't capture.
+- **Determinism: dropped entirely** in v2 (was already demoted in v1) — it was the
+  most crowded claim; the story is now the substrate + the comparison.
 
 ## Value Propositions (the eRUPT "Impact" pitch)
 
-1. **Velocity** — collapse recurring tasks from weeks to hours.
-2. **Organizational memory** — new hires, offshore teams, internal transfers query
-   conventions and dependency ownership instead of shadowing seniors for weeks.
-3. **Code-review unblocking** — automated conformance checking flags only genuine
-   anomalies in agent-generated PRs, addressing eBay's review bottleneck.
+1. **Onboarding** — query a repo's conventions/owners/rationale ("what changed and
+   why" [Yates]) instead of shadowing seniors.
+2. **Cross-repo feature velocity** — scaffold changes that correctly span the
+   services a feature touches.
+3. **Review unblocking** — convention-grounded conformance checks flag only genuine
+   anomalies (support, not replacement); DeputyDev-style 31.8% review-cycle lever.
 
 ## Target Audience
 
-- **Proposal readers**: eBay eRUPT reviewers (judge on relevance to eBay, advancing
-  state of the art, practical application).
-- **Eventual system users**: eBay software developers, engineering managers, and
-  SE researchers.
+- **Proposal readers**: eBay eRUPT reviewers (relevance to eBay, advancing state of
+  the art, practical application).
+- **Eventual system users**: eBay developers, engineering managers, SE researchers.

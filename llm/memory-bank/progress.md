@@ -47,9 +47,12 @@
 - [ ] Confirm v1 (`main.tex`, still edited via Overleaf) is not the submission path
 
 ## Upcoming (critical path to submission)
-- [ ] Convert v2 draft → eBay **.docx** template (`files/eRUPT 2026_27 Template…docx`)
+- [x] **Convert v2 → eBay `.docx`** → `proposal/eRUPT-proposal-v2.docx` (pandoc
+      `--reference-doc`; markdown source committed). Needs human Word proofread.
+- [ ] Human Word proofread of the `.docx` (formatting)
+- [ ] $120K sanity-check + reference trim (Chris)
 - [ ] Confirm v2 supersedes v1 for submission
-- [ ] Final compile / proofread → submit to erupt@ebay.com before **Sept 21, 2026**
+- [ ] Final proofread → submit to erupt@ebay.com before **Sept 21, 2026**
 
 ## Known issues / risks
 - 22 refs is heavy for a 2–3 page proposal — trim expected (Chris).
