@@ -6,6 +6,33 @@
 
 ## A. Proposed System Architecture (what the grant would build)
 
+### v2 architecture (current — `proposal/v2-main.tex`, 2026-07-07)
+Scaled to the **whole multi-repository codebase** (codebase = one repository; an
+eBay feature spans 5+). Three parts:
+
+1. **A family of history-mined graphs** — not one monolithic KG but **Repo Graph**
+   (services/repos, dependencies, ownership, call edges), **JIRA Graph** (work
+   items → commits/PRs → external resources), and **Memory-Bank Graph** (per-repo
+   living docs an agent traverses). Shared entities across graphs; the agent
+   projects the task-relevant view. History edges are **time-weighted (decay)**;
+   memory-bank nodes are **multi-resolution** (summary → full).
+2. **The core experiment (headline contribution)** — holding the substrate fixed,
+   compare **3 retrieval strategies**: (a) graph query, (b) similarity/RAG,
+   (c) **spreading activation**. Report which makes an agent most efficient at
+   multi-repo understanding. Backend (Neo4j/Gremlin/Auto Graph) = implementation
+   footnote; topology = justified-by-scale, not novelty.
+3. **Cross-repo synthesis + convention validation** — on the best retrieval
+   strategy, synthesize a feature spanning several repos from mined patterns, and
+   validate the resulting PRs against KG-encoded **cross-repo** conventions
+   (support, not replacement). Metric: review-cycle reduction (primary),
+   cross-repo scaffold accuracy (secondary).
+
+Concepts borrowed (adopt-and-cite, not claimed): temporal decay, multi-resolution
+memory, spreading activation — grounded in real literature (Collins & Loftus 1975;
+Zep; H-MEM; Pavlović 2025), *not* Constellation Engine (unpublished). See
+`v2-specification.md` and `v2-prior-art-analysis.md`.
+
+### v1 architecture (superseded by v2 — kept for context)
 Two complementary approaches (deliberately redundant to mitigate risk):
 
 ### Approach 1 — Code KG Construction & Pattern Mining

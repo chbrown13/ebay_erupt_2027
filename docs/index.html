@@ -143,7 +143,7 @@
       <div><dt>Principal Investigator</dt><dd>Dr. Chris Brown · Virginia Tech</dd></div>
       <div><dt>Lead Researcher (GRA)</dt><dd>Jason Cusati · Virginia Tech</dd></div>
       <div><dt>eBay Co-Investigator</dt><dd>Ramesh Periyathambi</dd></div>
-      <div><dt>eBay VP / Head</dt><dd class="tbc">To be confirmed</dd></div>
+      <div><dt>eBay VP / Head</dt><dd>Rami El-Charif</dd></div>
       <div><dt>Grant Requested</dt><dd>$120,000 · one year</dd></div>
       <div><dt>Deadline</dt><dd>September 21, 2026</dd></div>
     </dl>
@@ -163,17 +163,17 @@
       <tr><th>University Principal Investigator &amp; Researchers</th><td>Dr. Chris Brown (PI, Virginia Tech); Jason Cusati (GRA, Virginia Tech)</td></tr>
       <tr><th>University</th><td>Virginia Tech, USA</td></tr>
       <tr><th>eBay Co-Investigator</th><td>Ramesh Periyathambi</td></tr>
-      <tr><th>eBay VP / Head of Department</th><td><em>[To be confirmed with Ramesh Periyathambi]</em></td></tr>
+      <tr><th>eBay VP / Head of Department</th><td>Rami El-Charif</td></tr>
       <tr><th>Grant Amount Requested</th><td class="amount">$120,000 (one-year grant)</td></tr>
     </table>
   </section>
 
   <section>
-    <h2>Objectives</h2>
+    <h2>Motivation and Objectives</h2>
     <p>At eBay, shipping a feature rarely touches a single codebase. Taking a <em>codebase</em> to be one repository, a feature is precisely what spans several of them — at eBay, typically five or more: changing how an item is displayed, priced, or measured propagates across separate services, owned by separate teams, and a developer must understand each one's APIs, conventions, and history before writing a line. On a large, long-lived codebase this <em>understanding</em> is the dominant cost: code-change tasks account for roughly 70% of development expenditure <a class="cite" href="#ref-14">[14]</a>, a single feature can take a year or more once A/B testing is included, and the effort of bringing a developer — or a coding agent — up to speed on an unfamiliar repository is repeated from scratch every time <a class="cite" href="#ref-20">[20]</a>. The most acute bottleneck is review: every change, and increasingly every AI-generated change, must still be read and approved by a human.</p>
     <p>This proposal asks one research question: <strong>how can a coding agent be made genuinely efficient at understanding a large, multi-repository codebase</strong> — learning its features, styles, and cross-team collaboration patterns not from a static snapshot of the current code, but from the <em>history</em> that produced it — its commits, GitHub pull requests, and JIRA work items, together with the code patterns and external resources they reference? Enterprise deployments of AI developer tools already report substantial reductions in review-cycle time and onboarding load once that historical context is made available <a class="cite" href="#ref-12">[12]</a><a class="cite" href="#ref-13">[13]</a>, which tells us the leverage is real; what is not yet known is <em>how</em> an agent should represent and retrieve that history to capture it.</p>
     <p>Our answer has two parts. The first is a <em>substrate</em>: an <strong>agentic knowledge graph</strong> (KG) mined from eBay's own version-control history, spanning multiple repositories, rather than from current code alone. The second is the contribution we propose to eBay, and it is deliberately empirical: <strong>a systematic comparison of how an agent should retrieve from that history</strong>. We build the substrate once and evaluate three retrieval strategies over it, reporting which makes an agent most efficient at multi-repository understanding — a result eBay can learn from and extend regardless of which internal system eventually adopts it. A single, provenance-tagged history serves the work twice over: it is the substrate an agent uses to <em>synthesize</em> a change spanning several repositories, and the reference an automated gate uses to <em>validate</em> the resulting pull requests against the team's own conventions.</p>
-    <p>Why academic research? Representing a multi-repository code history as a family of queryable graphs, and determining empirically which retrieval strategy best supports a coding agent, are open problems spanning software engineering, AI, and knowledge representation. They require systematic investigation, not engineering alone, and exceed what an in-house team has the bandwidth to explore.</p>
+    <p>Why academic research? Representing a multi-repository code history as a family of queryable graphs, and determining empirically which retrieval strategy best supports a coding agent, are open problems spanning software engineering, AI, and knowledge representation. They require systematic investigation, not engineering alone, and exceed what an in-house team has the bandwidth to explore. A controlled, multi-metric study — measuring retrieval accuracy, review-cycle reduction, and cross-repository scaffold quality across the three strategies — is exactly what academic research is designed to provide.</p>
   </section>
 
   <section>
@@ -213,7 +213,7 @@
 
   <section>
     <h2>University / Lab / Researcher Qualification</h2>
-    <p><strong>Dr. Chris Brown (PI, Virginia Tech).</strong> Dr. Brown leads the Software Engineering and Digital Society lab, researching human-centered AI for software engineering and the use of historical development data to support developers. He has published at ICSE, FSE, ESEM, and CSCW, and leads related work on provenance-aware agentic knowledge graphs whose architecture directly informs this proposal.</p>
+    <p><strong>Dr. Chris Brown (PI, Virginia Tech).</strong> Dr. Brown leads a software engineering research lab at Virginia Tech, researching methods to improve the behavior, productivity, and decision making of developers. His recent work investigates the application of generative AI in development contexts, and he has published work at ICSE, FSE, ESEM, and CHASE, among other research venues.</p>
     <p><strong>Jason Cusati (GRA, Virginia Tech).</strong> Mr. Cusati is a PhD candidate whose research focuses on provenance-aware knowledge graphs over code history and AI-assisted software engineering. He co-authored the ICSE-FOSE 2026 paper on structured knowledge accumulation <a class="cite" href="#ref-1">[1]</a> and leads the team's work on provenance-aware agentic knowledge graphs, the architectural basis for the history-grounded substrate proposed here.</p>
   </section>
 
@@ -251,7 +251,7 @@
 
 <footer>
   <div class="note">
-    <strong>Working draft — v2.</strong> Scaled from a single ViewItem page to the whole multi-repository codebase. Rendered from <code>proposal/v2-main.tex</code>; all 22 references §4A-verified (exists · no-hallucination · correct-citation) against Consensus. The eBay VP/Head name is pending confirmation with Ramesh Periyathambi. Prepared for eBay eRUPT · target <strong>erupt@ebay.com</strong> · deadline September 21, 2026.
+    <strong>Working draft — v2.</strong> Scaled from a single ViewItem page to the whole multi-repository codebase. Rendered from <code>proposal/v2-main.tex</code>; all 22 references §4A-verified (exists · no-hallucination · correct-citation) against Consensus. Prepared for eBay eRUPT · target <strong>erupt@ebay.com</strong> · deadline September 21, 2026.
   </div>
 </footer>
 
