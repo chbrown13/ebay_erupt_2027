@@ -80,7 +80,7 @@
   \midrule
   \textbf{eBay Co-Investigator(s)} & Ramesh Periyathambi \\
   \midrule
-  \textbf{eBay VP/Head of Department} & \emph{[To be confirmed with Ramesh Periyathambi]} \\
+  \textbf{eBay VP/Head of Department} & Rami El-Charif \\
   \midrule
   \textbf{Grant Amount Requested} & \$120,000 (one-year grant) \\
   \bottomrule
@@ -89,7 +89,7 @@
 \ehr
 
 % ------------------------------------------------------------
-\section*{Objectives}
+\section*{Motivation and Objectives}
 \label{sec:objectives}
 % ------------------------------------------------------------
 
@@ -99,7 +99,7 @@ This proposal asks one research question: \textbf{how can a coding agent be made
 
 Our answer has two parts. The first is a \emph{substrate}: an \textbf{agentic knowledge graph} (KG) mined from eBay's own version-control history, spanning multiple repositories, rather than from current code alone. The second is the contribution we propose to eBay, and it is deliberately empirical: \textbf{a systematic comparison of how an agent should retrieve from that history}. We build the substrate once and evaluate three retrieval strategies over it, reporting which makes an agent most efficient at multi-repository understanding---a result eBay can learn from and extend regardless of which internal system eventually adopts it. A single, provenance-tagged history serves the work twice over: it is the substrate an agent uses to \emph{synthesize} a change spanning several repositories, and the reference an automated gate uses to \emph{validate} the resulting pull requests against the team's own conventions.
 
-Why academic research? Representing a multi-repository code history as a family of queryable graphs, and determining empirically which retrieval strategy best supports a coding agent, are open problems spanning software engineering, AI, and knowledge representation. They require systematic investigation, not engineering alone, and exceed what an in-house team has the bandwidth to explore.
+Why academic research? Representing a multi-repository code history as a family of queryable graphs, and determining empirically which retrieval strategy best supports a coding agent, are open problems spanning software engineering, AI, and knowledge representation. They require systematic investigation, not engineering alone, and exceed what an in-house team has the bandwidth to explore. A controlled, multi-metric study---measuring retrieval accuracy, review-cycle reduction, and cross-repository scaffold quality across the three strategies---is exactly what academic research is designed to provide.
 
 \ehr
 
@@ -170,7 +170,7 @@ If successful, this project turns eBay's multi-repository code history into pers
 \label{sec:qualification}
 % ------------------------------------------------------------
 
-\textbf{Dr.~Chris Brown (PI, Virginia Tech).} Dr.~Brown leads the Software Engineering and Digital Society lab, researching human-centered AI for software engineering and the use of historical development data to support developers. He has published at ICSE, FSE, ESEM, and CSCW, and leads related work on provenance-aware agentic knowledge graphs whose architecture directly informs this proposal.
+\textbf{Dr.~Chris Brown (PI, Virginia Tech).} Dr.~Brown leads a software engineering research lab at Virginia Tech, researching methods to improve the behavior, productivity, and decision making of developers. His recent work investigates the application of generative AI in development contexts, and he has published work at ICSE, FSE, ESEM, and CHASE, among other research venues.
 
 \textbf{Jason Cusati (GRA, Virginia Tech).} Mr.~Cusati is a PhD candidate whose research focuses on provenance-aware knowledge graphs over code history and AI-assisted software engineering. He co-authored the ICSE-FOSE 2026 paper on structured knowledge accumulation [1] and leads the team's work on provenance-aware agentic knowledge graphs, the architectural basis for the history-grounded substrate proposed here.
 

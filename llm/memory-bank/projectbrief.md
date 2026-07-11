@@ -21,9 +21,11 @@ is what the grant would fund.
 
 ## Objectives (of the proposal)
 
-- Make the case that mining historical code patterns into a queryable KG can make
-  recurring eBay code tasks (e.g., adding a signal to a ViewItem page)
-  deterministically automatable.
+- **(v2)** Make the case that a coding agent grounded in a KG mined from the org's
+  **multi-repository** version-control history can be made efficient at
+  understanding a large codebase — and **determine empirically which retrieval
+  strategy does it best** (graph query vs. similarity/RAG vs. spreading
+  activation). *codebase = one repository; an eBay feature spans 5+.*
 - Map cleanly onto eBay eRUPT's required 7-section structure (see
   `llm/construction/requirements/cfp-analysis.md`).
 - Demonstrate fit with eBay's real infrastructure (Compass KG) and the team's
@@ -38,7 +40,7 @@ is what the grant would fund.
 | PI | Dr. Chris Brown (Virginia Tech) |
 | GRA / lead researcher | Jason Cusati (VT PhD candidate) |
 | eBay Co-Investigator | Ramesh Periyathambi |
-| eBay VP/Head | TBD — needs Ramesh's input (placeholder in draft) |
+| eBay VP/Head | **Rami El-Charif** (filled by Chris, 2026-07-07) |
 | Grant amount | **$120,000** (one-year grant); top of eRUPT range |
 
 ## Target Venue
@@ -53,22 +55,24 @@ is what the grant would fund.
 
 ## Research Questions (proposed)
 
-1. Can historical code patterns be mined from a production codebase and
-   represented as a queryable knowledge graph?
-2. Can an agentic workflow use that history-mined KG as the **unified substrate**
-   for both generation (conditioned on provenance-tagged patterns, not LLM priors)
-   and convention-validation of the resulting PR?
-3. Can the convention-validation gate check agent-generated PRs against
-   KG-encoded *historical team conventions* — supporting, not replacing, reviewers
-   — to ease the human code-review bottleneck?
+1. Can a **multi-repository** code history (commits, GitHub PRs, JIRA work items,
+   code patterns, external resources) be mined into a **family of graphs** (Repo /
+   JIRA / Memory-Bank) a coding agent can traverse?
+2. **Which retrieval strategy over that history — graph query vs. similarity/RAG
+   vs. spreading activation — makes the agent most efficient at multi-repo
+   understanding?** (The empirical comparison is the headline contribution.)
+3. Can the agent **synthesize a feature spanning several repositories** from mined
+   historical patterns, and can a validation gate check the resulting PRs against
+   KG-encoded *cross-repo* conventions — supporting, not replacing, reviewers?
 
 ## Scope
 
-### In Scope
-- eBay enterprise Java codebase as the target domain
-- Code-pattern mining (AST + git/PR history) into a KG
-- Agentic orchestration (ranking / generation / validation agents)
-- ViewItem signals as the scoped case-study pattern
+### In Scope (v2)
+- eBay enterprise Java codebase, **multi-repository** (case-study bound ~10 repos)
+- History mining (commits, PRs, JIRA work items, code patterns, external refs)
+  into a **family of graphs** (Repo / JIRA / Memory-Bank), time-weighted + multi-res
+- **Empirical comparison** of 3 retrieval strategies (the contribution)
+- Cross-repo feature synthesis + cross-repo convention-validation gate
 
 ### Out of Scope
 - Scientific-software / HPC domains (that's the DOE Genesis sibling project)
@@ -78,12 +82,14 @@ is what the grant would fund.
 
 ## Success Criteria
 
-- [x] Proposal answers all 7 eRUPT sections in order
-- [~] Engagement table — $120K set; **VP/Head name still a placeholder** (Ramesh)
-- [x] Claims supported by **§4A-verified** references (14: 13 verified, 1 flagged)
-- [x] Compiles cleanly from `proposal/main.tex`
-- [x] Reviewed via PR #1 + #2 (Chris); **Ramesh review pending** (Chris emailing)
-- [ ] Converted to the eBay **.docx** template
+- [x] Proposal answers all 7 eRUPT sections in order (v1 + v2)
+- [x] **v2 drafted** (`proposal/v2-main.tex`), scaled to multi-repo; compiles clean
+- [x] Claims supported by **§4A-verified** references (22: 21 verified, 1 flagged)
+- [x] **v2 novelty gate** run → `partial-overlap`; framing repositioned accordingly
+- [x] **PR #8 merged** (Chris); CI green + APPROVED
+- [x] **Website live** → https://chbrown13.github.io/ebay_erupt_2027/
+- [x] Engagement table — $120K set; **VP/Head = Rami El-Charif** (Chris, 2026-07-07)
+- [ ] Converted to the eBay **.docx** template (next real build step)
 - [ ] Submitted before September 21, 2026
 
 See `productContext.md` for *why*, `systemPatterns.md` for *how the proposed
