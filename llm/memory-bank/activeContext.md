@@ -2,6 +2,35 @@
 
 > Current focus. Changes frequently. Read this every session (with `progress.md`).
 
+## As of 2026-07-15 — human review round incorporated
+
+Ramesh/Chris reviewed v2 and returned ~18 feedback items; all addressed this
+session (constellize design → implement → verify). Traceability:
+`llm/construction/requirements/v2-review-response.md`. Highlights:
+- **Motivation:** one long RQ split into **RQ1/RQ2/RQ3**; added a "not an
+  architectural gap / not a bandaid" framing; "before writing a line **of code**."
+- **Previous Work:** cleaned the CCCE + "Our foundations" run-ons; the **gap**
+  now names what's applied in **industry** (KG discovery [18], calibration [15],
+  measurement [12,13]) and the 3 limitations we overcome.
+- **Methodology:** added a **TikZ figure** (`\ref{fig:method}`) foregrounding the
+  core experiment; new **"How we evaluate"** paragraph (task families,
+  held-constant single-variable design, 2 baselines) reporting **time / speed /
+  accuracy** deltas.
+- **Milestones:** timeline rebalanced so the **core experiment gets the most time**
+  (M1–4 / **M5–9** / M10–12) + effort lens **~20% education / ~45% dev / ~35%
+  validation**; statistics named (Friedman + post-hoc Wilcoxon corrected, Cliff's
+  δ, bootstrap 95% CIs, Krippendorff's α).
+- **Impact:** minimal concrete **ViewItem** example restored.
+- **Qualifications:** Dr. Brown's lab = **"Code World No Blanket"**; Jason =
+  **"PhD student"** (not candidate).
+- **Consistency:** fixed stale "Issue Graph" → **JIRA Graph**; standardized JIRA
+  casing doc-wide.
+- **Artifacts re-synced:** `.tex` (7 pp, clean), regenerated `.docx` (figure
+  embedded) + markdown source, website `docs/` (figure PNG + PDF). 22 refs
+  unchanged. Verified by an independent review pass (all items PASS).
+- **Still human-side:** confirm actual **time/effort costs** + $120K (item was a
+  question to the team, not a tooling task); Word proofread; ref trim.
+
 ## As of 2026-07-07
 
 ### Current Phase

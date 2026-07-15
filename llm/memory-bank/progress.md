@@ -38,6 +38,15 @@
 - [x] **PR #8 merged** to `main`; CI green + **APPROVED**
 - [x] **GitHub Pages LIVE** → https://chbrown13.github.io/ebay_erupt_2027/
 
+## v2 review round (completed 2026-07-15)
+- [x] Human review (~18 items) addressed → `v2-review-response.md` (design/traceability)
+- [x] RQ split (RQ1/RQ2/RQ3); not-a-bandaid framing; gap expanded w/ industry + limitations
+- [x] **Methodology figure** (TikZ `\ref{fig:method}`) + "How we evaluate" (time/speed/accuracy)
+- [x] Timeline rebalanced (M1–4 / M5–9 core / M10–12) + edu/dev/validation effort lens
+- [x] Statistics named (Friedman/Wilcoxon/Cliff's δ/bootstrap CIs/Krippendorff's α)
+- [x] Lab = "Code World No Blanket"; Jason = "PhD student"; "Issue"→"JIRA Graph"; JIRA casing
+- [x] Re-synced all 3 artifacts (`.tex` 7 pp, `.docx`+md, website); verified independently
+
 ## In Progress / External
 - [x] **VP/Head resolved → Rami El-Charif** (Chris's Overleaf edit, reconciled into v2)
 - [x] Reconciled Chris's Overleaf edits into v2 (VP name, PI bio, heading, empirical
