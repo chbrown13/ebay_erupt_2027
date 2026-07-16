@@ -135,49 +135,37 @@ The contribution of this project is the \textbf{core experiment}---a head-to-hea
 
 \begin{figure}[t]
 \centering
-\footnotesize
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
-  >={Stealth[length=2mm]},
-  stage/.style={draw=ebay-dark, thick, rounded corners,
-    fill=gray!8, text=ebay-dark, align=left, inner sep=5pt,
-    text width=2.7cm, minimum height=2.7cm},
-  exp/.style={draw=ebay-green, line width=1pt, rounded corners,
-    fill=ebay-green!8, text=ebay-dark, align=left, inner sep=5pt,
-    text width=2.9cm, minimum height=2.7cm},
-  outbox/.style={draw=ebay-dark, thick, rounded corners,
-    fill=gray!8, text=ebay-dark, align=left, inner sep=4pt,
-    text width=3.0cm, minimum height=0.95cm},
-  lbl/.style={font=\scriptsize\bfseries, text=ebay-green},
+  >={Stealth[length=2.2mm]},
+  box/.style={draw=ebay-dark, thick, rounded corners, fill=gray!6,
+    text=ebay-dark, font=\small\bfseries, minimum height=9mm, inner xsep=9pt},
+  exp/.style={draw=ebay-green, line width=1.1pt, rounded corners, fill=ebay-green!10,
+    text=ebay-dark, font=\small\bfseries, minimum height=9mm, inner xsep=9pt},
+  outb/.style={draw=ebay-dark, thick, rounded corners, fill=gray!6,
+    text=ebay-dark, font=\footnotesize\bfseries, minimum height=7.5mm, inner xsep=7pt},
+  capt/.style={font=\scriptsize, text=gray!60!black, align=center, text width=3.15cm},
+  clbl/.style={font=\scriptsize\bfseries, text=ebay-green, align=center},
   ann/.style={font=\scriptsize\itshape, text=ebay-dark},
   arr/.style={->, thick, draw=ebay-dark}
 ]
-
-\node[stage] (hist) {\textbf{Multi-repo VCS history}\\[2pt]
-  commits $\cdot$ PRs $\cdot$ JIRA items $\cdot$ code patterns
-  $\cdot$ external resources};
-
-\node[stage, right=6mm of hist] (graphs) {\textbf{Family of graphs}\\[2pt]
-  Repo Graph $\cdot$ JIRA Graph $\cdot$ Memory-Bank Graph\\[3pt]
-  {\scriptsize time-weighted edges, multi-resolution nodes}};
-
-\node[exp, right=6mm of graphs] (exp) {\textbf{THE EXPERIMENT}\\[2pt]
-  3 retrieval strategies compared:\\[3pt]
-  (a) graph query\\ (b) similarity / RAG\\ (c) spreading activation};
-
-\node[lbl, above=1.5mm of exp] {CORE CONTRIBUTION};
-
-\node[outbox, right=8mm of exp, yshift=0.75cm]  (synth) {\textbf{Cross-repo feature SYNTHESIS}};
-\node[outbox, right=8mm of exp, yshift=-0.75cm] (valid) {\textbf{Convention VALIDATION gate}};
-
+\node[box] (hist) {Code history};
+\node[box, right=11mm of hist] (graphs) {Family of graphs};
+\node[exp, right=13mm of graphs] (exp) {Retrieval experiment};
+\node[outb, right=14mm of exp, yshift=8mm]  (synth) {Cross-repo synthesis};
+\node[outb, right=14mm of exp, yshift=-8mm] (valid) {Convention validation};
+\node[capt, below=2mm of hist]   {commits $\cdot$ PRs $\cdot$ JIRA $\cdot$ code patterns $\cdot$ external resources};
+\node[capt, below=2mm of graphs] {Repo $\cdot$ JIRA $\cdot$ Memory-Bank; time-weighted, multi-resolution};
+\node[capt, below=2mm of exp]    {3 strategies: graph query $\cdot$ similarity/RAG $\cdot$ spreading activation};
+\node[clbl, above=2mm of exp] {CORE CONTRIBUTION};
 \draw[arr] (hist)   -- (graphs);
 \draw[arr] (graphs) -- (exp);
-\draw[arr] (exp.east) -- node[ann, above=1pt, pos=0.55]{best} (synth.west);
+\draw[arr] (exp.east) -- node[ann, above, pos=0.62]{best} (synth.west);
 \draw[arr] (exp.east) -- (valid.west);
-
-\node[ann, below=9mm of exp, text width=7.5cm, align=center]
-  {e.g., adding a ViewItem signal spans 5+ services.};
-
-\end{tikzpicture}
+\node[ann, below=15mm of graphs, xshift=2.4cm, text width=10cm, align=center]
+  {e.g., adding a ``selling fast'' signal to the ViewItem page spans 5+ services.};
+\end{tikzpicture}%
+}
 \caption{Methodology pipeline. A provenance-tagged, multi-repository
 version-control history is mined once into a \emph{family of graphs};
 holding that substrate fixed, we run the head-to-head comparison of three
