@@ -46,6 +46,27 @@
 - `docs/index.html` + `docs/proposal-v2.pdf` + `docs/fig-method.png` (website).
 - Citations unchanged: 22 refs, [1]–[22], no gaps.
 
+## Round 2 — full Zoom notes (2026-07-16)
+
+Cross-checked the complete meeting transcript against the draft. Attribution and
+three refinements applied:
+- **Minhyuk** — RQ split, industry KG examples, methodology reorder/transition,
+  add figure, statistics: all already in. ✅
+- **Huayu** (evaluation) — made the **human baseline** explicit: correctness scored
+  against the developers' own withheld PR set; time measured against **today's human
+  review cost**; convention gate = the code-review validation. ✏️ refined.
+- **Metrics order** — reordered "Metrics for success" to lead with the
+  retrieval-strategy comparison (matches where the effort goes), then the applied
+  review-cycle outcome. ✏️ refined.
+- **Ramesh's ViewItem example** — enriched the minimal Impact sentence with the
+  concrete features from the notes: a "selling fast" indicator / price-drop badge
+  requiring 5+ services wired together. ✏️ refined.
+- **Lab name** — notes flagged a wrong name ("Software Engineering and Digital
+  Society Lab") to *confirm*; applied the user's correction **"Code World No
+  Blanket"** — still worth a final human confirm.
+- **Qualifier vs. preliminary status** — notes discussed the distinction; kept the
+  safe generic **"PhD student"** (open to a specific term if desired).
+
 ## Still human-side (not tooling)
 - Confirm actual time/effort **costs** of the activities and the $120K (Chris/Ramesh).
 - Word proofread of the regenerated `.docx`.
