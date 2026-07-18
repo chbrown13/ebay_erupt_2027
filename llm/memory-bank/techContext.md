@@ -27,14 +27,29 @@
   The `--reference-doc` applies the eBay template's Word styles (Heading1, Normal,
   Table). **Markdown intermediate, not LaTeX** — pandoc chokes on the custom
   macros (`\ehr`, custom `\maketitle`). Regenerate from the `.md` after any edit.
-- Tools present: `pandoc`, `pdftotext`, full TeXLive. **No LibreOffice/soffice.**
+- Tools present: `pandoc`, `pdftotext`, `pdftoppm` (poppler), full TeXLive.
+  **No LibreOffice/soffice.**
+- **Methodology figure** (`fig:method`): authored as **TikZ**. The inline version in
+  `v2-main.tex` is wrapped in `\resizebox{\textwidth}{!}{...}` so it always fits.
+  Because the `.docx`/website come from **markdown, not LaTeX**, the figure is also
+  compiled standalone (`scratchpad/fig-method.tex`, `standalone` class) → `pdftoppm
+  -r 200` → **`fig-method.png`**, committed to both `proposal/` and `docs/` and
+  referenced as an image from the `.md` and `index.html`. Regenerate the PNG whenever
+  the figure changes. ⚠️ TikZ gotcha: style names `out`, `cap`, `in` collide with
+  reserved keys — use `outb`/`capt` etc.
 
 ### Website
 - `docs/` = GitHub Pages site: `docs/index.html` (standalone HTML render of v2) +
   `docs/proposal-v2.pdf`. Generated from the same content as the reading page.
 - **Live:** https://chbrown13.github.io/ebay_erupt_2027/ (source = `main` `/docs`;
   Chris enabled Pages — needs repo **admin**, which djjay0131 lacks).
-- Also a Claude **Artifact** (HTML + embedded PDF download) for no-admin publishing.
+- Also a Claude **Artifact** (HTML + embedded PDF download) for no-admin publishing —
+  the fastest way to share the *latest* draft without waiting on a PR merge.
+  **Stable URL:** https://claude.ai/code/artifact/68669b70-ef62-425a-8b9b-8e0045335f24
+  Built by a small Python step that reads `docs/index.html`, inlines `fig-method.png`
+  and `v2-main.pdf` as `data:` URIs (CSP blocks external hosts), strips the outer
+  `<html>/<head>/<body>` skeleton, and writes `scratchpad/proposal-v2-artifact.html`.
+  **Republish the same scratchpad file path to keep the URL** (a new path mints a new URL).
 
 ## Research & literature tooling
 
@@ -72,7 +87,7 @@
 | `amazon.pdf` | Related approach background |
 
 ## Conventions
-- Convert relative dates to absolute (today's baseline: **2026-07-07**).
+- Convert relative dates to absolute (today's baseline: **2026-07-18**).
 - Memory-bank = single source of truth; cross-reference, don't duplicate.
 - Don't overwrite reference materials in `files/`.
 - `references.json` canonical; `.tex`/matrix/`.md`/docx are derived — keep in sync.

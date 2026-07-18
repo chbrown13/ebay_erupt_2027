@@ -24,8 +24,13 @@ eBay feature spans 5+). Three parts:
 3. **Cross-repo synthesis + convention validation** — on the best retrieval
    strategy, synthesize a feature spanning several repos from mined patterns, and
    validate the resulting PRs against KG-encoded **cross-repo** conventions
-   (support, not replacement). Metric: review-cycle reduction (primary),
-   cross-repo scaffold accuracy (secondary).
+   (support, not replacement). Metrics are **ordered to match effort** (post-review):
+   the retrieval-strategy comparison first (retrieval precision/recall + cross-repo
+   scaffold accuracy across strategies), then the applied outcome (review-cycle
+   reduction). Correctness is scored against the developers' **own withheld PR set**
+   (human baseline), plus no-retrieval and current-snapshot baselines. Stats:
+   Friedman + post-hoc Wilcoxon (corrected), Cliff's δ, bootstrap 95% CIs,
+   Krippendorff's α.
 
 Concepts borrowed (adopt-and-cite, not claimed): temporal decay, multi-resolution
 memory, spreading activation — grounded in real literature (Collins & Loftus 1975;
