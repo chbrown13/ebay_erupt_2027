@@ -1,9 +1,9 @@
 # Progress
 
 > Historical record + status. Read every session with `activeContext.md`.
-> Updated 2026-07-07.
+> Updated 2026-07-18.
 
-## Current Phase: v2 shipped & live — headed to `.docx` + submission
+## Current Phase: v2 review feedback incorporated — PR #10 open, awaiting merge
 
 ## Completed
 - [x] Project scaffolded from paper-template (memory-bank, construction, agents)
@@ -38,6 +38,23 @@
 - [x] **PR #8 merged** to `main`; CI green + **APPROVED**
 - [x] **GitHub Pages LIVE** → https://chbrown13.github.io/ebay_erupt_2027/
 
+## v2 review round (completed 2026-07-18 → PR #10)
+Two review passes, both addressed. Traceability: `v2-review-response.md`.
+- [x] **Round 1** (written feedback): RQ split (RQ1/RQ2/RQ3); not-a-bandaid framing;
+      "of code"; gap expanded w/ industry + 3 limitations; run-ons cleaned
+- [x] **Methodology figure** (TikZ `\ref{fig:method}`) + "How we evaluate" (time/speed/accuracy)
+- [x] Timeline rebalanced (M1–4 / M5–9 core / M10–12) + edu/dev/validation effort lens
+- [x] Statistics named (Friedman/Wilcoxon/Cliff's δ/bootstrap CIs/Krippendorff's α)
+- [x] Lab = "Code World No Blanket"; Jason = "PhD student"; "Issue"→"JIRA Graph"; JIRA casing
+- [x] **Round 2** (full Zoom transcript, Minhyuk/Huayu): explicit **human baseline** in
+      eval (vs. developers' own PR set + today's human review cost); **metrics reordered**
+      to match effort; ViewItem enriched w/ Ramesh's "selling fast"/price-drop example
+- [x] **Figure redesigned** (user: too wordy) — one-line box titles, detail in captions,
+      `\resizebox{\textwidth}`; PNG regenerated
+- [x] Re-synced all artifacts (`.tex` 7 pp clean, `.docx`+md, website, **Claude Artifact**
+      w/ embedded PDF); verified by independent review pass (all items PASS)
+- [x] **PR #10** opened, CI green (Paper Quality Gate) — awaiting Chris's merge
+
 ## In Progress / External
 - [x] **VP/Head resolved → Rami El-Charif** (Chris's Overleaf edit, reconciled into v2)
 - [x] Reconciled Chris's Overleaf edits into v2 (VP name, PI bio, heading, empirical
@@ -56,13 +73,17 @@
 
 ## Known issues / risks
 - 22 refs is heavy for a 2–3 page proposal — trim expected (Chris).
-- Final submission format is .docx; draft lives in LaTeX — conversion pending.
-- eBay VP/Head name still a placeholder.
-- Someone is editing v1 via Overleaf — watch for divergence.
+- **Lab name** "Code World No Blanket" applied per user but flagged *to confirm*
+  in the Zoom notes (wrong prior name: "Software Engineering and Digital Society Lab").
+- **Effort/cost** figures (~20/45/35 split, $120K) still need a Ramesh sanity-check.
+- ~~.docx conversion pending~~ **done**. ~~VP/Head placeholder~~ **= Rami El-Charif**.
+- v1 (`main.tex`) may still drift via Overleaf — v2 is the submission path (confirm).
 
-## v2 Milestone timeline (from `v2-main.tex`)
+## v2 Milestone timeline (rebalanced 2026-07-18 — core gets the most time)
 | Window | Deliverable |
 |--------|-------------|
-| Months 1–5 | Multi-graph history substrate (Repo / JIRA / Memory-Bank) |
-| Months 6–9 | Retrieval-strategy comparison (the core research result) |
+| Months 1–4 | Multi-graph history substrate (Repo / JIRA / Memory-Bank) |
+| Months 5–9 | **Retrieval-strategy comparison (core result — longest phase)** |
 | Months 10–12 | Cross-repo synthesis + validation gate + publications |
+
+Effort lens: ~20% education · ~45% development · ~35% validation.

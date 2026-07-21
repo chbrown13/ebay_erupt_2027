@@ -44,8 +44,10 @@ resulting PRs against KG-encoded conventions.
 - **Retrieval strategies (the experiment)** — (a) graph query, (b) similarity/RAG,
   (c) **spreading activation** (activation diffuses across edges; Collins & Loftus
   1975; Pavlović 2025). Time-weighted (decay) edges + multi-resolution nodes.
-- **ViewItem / signal / signal handler** — *demoted to a one-line micro-example*
-  (still eBay-unverified terminology; v2 barely leans on it).
+- **ViewItem / signal / signal handler** — back as a *concrete anchor* after review:
+  Ramesh's example of adding a **"selling fast"** indicator or price-drop badge, which
+  spans **5+ services**. Used minimally (one line in Impact + the figure caption), not
+  as the whole story. Still eBay-unverified terminology.
 
 ## Key Differentiators (v2)
 

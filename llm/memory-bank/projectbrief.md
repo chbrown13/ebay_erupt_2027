@@ -89,7 +89,9 @@ is what the grant would fund.
 - [x] **PR #8 merged** (Chris); CI green + APPROVED
 - [x] **Website live** → https://chbrown13.github.io/ebay_erupt_2027/
 - [x] Engagement table — $120K set; **VP/Head = Rami El-Charif** (Chris, 2026-07-07)
-- [ ] Converted to the eBay **.docx** template (next real build step)
+- [x] Converted to the eBay **.docx** template (`proposal/eRUPT-proposal-v2.docx`)
+- [x] **Review feedback incorporated** (2 passes) → PR #10, CI green (awaiting merge)
+- [ ] Confirm lab name "Code World No Blanket" + time/effort costs (human)
 - [ ] Submitted before September 21, 2026
 
 See `productContext.md` for *why*, `systemPatterns.md` for *how the proposed

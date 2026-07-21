@@ -2,6 +2,68 @@
 
 > Current focus. Changes frequently. Read this every session (with `progress.md`).
 
+## As of 2026-07-18 — full review round incorporated (PR #10 open)
+
+Two review passes on v2 are done; all feedback addressed via constellize
+**design → implement → verify**. Live on branch **`chore/v2-review-response`**
+= **PR #10** (https://github.com/chbrown13/ebay_erupt_2027/pull/10), CI green,
+**awaiting Chris's merge**. Full item-by-item traceability:
+`llm/construction/requirements/v2-review-response.md`.
+
+### Round 1 — first written feedback
+- **Motivation:** one long RQ split into **RQ1/RQ2/RQ3**; added a "not an
+  architectural gap / not a bandaid" framing; "before writing a line **of code**."
+- **Previous Work:** cleaned the CCCE + "Our foundations" run-ons; the **gap**
+  now names what's applied in **industry** (KG discovery [18], calibration [15],
+  measurement [12,13]) and the 3 limitations we overcome.
+- **Methodology:** added a **TikZ figure** (`\ref{fig:method}`) foregrounding the
+  core experiment; new **"How we evaluate"** paragraph reporting **time / speed /
+  accuracy** deltas.
+- **Milestones:** timeline rebalanced so the **core experiment gets the most time**
+  (M1–4 / **M5–9** / M10–12) + effort lens **~20% education / ~45% dev / ~35%
+  validation**; statistics named (Friedman + post-hoc Wilcoxon corrected, Cliff's
+  δ, bootstrap 95% CIs, Krippendorff's α).
+- **Impact:** concrete **ViewItem** example restored.
+- **Qualifications:** Dr. Brown's lab = **"Code World No Blanket"**; Jason =
+  **"PhD student"** (not candidate).
+- **Consistency:** fixed stale "Issue Graph" → **JIRA Graph**; standardized JIRA
+  casing doc-wide.
+
+### Round 2 — full Zoom transcript cross-check (reviewers: Minhyuk, Huayu)
+- **Human baseline made explicit (Huayu):** correctness scored against the
+  developers' own withheld PR set; **time measured against today's human review
+  cost**; the convention gate is the code-review validation.
+- **Metrics reordered to match effort:** lead with the retrieval-strategy
+  comparison, then the applied review-cycle outcome.
+- **ViewItem enriched with Ramesh's concrete features:** a **"selling fast"**
+  indicator / price-drop badge across **5+ services**.
+
+### Figure redesign (user feedback: too wordy, green box wrapped)
+- Rebuilt Fig. 1: **one-line box titles** (Code history → Family of graphs →
+  Retrieval experiment → Cross-repo synthesis / Convention validation), all
+  detail **moved out to light captions**; wrapped in `\resizebox{\textwidth}`.
+  Regenerated PNG asset (`proposal/fig-method.png`, `docs/fig-method.png`).
+
+### Artifacts (all re-synced, kept in lockstep)
+- `proposal/v2-main.tex` — **7 pp, compiles clean, 0 overfull**.
+- `proposal/eRUPT-proposal-v2.{md,docx}` — regenerated via pandoc
+  `--reference-doc`; **figure embedded** in the `.docx`.
+- Website `docs/` (index.html + proposal-v2.pdf + fig-method.png).
+- **Claude Artifact (self-contained, PDF embedded), stable URL:**
+  https://claude.ai/code/artifact/68669b70-ef62-425a-8b9b-8e0045335f24
+  (republish the same scratchpad file path to keep this URL).
+- **22 refs unchanged**; verified by an independent review pass (all items PASS).
+
+### Still open — human-side only
+- **Confirm the lab name** "Code World No Blanket" (Zoom listed it as unconfirmed;
+  the wrong prior name was "Software Engineering and Digital Society Lab").
+- **Industry KG example (#4):** optionally add the concrete "config-software at a
+  company" case if Jason sources details; cited industry systems stand otherwise.
+- **Confirm actual time/effort costs** of current eBay dev activities + the
+  **$120K** (Jason ↔ Ramesh).
+- Word proofread of the `.docx`; reference trim ([8] ICR the cut candidate);
+  merge PR #10 → Pages refreshes automatically.
+
 ## As of 2026-07-07
 
 ### Current Phase
