@@ -1,9 +1,9 @@
 # Progress
 
 > Historical record + status. Read every session with `activeContext.md`.
-> Updated 2026-07-18.
+> Updated 2026-07-21.
 
-## Current Phase: v2 review feedback incorporated — PR #10 open, awaiting merge
+## Current Phase: v2 review merged (PR #10); references reconciled — near submission-ready
 
 ## Completed
 - [x] Project scaffolded from paper-template (memory-bank, construction, agents)
@@ -53,7 +53,12 @@ Two review passes, both addressed. Traceability: `v2-review-response.md`.
       `\resizebox{\textwidth}`; PNG regenerated
 - [x] Re-synced all artifacts (`.tex` 7 pp clean, `.docx`+md, website, **Claude Artifact**
       w/ embedded PDF); verified by independent review pass (all items PASS)
-- [x] **PR #10** opened, CI green (Paper Quality Gate) — awaiting Chris's merge
+- [x] **PR #10** opened, CI green — **MERGED 2026-07-21** (Chris)
+- [x] **Lab name CONFIRMED** by user: "Code World No Blanket"
+- [x] **Reference reconcile** (`chore/reconcile-references`): synced Chris's post-merge
+      `e7f5857` ref fixes ([1] retitled + arXiv:2604.16208; arXiv IDs on [4],[13],[15]–[19],
+      [21]; [8] "Proc. IEEE SLAAI-ICAI"; [20] "University of Limerick") across
+      `references.json` + `.md`/`.docx`/website/PDF/artifact
 
 ## In Progress / External
 - [x] **VP/Head resolved → Rami El-Charif** (Chris's Overleaf edit, reconciled into v2)
@@ -73,8 +78,7 @@ Two review passes, both addressed. Traceability: `v2-review-response.md`.
 
 ## Known issues / risks
 - 22 refs is heavy for a 2–3 page proposal — trim expected (Chris).
-- **Lab name** "Code World No Blanket" applied per user but flagged *to confirm*
-  in the Zoom notes (wrong prior name: "Software Engineering and Digital Society Lab").
+- ~~Lab name to confirm~~ **CONFIRMED "Code World No Blanket"** (user, 2026-07-21).
 - **Effort/cost** figures (~20/45/35 split, $120K) still need a Ramesh sanity-check.
 - ~~.docx conversion pending~~ **done**. ~~VP/Head placeholder~~ **= Rami El-Charif**.
 - v1 (`main.tex`) may still drift via Overleaf — v2 is the submission path (confirm).

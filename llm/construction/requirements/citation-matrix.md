@@ -8,7 +8,7 @@ keep this table in sync with it. "Verified" = all three §4A checks pass.
 
 | # | Key | Authors | Title | Year | Venue | Verified | Role |
 |---|-----|---------|-------|------|-------|----------|------|
-| 1 | fose2026 | J. Cusati, C. Brown | A Case for Structured Knowledge Accumulation in SE Research | 2026 | ICSE-FOSE | [x] | our foundation |
+| 1 | fose2026 | J. Cusati, C. Brown | From Papers to Progress: Rethinking Knowledge Accumulation in SE | 2026 | ICSE-FOSE | [x] | our foundation |
 | 2 | versicode | T. Wu et al. | VersiCode: Towards Version-controllable Code Generation | 2024 | arXiv:2406.07411 | [x] | version-aware code knowledge |
 | 3 | gracg | K. Fedorov et al. | GRACG: Graph Retrieval Augmented Code Generation | 2025 | IEEE/ACM ASEW | [x] | mechanism (cede) — twin |
 | 4 | semanticforge | W. Zhang et al. | SemanticForge: Repo-Level Code Generation via Semantic KGs + Constraints | 2025 | arXiv | [x] | mechanism + determinism contrast |

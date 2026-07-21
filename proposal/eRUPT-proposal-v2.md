@@ -75,13 +75,13 @@ Effort divides roughly into **education** (~20%: onboarding to eBay's repositori
 
 # References
 
-[1] J. Cusati and C. Brown. "A Case for Structured Knowledge Accumulation in Software Engineering Research." Proc. ICSE-FOSE, 2026.
+[1] J. Cusati and C. Brown. "From Papers to Progress: Rethinking Knowledge Accumulation in Software Engineering." Proc. ICSE-FOSE, arXiv:2604.16208, 2026.
 
 [2] T. Wu et al. "VersiCode: Towards Version-controllable Code Generation." arXiv:2406.07411, 2024.
 
 [3] K. Fedorov et al. "GRACG: Graph Retrieval Augmented Code Generation." IEEE/ACM ASEW, 2025.
 
-[4] W. Zhang et al. "SemanticForge: Repository-Level Code Generation through Semantic Knowledge Graphs and Constraint Satisfaction." arXiv, 2025.
+[4] W. Zhang et al. "SemanticForge: Repository-Level Code Generation through Semantic Knowledge Graphs and Constraint Satisfaction." arXiv:2511.07584, 2025.
 
 [5] M. Athale and V. Vaddina. "Knowledge Graph Based Repository-Level Code Generation." IEEE/ACM Wksp. on LLMs for Code (LLM4Code), 2025.
 
@@ -89,7 +89,7 @@ Effort divides roughly into **education** (~20%: onboarding to eBay's repositori
 
 [7] R. Tufano et al. "Using Pre-Trained Models to Boost Code Review Automation." Proc. ICSE, 2022.
 
-[8] T. M. N. Nimraka et al. "An Agentic-AI Solution for Intelligent Code Review." SLAAI-ICAI, 2025.
+[8] T. M. N. Nimraka et al. "An Agentic-AI Solution for Intelligent Code Review." Proc. IEEE SLAAI-ICAI, 2025.
 
 [9] L. Heander et al. "Support, Not Automation: Towards AI-supported Code Review for Code Quality and Beyond." Proc. ACM FSE, 2025.
 
@@ -99,22 +99,22 @@ Effort divides roughly into **education** (~20%: onboarding to eBay's repositori
 
 [12] G. Bakal. "Knowledge Activation: AI Skills as the Institutional Knowledge Primitive for Agentic Software Development." arXiv:2603.14805, 2026.
 
-[13] A. Kumar et al. "Intuition to Evidence: Measuring AI's True Impact on Developer Productivity." arXiv, 2025.
+[13] A. Kumar et al. "Intuition to Evidence: Measuring AI's True Impact on Developer Productivity." arXiv:2509.19708, 2025.
 
 [14] B. Lin et al. "CCT5: A Code-Change-Oriented Pre-trained Model." Proc. ACM ESEC/FSE, 2023.
 
-[15] S. K. K. Parimi. "CCCE: A Continuous Code Calibration Engine for Autonomous Enterprise Codebase Maintenance via Knowledge Graph Traversal and Adaptive Decision Gating." arXiv, 2026.
+[15] S. K. K. Parimi. "CCCE: A Continuous Code Calibration Engine for Autonomous Enterprise Codebase Maintenance via Knowledge Graph Traversal and Adaptive Decision Gating." arXiv:2604.13102, 2026.
 
-[16] M. Li et al. "Learning to Commit: Generating Organic Pull Requests via Online Repository Memory." arXiv, 2026.
+[16] M. Li et al. "Learning to Commit: Generating Organic Pull Requests via Online Repository Memory." arXiv:2603.26664, 2026.
 
-[17] Z. Chen et al. "Prometheus: Unified Knowledge Graphs for Issue Resolution in Multilingual Codebases." arXiv, 2025.
+[17] Z. Chen et al. "Prometheus: Unified Knowledge Graphs for Issue Resolution in Multilingual Codebases." arXiv:2507.19942, 2025.
 
-[18] N. Rao et al. "Scalable and Explainable Enterprise Knowledge Discovery Using Graph-Centric Hybrid Retrieval." arXiv, 2025.
+[18] N. Rao et al. "Scalable and Explainable Enterprise Knowledge Discovery Using Graph-Centric Hybrid Retrieval." arXiv:2510.10942, 2025.
 
-[19] A. Vasilopoulos. "Codified Context: Infrastructure for AI Agents in a Complex Codebase." arXiv, 2026.
+[19] A. Vasilopoulos. "Codified Context: Infrastructure for AI Agents in a Complex Codebase." arXiv:2602.20478, 2026.
 
-[20] R. Yates. "Onboarding in Software Engineering." 2025.
+[20] R. Yates. "Onboarding in Software Engineering." University of Limerick, 2025.
 
-[21] J. Pavlović et al. "Leveraging Spreading Activation for Improved Document Retrieval in Knowledge-Graph-Based RAG Systems." arXiv, 2025.
+[21] J. Pavlović et al. "Leveraging Spreading Activation for Improved Document Retrieval in Knowledge-Graph-Based RAG Systems." arXiv:2512.15922, 2025.
 
 [22] A. M. Collins and E. F. Loftus. "A Spreading-Activation Theory of Semantic Processing." Psychological Review, 1975.
