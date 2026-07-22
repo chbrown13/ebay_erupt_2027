@@ -55,10 +55,11 @@ Two review passes, both addressed. Traceability: `v2-review-response.md`.
       w/ embedded PDF); verified by independent review pass (all items PASS)
 - [x] **PR #10** opened, CI green — **MERGED 2026-07-21** (Chris)
 - [x] **Lab name CONFIRMED** by user: "Code World No Blanket"
-- [x] **Reference reconcile** (`chore/reconcile-references`): synced Chris's post-merge
-      `e7f5857` ref fixes ([1] retitled + arXiv:2604.16208; arXiv IDs on [4],[13],[15]–[19],
-      [21]; [8] "Proc. IEEE SLAAI-ICAI"; [20] "University of Limerick") across
-      `references.json` + `.md`/`.docx`/website/PDF/artifact
+- [x] **Reference reconcile → PR #11** (`chore/reconcile-references`), **CI green**,
+      awaiting merge: synced Chris's post-merge `e7f5857` ref fixes ([1] retitled +
+      arXiv:2604.16208; arXiv IDs on [4],[13],[15]–[19],[21]; [8] "Proc. IEEE SLAAI-ICAI";
+      [20] "University of Limerick") across `references.json` + `citation-matrix.md` +
+      `.md`/`.docx`/website/PDF/artifact
 
 ## In Progress / External
 - [x] **VP/Head resolved → Rami El-Charif** (Chris's Overleaf edit, reconciled into v2)

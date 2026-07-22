@@ -8,14 +8,16 @@ Two review passes on v2 are done and **PR #10 is MERGED** to `main`
 (2026-07-21). Full item-by-item traceability:
 `llm/construction/requirements/v2-review-response.md`.
 
-**Post-merge reference reconcile (PR: `chore/reconcile-references`).** Chris pushed
+**Post-merge reference reconcile → PR #11 (CI green, awaiting merge).** Chris pushed
 `e7f5857 "Fixing references"` directly to `main`, editing only `v2-main.tex`:
 retitled **[1] → "From Papers to Progress: Rethinking Knowledge Accumulation in
 Software Engineering"** (arXiv:2604.16208), added arXiv IDs to [4],[13],[15]–[19],[21],
 fixed [8] venue → "Proc. IEEE SLAAI-ICAI", [20] → "University of Limerick". Those
-edits are now **propagated to every derived artifact**: `references.json` (canonical),
-`eRUPT-proposal-v2.{md,docx}`, `docs/index.html`, `docs/proposal-v2.pdf`, and the
-Claude Artifact. arXiv count now **11** in `.tex`/`.md`/`.html` (matched).
+edits are now **propagated to every derived artifact** on branch
+`chore/reconcile-references` = **PR #11** (Paper Quality Gate green): `references.json`
+(canonical) + `citation-matrix.md`, `eRUPT-proposal-v2.{md,docx}`, `docs/index.html`,
+`docs/proposal-v2.pdf`, and the Claude Artifact. arXiv count now **11** in
+`.tex`/`.md`/`.html` (matched).
 
 ### Round 1 — first written feedback
 - **Motivation:** one long RQ split into **RQ1/RQ2/RQ3**; added a "not an
@@ -73,7 +75,7 @@ Claude Artifact. arXiv count now **11** in `.tex`/`.md`/`.html` (matched).
   **$120K** (Jason ↔ Ramesh).
 - Word proofread of the `.docx`; reference trim ([8] ICR still the cut candidate —
   now venue "Proc. IEEE SLAAI-ICAI", still `verified:false` in `references.json`).
-- Merge `chore/reconcile-references` → Pages refreshes automatically.
+- Merge **PR #11** (`chore/reconcile-references`) → Pages refreshes automatically.
 
 ## As of 2026-07-07
 
