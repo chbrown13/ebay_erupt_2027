@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#353744">
+<title>eRUPT Review Analysis</title>
+<style>
+  :root {
+    --paper:#ffffff; --ground:#eef1f3; --band:#353744; --band-ink:#f4f6f8;
+    --ink:#2b2d38; --ink-strong:#353744; --muted:#5c6472;
+    --accent:#00893b; --accent-bright:#00ab44; --accent-soft:rgba(0,171,68,0.10);
+    --border:#e0e4e8; --rule:#353744;
+    --serif:"Charter","Iowan Old Style","Palatino Linotype","Palatino","Georgia",serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    --measure:66ch;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#1e2027; --ground:#141519; --band:#12131a; --band-ink:#f0f2f5;
+      --ink:#dde1e7; --ink-strong:#f2f4f6; --muted:#9aa1ac;
+      --accent:#33d06d; --accent-bright:#33d06d; --accent-soft:rgba(51,208,109,0.12);
+      --border:#2d313b; --rule:#4a4e5a;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#ffffff; --ground:#eef1f3; --band:#353744; --band-ink:#f4f6f8;
+    --ink:#2b2d38; --ink-strong:#353744; --muted:#5c6472;
+    --accent:#00893b; --accent-bright:#00ab44; --accent-soft:rgba(0,171,68,0.10);
+    --border:#e0e4e8; --rule:#353744;
+  }
+  :root[data-theme="dark"] {
+    --paper:#1e2027; --ground:#141519; --band:#12131a; --band-ink:#f0f2f5;
+    --ink:#dde1e7; --ink-strong:#f2f4f6; --muted:#9aa1ac;
+    --accent:#33d06d; --accent-bright:#33d06d; --accent-soft:rgba(51,208,109,0.12);
+    --border:#2d313b; --rule:#4a4e5a;
+  }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--serif); font-size:18px; line-height:1.7;
+    -webkit-font-smoothing:antialiased; }
+
+  a { color:var(--accent); text-underline-offset:2px; }
+
+  /* ---- Masthead band ---- */
+  .masthead { background:var(--band); color:var(--band-ink); padding:3rem 1.5rem 2.25rem; }
+  .masthead-inner { max-width:760px; margin:0 auto; }
+  .eyebrow { font-family:var(--sans); font-size:0.72rem; font-weight:600;
+    letter-spacing:0.16em; text-transform:uppercase; color:var(--accent-bright);
+    display:flex; align-items:center; gap:0.6rem; flex-wrap:wrap; }
+  .pill { font-family:var(--sans); font-size:0.66rem; font-weight:700; letter-spacing:0.08em;
+    padding:0.12rem 0.5rem; border-radius:999px; background:var(--accent-bright);
+    color:#06231a; text-transform:uppercase; }
+  h1.title { font-size:2.55rem; line-height:1.12; font-weight:700; margin:0.85rem 0 0;
+    color:#fff; text-wrap:balance; letter-spacing:-0.01em; }
+  .tagline { font-family:var(--sans); font-size:1.02rem; color:rgba(244,246,248,0.82);
+    margin:0.9rem 0 0; max-width:56ch; line-height:1.5; }
+
+  .meta { font-family:var(--sans); display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:0.9rem 1.5rem; margin:1.9rem 0 0; padding-top:1.6rem; border-top:1px solid rgba(255,255,255,0.14); }
+  .meta div { display:flex; flex-direction:column; gap:0.15rem; }
+  .meta dt { font-size:0.66rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,246,248,0.55); }
+  .meta dd { margin:0; font-size:0.92rem; color:var(--band-ink); font-weight:500; }
+  .meta dd.tbc { color:rgba(244,246,248,0.6); font-style:italic; font-weight:400; }
+
+  .actions { display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.9rem; }
+  .btn { font-family:var(--sans); font-weight:600; font-size:0.92rem; text-decoration:none;
+    display:inline-flex; align-items:center; gap:0.55rem; padding:0.7rem 1.25rem; border-radius:8px;
+    transition:transform .12s ease, box-shadow .12s ease; }
+  .btn-primary { background:var(--accent-bright); color:#06231a; box-shadow:0 1px 0 rgba(0,0,0,0.2); }
+  .btn-primary:hover { transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,171,68,0.35); }
+  .btn-ghost { color:var(--band-ink); border:1px solid rgba(255,255,255,0.25); }
+  .btn-ghost:hover { border-color:var(--accent-bright); color:#fff; }
+
+  /* ---- Paper column ---- */
+  .paper { max-width:760px; margin:1.5rem auto; background:var(--paper);
+    border:1px solid var(--border); border-radius:12px; padding:3rem clamp(1.25rem,5vw,3.25rem); }
+  section { margin:0 0 2.4rem; }
+  section:last-of-type { margin-bottom:0; }
+
+  h2 { font-size:1.42rem; font-weight:700; color:var(--ink-strong); margin:0 0 1rem;
+    padding-bottom:0.55rem; letter-spacing:-0.01em; text-wrap:balance;
+    border-bottom:2px solid var(--rule); position:relative; }
+  h2::after { content:""; position:absolute; left:0; bottom:-2px; width:64px; height:2px; background:var(--accent-bright); }
+
+  p { margin:0 0 1.05rem; max-width:var(--measure); }
+  section p:last-child { margin-bottom:0; }
+  .lead-label { font-family:var(--sans); font-weight:700; color:var(--ink-strong); }
+  em { font-style:italic; }
+  strong { font-weight:700; color:var(--ink-strong); }
+
+  .cite { font-family:var(--sans); font-size:0.78em; font-weight:600; text-decoration:none;
+    color:var(--accent); padding:0 0.05em; white-space:nowrap; }
+  .cite:hover { text-decoration:underline; }
+
+  /* engagement table */
+  .engagement { width:100%; border-collapse:collapse; font-family:var(--sans); font-size:0.9rem; }
+  .engagement th, .engagement td { text-align:left; padding:0.7rem 0.9rem; border-bottom:1px solid var(--border); vertical-align:top; }
+  .engagement th { width:44%; color:var(--muted); font-weight:600; }
+  .engagement td { color:var(--ink); }
+  .engagement tr:last-child th, .engagement tr:last-child td { border-bottom:none; }
+  .amount { color:var(--accent); font-weight:700; }
+
+  ul.deliverables { list-style:none; padding:0; margin:0 0 1.05rem; }
+  ul.deliverables li { position:relative; padding:0.15rem 0 0.15rem 1.5rem; margin-bottom:0.65rem; max-width:var(--measure); }
+  ul.deliverables li::before { content:""; position:absolute; left:0; top:0.72em; width:8px; height:8px;
+    border-radius:2px; background:var(--accent-bright); }
+  ul.deliverables .phase { font-family:var(--sans); font-size:0.72rem; font-weight:700; letter-spacing:0.04em;
+    text-transform:uppercase; color:var(--muted); margin-left:0.4rem; }
+
+  /* references */
+  .refs { font-family:var(--sans); font-size:0.82rem; line-height:1.5; }
+  .refs ol { margin:0; padding:0; list-style:none; counter-reset:r; }
+  .refs li { position:relative; padding:0.4rem 0 0.4rem 2.6rem; border-bottom:1px solid var(--border); color:var(--muted); }
+  .refs li:last-child { border-bottom:none; }
+  .refs li::before { counter-increment:r; content:"["counter(r)"]"; position:absolute; left:0; top:0.4rem;
+    font-weight:700; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .refs cite { font-style:normal; color:var(--ink); }
+  .refs .flag { display:inline-block; font-size:0.66rem; font-weight:700; letter-spacing:0.04em;
+    text-transform:uppercase; color:#a6690a; background:rgba(255,153,0,0.14); padding:0.05rem 0.4rem; border-radius:4px; margin-left:0.35rem; }
+  @media (prefers-color-scheme: dark){ .refs .flag{ color:#e0a94a; background:rgba(255,153,0,0.14);} }
+
+  footer { max-width:760px; margin:1.25rem auto 3rem; padding:0 clamp(1.25rem,5vw,3.25rem);
+    font-family:var(--sans); font-size:0.78rem; color:var(--muted); line-height:1.6; }
+  footer .note { padding:1rem 1.15rem; background:var(--paper); border:1px solid var(--border);
+    border-left:3px solid var(--accent-bright); border-radius:8px; }
+  footer strong { color:var(--ink-strong); }
+
+  @media (prefers-reduced-motion: reduce){ *{ transition:none !important; } }
+  @media (max-width:520px){ h1.title{ font-size:2rem; } body{ font-size:17px; } }
+
+  .navbar { font-family:var(--sans); font-size:0.85rem; display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.4rem; }
+  .navbar a { color:var(--band-ink); opacity:0.8; text-decoration:none; border-bottom:1px solid transparent; }
+  .navbar a:hover, .navbar a.here { opacity:1; border-bottom-color:var(--accent-bright); }
+  .review-card { margin:0 0 2.6rem; }
+  .field { margin:0 0 1.2rem; }
+  .field h3 { font-family:var(--sans); font-size:0.74rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin:0 0 0.35rem; }
+  .field p { margin:0 0 0.6rem; }
+  .doc table { width:100%; border-collapse:collapse; font-family:var(--sans); font-size:0.82rem; line-height:1.45; margin:0 0 1.4rem; display:block; overflow-x:auto; }
+  .doc th, .doc td { text-align:left; padding:0.6rem 0.7rem; border-bottom:1px solid var(--border); vertical-align:top; }
+  .doc th { color:var(--muted); font-weight:600; white-space:nowrap; }
+  .doc h2 { margin-top:2.2rem; } .doc h2:first-child{ margin-top:0; }
+  .doc ul, .doc ol { max-width:var(--measure); padding-left:1.3rem; } .doc li { margin-bottom:0.45rem; }
+  .doc code { font-size:0.85em; background:var(--accent-soft); padding:0.05em 0.3em; border-radius:4px; }
+  .doc blockquote { margin:0 0 1.4rem; padding:0.8rem 1rem; border-left:3px solid var(--accent-bright); background:var(--ground); font-family:var(--sans); font-size:0.85rem; }
+  .doc blockquote p { margin:0; }
+</style>
+</head>
+<body>
+<header class="masthead"><div class="masthead-inner">
+  <div class="eyebrow"><span>eBay eRUPT · Analysis &amp; recommendations</span><span class="pill">v3 planning</span></div>
+  <h1 class="title">Review Analysis &amp; Recommendations for v3</h1>
+  <p class="tagline">What the two reviewers asked for, how Chris's v3 plan answers it, and where scope needs trimming.</p>
+  <nav class="navbar"><a href="index.html">Proposal v2</a><a href="reviews.html">Reviewer feedback</a><a href="review-analysis.html" class="here">Analysis &amp; recommendations</a></nav>
+</div></header>
+<main class="paper doc">
+<blockquote>
+<p>Inputs: <code>files/reviews.md</code> (two eBay reviewers, received
+2026-10-20; also published as <code>docs/erupt-2027-reviews.md</code>),
+<code>proposal/v2-main.tex</code> (incl. Chris's 2026-10-20 Overleaf
+edits), and Chris's plan
+<code>llm/construction/requirements/v3-review-changes.md</code>. Status:
+<strong>analysis only — nothing in the proposal has been
+changed.</strong> Prepared 2026-10-21.</p>
+</blockquote>
+<h2 id="bottom-line">Bottom line</h2>
+<p>Both reviewers agree on the strengths: a real enterprise problem, a
+controlled retrieval comparison with baselines and statistics,
+provenance/traceability, and a credible team. <strong>Reviewer
+1</strong> is broadly supportive and asks for one thing: a concrete path
+by which eBay benefits (plug into the coding agents eBay developers
+already use, and scale to enterprise size). <strong>Reviewer 2</strong>
+is the harder read, with six substantive weaknesses, of which one
+matters most: <em>we assume history and graphs help rather than testing
+it.</em></p>
+<p>Chris's <code>v3-review-changes.md</code> diagnoses all seven gaps
+correctly, and I agree with almost every individual fix. My main concern
+is <strong>scope</strong>: taken together, the plan adds roughly eight
+new workstreams to a 12-month, one-student, $120K project. A reviewer
+who already doubts the core hypothesis will read a fully loaded plan as
+<em>less</em> credible. I recommend keeping every fix but
+<strong>tiering</strong> them (Must / Should / Could), so v3 answers
+every concern while committing only to what one year can deliver.</p>
+<h2 id="how-each-reviewer-reads">How each reviewer reads</h2>
+<p><strong>Reviewer 1 (supportive, adoption-focused).</strong> Sees the
+literature awareness and realism as reasons to expect progress.
+Weakness: unclear whether results scale beyond the evaluation setting.
+Reason to fund is conditional: benefit to eBay is <em>indirect</em>
+unless (a) the approach is integrated into the harnesses eBay developers
+use (they use off-the-shelf Claude Code / Codex with fixed navigation)
+and (b) scaling to enterprise-size codebases and comparing against
+existing alternatives is an explicit goal. R1 also hands us the framing:
+eBay needs to take control of its agentic coding infrastructure, for
+cost and for performance on non-typical codebases. Risks are judged no
+worse than any academic work in this space.</p>
+<p><strong>Reviewer 2 (critical, structured).</strong> Credits the
+controlled design, baselines, metrics and team. Raises six weaknesses:
+(1) incremental value of history and of graphs is unproven; (2) novelty
+vs. GRACG, SemanticForge, Prometheus, CCCE, Learning to Commit; (3)
+historical knowledge can be stale or wrong, and time-weighting does not
+fix it; (4) evaluation validity: reconstructed PRs ≠ new tasks, temporal
+leakage, 10 Java repos may not generalize; (5) retrieval gains may not
+translate to productivity, and there are no success thresholds; (6) data
+governance: the promise to release "all tools and data" conflicts with
+proprietary eBay artifacts.</p>
+<h2 id="concern--response-assessment">Concern → response assessment</h2>
+<table>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Concern (who)</th>
+<th>Severity</th>
+<th>Chris's v3 fix</th>
+<th>My assessment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>W1</td>
+<td>Value of history and graphs unproven (R2, main point)</td>
+<td><strong>High</strong></td>
+<td>RQ0/H1; 2×2 ablation (snapshot vs. history × text vs. graph); 3
+strategies in the history×graph cell; 3 new baselines</td>
+<td><strong>Agree — the most important change.</strong> Go further: make
+the decomposition <em>the headline contribution</em> (does history help?
+does structure help? which retrieval?), so a negative answer is still a
+publishable result. Baseline (ii) "snapshot + dependency graph + docs"
+largely <em>is</em> the snapshot×graph cell — merge them to save a
+condition.</td>
+</tr>
+<tr class="even">
+<td>W2</td>
+<td>Limited novelty (R2)</td>
+<td>Medium</td>
+<td>Positioning table vs. 6 neighbors; 2–3 sharp contributions
+(controlled evidence; cross-repo implicit-contract mining from
+co-change; obsolescence detection)</td>
+<td>Agree on the table; it also shortens the paper.
+<strong>Caution:</strong> co-change / logical-coupling mining has a long
+MSR history (e.g., Gall et al.'s logical coupling; Zimmermann et al.,
+"Mining Version Histories to Guide Software Changes"). If we claim it,
+we must cite that line and frame ours as cross-repository and
+agent-facing — otherwise R2 will say this contribution isn't novel
+either. Lead with the controlled decomposition; list contract mining and
+validity detection as secondary. (Any new citation must be verified
+before use.)</td>
+</tr>
+<tr class="odd">
+<td>W3</td>
+<td>Stale / wrong history (R2)</td>
+<td>Medium</td>
+<td>Knowledge-validity layer: supersededBy/revertedBy edges, @Deprecated
+signals, review-rejected patterns, liveness at HEAD, survival analysis;
+stale-retrieval-rate metric</td>
+<td>Right direction, but five signals is a project in itself.
+<strong>Commit to the two cheapest, highest-yield signals</strong> —
+revert/supersede edges and a liveness check at HEAD — plus the
+stale-retrieval-rate metric. Name deprecation and review-rejection
+signals as extensions.</td>
+</tr>
+<tr class="even">
+<td>W4</td>
+<td>Evaluation validity: leakage, new tasks, generalization (R1,
+R2)</td>
+<td><strong>High</strong></td>
+<td>Temporal cutoff per task; prospective shadow-mode pilot on live eBay
+tasks; OSS multi-repo replication; scaling curve 1 → ~10 → larger eBay
+slice</td>
+<td>Temporal cutoff is a <strong>must</strong> and cheap — it should
+have been in v2. Shadow pilot and OSS replication are <em>both</em>
+expensive; <strong>choose one as committed and one as
+conditional.</strong> I lean OSS replication as committed: it doesn't
+depend on eBay developer time, it answers generalization, and it
+produces the only releasable dataset (helps W6). Make the shadow pilot
+conditional on Ramesh securing developer participation. Scaling curve:
+commit to 1 → ~10 repos; the "larger eBay slice" is conditional on eBay
+infrastructure.</td>
+</tr>
+<tr class="odd">
+<td>W5</td>
+<td>Retrieval ≠ productivity; no thresholds (R2)</td>
+<td>Medium</td>
+<td>Pre-registered go/no-go thresholds (≥10 pp over best no-history
+baseline; gate precision ≥ 0.8; ≥20% fewer tokens than off-the-shelf
+agent); end-to-end outcomes; retrieval → outcome mediation analysis</td>
+<td>Agree on pre-registered decision gates and end-to-end outcomes.
+<strong>Watch the token threshold:</strong> injecting KG context can
+<em>raise</em> tokens per query; "≥20% fewer tokens than the
+off-the-shelf agent" could fail even when the approach works. Keep it
+per <em>correct</em> answer, and consider "no worse than" as the bar,
+with savings as a reported outcome. All numbers need Ramesh's sign-off
+before they go in.</td>
+</tr>
+<tr class="even">
+<td>W6</td>
+<td>Data governance vs. "release all tools and data" (R2)</td>
+<td><strong>High (easy)</strong></td>
+<td>Replace with governance/IP paragraph: data stays on eBay infra under
+NDA; eBay approves publications; tools open-sourced permissively;
+datasets only from OSS replication; eBay keeps royalty-free rights</td>
+<td><strong>Agree fully — best value per word in the whole
+revision.</strong> The criticized sentence ("Open Source Output: All
+tools and data…") came in with the Oct 20 Overleaf edits; replace it
+outright.</td>
+</tr>
+<tr class="odd">
+<td>W7</td>
+<td>Indirect benefit; no adoption/scaling path (R1, main point)</td>
+<td><strong>High</strong></td>
+<td>Expose the KG as an MCP server for eBay's existing agents; report
+cost savings; enterprise scaling as explicit goal with Ramesh</td>
+<td><strong>Agree strongly — the single best change.</strong> It answers
+R1 directly <em>and</em> makes the experiment cleaner: the same
+off-the-shelf agent runs with and without the MCP server, so the
+comparison isolates the substrate. Make this the architectural framing
+of v3 (and update Fig. 1 to show the MCP boundary).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scope-and-schedule">Scope and schedule</h2>
+<p>Counted against v2, the full plan adds: the 2×2 ablation, three extra
+baselines, a five-signal validity layer, temporal-leakage rebuilds, an
+OSS replication, a scaling curve, a prospective shadow pilot,
+implicit-contract mining, an MCP server, and a mediation analysis — with
+budget unchanged at $120K and one GRA. Proposed tiering:</p>
+<ul>
+<li><strong>Must</strong> (answers the High concerns): RQ0 + 2×2
+ablation; off-the-shelf-agent and simple-history-retrieval baselines;
+temporal leakage control; MCP delivery; governance paragraph;
+pre-registered decision gates; end-to-end outcome reporting.</li>
+<li><strong>Should</strong>: positioning table; two validity signals +
+stale-retrieval rate; <strong>one</strong> of OSS replication / shadow
+pilot; scaling curve to ~10 repos.</li>
+<li><strong>Could</strong> (state as extensions, or tie to "tiered
+funding" already mentioned in v2): implicit-contract mining as a full
+contribution; the full validity layer; the second of replication /
+pilot; enterprise-scale slice.</li>
+</ul>
+<p>Suggested milestones (adjusting Chris's): <strong>M1–4</strong>
+substrate + MCP server + leakage-safe benchmark → <strong>M4–5</strong>
+go/no-go on RQ0 → <strong>M5–9</strong> ablation + strategy comparison →
+<strong>M9–11</strong> OSS replication (or shadow pilot) + scaling curve
+→ <strong>M11–12</strong> cross-repo synthesis/gate + write-up. Chris's
+plan currently crams synthesis, the gate <em>and</em> the shadow pilot
+into M10–12.</p>
+<p>Length: v2 is 7 pages. The positioning table replacing the prose gap
+and trimming "Why academic research?" should keep v3 at ~8.</p>
+<h2 id="housekeeping-found-while-reading-the-repo">Housekeeping found
+while reading the repo</h2>
+<ul>
+<li><strong>Website and derived files are behind the source.</strong>
+<code>docs/index.html</code>, <code>docs/proposal-v2.pdf</code>,
+<code>proposal/v2-main.pdf</code> and
+<code>eRUPT-proposal-v2.{md,docx}</code> predate Chris's Oct 20 Overleaf
+edits to <code>v2-main.tex</code> (RQ wording, "Open Source Output",
+"Industry Outreach", risk wording). The website therefore doesn't show
+the paragraph Reviewer 2 criticized. The download button also says "5
+pp"; the PDF is 7.</li>
+<li><code>v3-review-changes.md</code> cites
+<code>files/reviews.tex</code>, which has since been replaced by
+<code>files/reviews.md</code>.</li>
+<li>Memory-bank (<code>activeContext.md</code>,
+<code>progress.md</code>) was last updated 2026-07-21;
+<code>CLAUDE.md</code> deadlines are from the summer.</li>
+<li>These reviews are now public (repo and Pages site are public). Worth
+a quick confirmation with Chris/Ramesh that eBay is fine with that.</li>
+</ul>
+<h2 id="decisions-needed-before-editing">Decisions needed before
+editing</h2>
+<ol type="1">
+<li><strong>What is v3 for?</strong> A response before the
+early-November decision, a revised submission, or the kickoff plan if
+funded? This sets tone, length, and how much new scope to promise.</li>
+<li><strong>Shadow pilot vs. OSS replication</strong> — which is
+committed, which conditional?</li>
+<li><strong>Success thresholds</strong> — confirm numbers (or the "no
+worse than" framing for tokens) with Ramesh.</li>
+<li><strong>Approve the Must / Should / Could tiering</strong> (or keep
+Chris's full plan).</li>
+<li>Whether to <strong>link these pages from the proposal
+homepage</strong> and <strong>re-sync the website</strong> with the Oct
+20 Overleaf edits.</li>
+</ol>
+
+</main>
+<footer><div class="note"><strong>v3 planning material.</strong> Nothing in the submitted v2 proposal has been changed. Raw reviewer file: <a href="erupt-2027-reviews.md">erupt-2027-reviews.md</a>.</div></footer>
+</body>
+</html>
