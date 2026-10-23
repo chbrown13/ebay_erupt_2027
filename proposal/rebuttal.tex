@@ -1,0 +1,269 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{microtype}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\definecolor{reviewgray}{gray}{0.96}
+
+\newenvironment{reviewquote}
+  {\begin{quote}\small\itshape\colorbox{reviewgray}{\begin{minipage}{0.94\linewidth}}
+  }
+  {\end{minipage}\end{quote}}
+
+\title{Response to Reviews\\[0.3em]
+\large Agentic Knowledge Graphs over Code History for Enterprise Software Automation}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+We thank both reviewers for their thoughtful and constructive feedback. We agree that the central questions are: (i) \textit{whether historical, provenance-aware context provides measurable value beyond current-code retrieval}; (ii) \textit{whether that value transfers to enterprise-scale settings}; and (iii) \textit{whether it improves outcomes that matter to developers}. If funded, we will incorporate the following additions into the work plan, evaluation protocol, and eBay collaboration: stronger causal ablations and practical baselines, leakage-resistant and prospective evaluations, explicit history-quality modeling, downstream productivity measures, enterprise-scale stress tests, and a formal data-governance plan.
+
+\section*{Reviewer 1}
+
+\subsection*{[Core review]}
+
+\textbf{The authors attack the problem of agents navigating large multi-repository code bases based on artifacts from multiple systems (the signal from git would be very sparse by itself) and exposing this to the agent with multiple retrieval strategies. The approach is evaluated on an internal dataset using three sets of tasks ranging from coding support to codebase QA and automatic reviewing.}
+
+
+\subsection*{[Main strengths]}
+\textbf{The authors show awareness of the literature both in terms of citations and in terms of the degree of sophistication and realism of their approach. This makes me confident that some actual progress can be made.} 
+
+We appreciate the recognition that the proposal addresses a realistic multi-repository problem and combines artifacts that are individually incomplete but jointly informative. The proposed knowledge graph is deliberately not limited to Git: it links code structure, commits, pull requests, reviews, JIRA issues, dependencies, conventions, and provenance. This enables us to test whether different evidence sources provide complementary value rather than assuming that any single artifact is sufficient.
+
+The proposed evaluation will be expanded to make the contribution more scientifically decisive. In addition to comparing graph queries, embedding retrieval, and spreading activation, we will explicitly separate the effects of:
+
+\begin{enumerate}
+  \item current source code and dependencies;
+  \item documentation and API information;
+  \item history-only signals;
+  \item history-aware retrieval without a graph;
+  \item the full provenance-aware graph; and
+  \item the retrieval strategy used over each representation.
+\end{enumerate}
+
+This factorial comparison will allow us to distinguish the value of historical information from the value of graph structure and from the value of the retrieval algorithm itself.
+
+\subsection*{[Main weaknesses]}
+
+\textbf{The evaluation is a crucial point where the project has a realistic answer (dogfooding their project's own history and records) but where it's not quite clear that the approach would scale to different enterprise settings which may offer the more challenging use case but are more difficult to access from an academic lab or to publish as a public dataset.} 
+
+We agree that transfer across enterprise settings is a central risk. The proposed eBay case study is not intended to be the sole claim of generality; it is a controlled, high-fidelity environment in which the research questions can be evaluated with authentic development history. We will address generalization in three ways.
+
+\textbf{First, we will evaluate across organizational and architectural variation within eBay.} Rather than treating approximately ten related Java repositories as one homogeneous corpus, we will stratify tasks and analyses by repository size, dependency centrality, service role, development activity, team, and degree of cross-repository coupling. The evaluation will include leave-one-repository-family-out and leave-one-pattern-out tests to measure whether retrieval and validation transfer to repositories and patterns not used for development or tuning.
+
+\textbf{Second, we will add controlled cross-domain tests.} Where external enterprise artifacts cannot be released, we will use public multi-repository software ecosystems and/or sanitized, structurally faithful benchmark instances to test whether the findings persist across different ownership structures, languages, and repository topologies. These tests will be framed as transfer experiments, not as substitutes for the eBay evaluation.
+
+\textbf{Third, we will make enterprise-scale evaluation an explicit collaboration objective.} The eBay collaboration will include an integration-oriented track that measures indexing cost, graph growth, retrieval latency, token consumption, and performance as repository count and history depth increase. We will compare the proposed system against the navigation and retrieval mechanisms available in current coding-agent workflows, including a strong current-code baseline and practical history-aware alternatives. The goal is not to replace existing tools by assumption, but to identify when a controllable retrieval layer can improve their performance or reduce cost.
+
+\subsection*{[Reasons to Fund]}
+
+\textbf{eBay would primarily have very indirect effects from this proposal unless several independent things were true - firstly, active work within eBay to integrate novel code navigation approaches into the harnesses that developers at eBay use to benefit from them in terms of cost or work throughput. Currently developers use off-the-shelf coding tools such as Claude Code or Codex which bring their own fixed navigation strategy and tools. Secondly, active attempt to scale the approach developed to enterprise-scale code bases and compare it to existing alternatives, which could and should be an explicit goal of the collaboration with eBay. Given that eBay needs to take control of their agentic coding infrastructure (to save cost, or to get better performance in non-typical codebases) this proposal could be a step in the right direction.}
+
+We agree that impact requires active eBay participation rather than a purely academic prototype. Accordingly, we will treat the following as project activities and evaluation criteria:
+
+\begin{itemize}
+  \item \textbf{Agent-harness integration:} expose the retrieval layer through a tool interface that can be invoked by an existing coding-agent harness, rather than requiring a new end-to-end agent;
+  \item \textbf{Controlled comparison with current practice:} compare the proposed retrieval layer with current off-the-shelf navigation, current-code RAG, repository search, and history-aware non-graph retrieval under matched model, prompt, and compute conditions;
+  \item \textbf{Enterprise-scale stress testing:} measure performance as the number of repositories, graph nodes, history depth, and cross-service dependencies increase;
+  \item \textbf{Operational metrics:} report latency, indexing cost, token use, retrieval success, code acceptance, review effort, and developer time on representative tasks; and
+  \item \textbf{Decision-oriented outputs:} identify the task classes and codebase conditions under which eBay should, or should not, incorporate controllable retrieval into its agentic coding infrastructure.
+\end{itemize}
+
+The intended near-term deliverable for eBay is therefore not only a research paper. It is a validated prototype and evidence package that can guide whether and how eBay should augment existing coding agents with organization-specific retrieval and validation.
+
+\subsection*{[Reasons Not to Fund]}
+
+\textbf{The main risks are the risks inherent in all academic work - researching and optimizing for a poor proxy of the real thing, in terms of having misleading evaluation or a setting that doesn't generalize. To the extent that this is true of all approaches in this space I would say that this proposal doesn't carry any more specific risk.} 
+
+We agree that proxy validity and generalization are the principal risks. We will reduce these risks by preregistering task construction and split rules before final evaluation, freezing the knowledge available at each evaluation time, separating development from test tasks, and reporting negative as well as positive results. We will not treat retrieval precision alone as evidence of usefulness. A retrieval improvement will count as practically meaningful only if it is accompanied by improvement in downstream measures such as scaffold correctness, convention-violation detection, accepted changes, review effort, or developer time, without unacceptable latency or token cost.
+
+The study will also report confidence intervals and per-task-family results rather than only aggregate means. If the historical graph improves retrieval but does not improve code or review outcomes, that result will be reported as an important boundary condition rather than interpreted as success.
+
+\section*{Reviewer 2}
+
+
+\subsection*{[Core review]}
+\textbf{The proposal aims to improve AI-assisted software development by constructing knowledge graphs from historical development artifacts, including Git commits, pull requests, JIRA issues, repository dependencies, and coding conventions. The goal is to help coding agents understand and implement changes across multiple repositories.\\
+The research has three main components:
+Historical knowledge graph construction: Build interconnected Repo, JIRA, and Memory-Bank graphs across approximately ten related eBay Java repositories, incorporating provenance tracking and time-weighted historical relationships.\\
+Retrieval strategy comparison: Compare structured graph queries, embedding-based similarity search (RAG), and spreading activation to determine which approach most effectively retrieves historical context for coding agents. The evaluation includes no-retrieval and current-code-snapshot baselines. This is the proposal's primary research contribution.\\
+Cross-repository code generation and validation: Use the best-performing retrieval strategy to generate coordinated changes across repositories and identify violations of coding conventions and cross-service contracts.\\
+The expected outcomes include a historical knowledge graph, comparative retrieval evaluation, and a prototype for cross-repository feature generation and validation.}
+
+\subsection*{[Main strengths]}
+
+\textbf{Relevant enterprise software engineering problem: The proposal addresses the difficulty of understanding and modifying software across multiple repositories, services, and teams. Cross-repository dependencies and unfamiliar coding conventions are legitimate challenges for developers and coding agents.\\
+Systematic experimental methodology: Comparing three retrieval strategies under controlled conditions is a strength. Holding the model, task set, prompts, and compute budget constant should help isolate retrieval effectiveness. Including no-retrieval and current-snapshot baselines is valuable.\\
+Potential benefits of provenance-aware knowledge: Linking retrieved information to historical commits, pull requests, and JIRA issues could improve explainability and traceability, particularly when understanding architectural decisions or reviewing AI-generated changes.\\
+Relevant research expertise: The researchers have experience in software engineering, provenance-aware knowledge graphs, and AI-assisted development, providing a credible foundation for the proposed investigation.\\
+Defined evaluation methodology: The proposal identifies relevant metrics, including retrieval precision/recall, scaffold correctness, review effort, latency, token consumption, and convention-violation detection, supported by statistical significance testing and confidence intervals.}
+
+We appreciate the reviewer’s recognition of the problem’s enterprise relevance, the controlled retrieval comparison, the value of provenance for explainability, and the team’s relevant expertise. We will preserve the proposed controlled design while sharpening the causal questions. The revised study will ask three separate questions:
+
+\begin{enumerate}
+  \item Does historical development context improve agent outcomes beyond current code, dependencies, APIs, and documentation?
+  \item Does an explicit graph representation improve outcomes beyond simpler history-aware retrieval?
+  \item Which retrieval strategy provides the best accuracy--cost--latency tradeoff for different task types and repository conditions?
+\end{enumerate}
+
+This decomposition directly addresses the reviewer’s concern that selecting the best strategy over a historical graph would not, by itself, establish the value of historical knowledge or graph structure.
+
+
+
+\subsection*{[Main weaknesses]}
+
+\textbf{Unproven incremental value of historical knowledge and graph-based retrieval: The proposal does not convincingly establish that historical development information provides meaningful incremental value over history-agnostic approaches using current source code, dependencies, APIs, and documentation. Its primary experiment compares retrieval strategies over a historical knowledge graph, but identifying the best strategy does not establish that historical context or graph representation is necessary. Although current-snapshot and no-retrieval baselines are included, stronger comparisons with existing coding-agent approaches and simpler history-aware retrieval systems are needed.\\
+Limited scientific novelty and differentiation: Prior work already explores repository-level knowledge graphs, historical change mining, agent memory, and AI-assisted code generation. The proposal references GRACG, SemanticForge, Prometheus, CCCE, and Learning to Commit. The scientific contribution beyond combining these approaches and applying them to multi-repository development needs clearer justification.\\
+Historical knowledge reliability: Past commits and pull requests may contain deprecated APIs, obsolete architectural decisions, temporary workarounds, and suboptimal implementation patterns. Time-weighting historical relationships does not necessarily distinguish useful engineering knowledge from outdated or incorrect practices.\\
+Evaluation validity and generalizability: Reconstructing historical pull requests may not adequately measure performance on genuinely new development tasks. There is also a risk of information leakage if artifacts created after the original task are accessible during evaluation. Results from approximately ten related Java repositories may not generalize across other architectures or languages.\\
+Uncertain impact on engineering productivity: Improvements in retrieval accuracy or efficiency do not necessarily translate into better code generation, reduced review effort, or faster feature development. The proposal identifies relevant metrics but does not establish clear success thresholds or sufficiently demonstrate the relationship between retrieval improvements and engineering outcomes.\\
+Data governance and publication risks: The proposal commits to publicly releasing project tools and data while relying on proprietary eBay development artifacts. It does not sufficiently clarify the boundaries between internal data, sanitized research artifacts, and publicly releasable outputs.}
+
+\paragraph{Unproven incremental value of historical knowledge and graph-based retrieval}
+
+We will add the following ablations and baselines:
+
+\begin{itemize}
+  \item no retrieval;
+  \item current-code and dependency retrieval;
+  \item current-code plus documentation/API retrieval;
+  \item lexical and repository-search baselines;
+  \item embedding-based retrieval over current artifacts only;
+  \item history-aware embedding retrieval over commits, PRs, and issues without graph structure;
+  \item structured graph retrieval over current artifacts only;
+  \item the full provenance-aware historical graph; and
+  \item practical agent-navigation baselines exposed through the same tool budget and model interface.
+\end{itemize}
+
+All comparisons will use the same model, prompts, task sets, context budget, and compute budget. We will report both component ablations and interaction effects. This will establish whether history, graph structure, provenance, and retrieval strategy each contribute incremental value.
+
+\paragraph{Scientific novelty and differentiation}
+The contribution is not simply the combination of existing components. The proposed work tests a distinct hypothesis: \textbf{version-control history can serve as a continuously updating, provenance-aware substrate that supports both generation and convention validation across repository boundaries}. The research contribution is the empirical and methodological characterization of when that hypothesis holds.
+
+More specifically, the work contributes:
+
+\begin{enumerate}
+  \item a temporal, provenance-preserving representation that links code structure to the changes, reviews, issues, and conventions that produced it;
+  \item a unified substrate in which the same historical evidence conditions generation and validates the resulting change;
+  \item controlled causal comparisons that separate historical context from graph representation and retrieval strategy; and
+  \item enterprise-scale transfer and cost analyses that are generally absent from repository-level demonstrations.
+\end{enumerate}
+
+We will make the differentiation explicit in the revised proposal by adding a comparison matrix against GRACG, SemanticForge, Prometheus, CCCE, Learning to Commit, and related systems, identifying which components are shared and which research questions remain unanswered.
+
+\paragraph{Reliability of historical knowledge}
+We agree that history is evidence, not ground truth. The graph will therefore represent reliability and applicability explicitly rather than treating every past artifact as equally authoritative. In addition to time weighting, candidate historical evidence will be scored using signals such as:
+
+\begin{itemize}
+  \item whether the referenced code remains present or reachable in the current dependency graph;
+  \item whether the change was reverted, superseded, or followed by corrective commits;
+  \item review acceptance and subsequent defect or rollback signals where available;
+  \item consistency with current APIs, build metadata, and declared ownership;
+  \item recency and repeated use across accepted changes; and
+  \item agreement with current tests, static checks, and repository conventions.
+\end{itemize}
+
+Retrieved evidence will retain provenance and status labels, such as active, superseded, deprecated, or unresolved. The agent will be instructed to use historical artifacts as attributable evidence and not as unconditional instructions. We will evaluate reliability through temporal holdout tests and targeted error analysis of obsolete or conflicting evidence.
+
+\paragraph{Evaluation validity, leakage, and generalizability}
+We will use multiple evaluation regimes rather than relying only on reconstructed historical pull requests:
+
+\begin{itemize}
+  \item \textbf{Temporal replay:} reconstruct a task using only artifacts available immediately before the original change;
+  \item \textbf{Future-task evaluation:} evaluate on later, genuinely unseen changes using an earlier frozen graph state;
+  \item \textbf{Prospective or shadow evaluation:} apply the system to newly selected development tasks without exposing post-task artifacts; and
+  \item \textbf{Transfer evaluation:} test held-out repository families, patterns, and, where feasible, public ecosystems with different architectures or languages.
+\end{itemize}
+
+For every task, we will define an availability cutoff. Commits, reviews, JIRA updates, documentation, tests, or generated artifacts created after that cutoff will be excluded from retrieval and graph construction for that run. The split protocol, cutoff rules, task-selection procedure, and contamination checks will be fixed before test evaluation. We will also report results by repository family, task type, language or architecture when available, and cross-repository coupling level.
+
+The eBay Java corpus is an intentionally controlled starting point, not a claim that one language represents all enterprise software. The proposed transfer analyses will identify which conclusions are robust and which depend on the eBay setting.
+
+\paragraph{Engineering productivity and success thresholds}
+We will connect retrieval outcomes to downstream engineering outcomes through a staged evaluation. Retrieval quality is an intermediate measure; the primary practical measures will be:
+
+\begin{itemize}
+  \item correctness of coordinated cross-repository changes;
+  \item acceptance or human approval of generated patches;
+  \item convention and contract violations found before review;
+  \item developer review and correction time;
+  \item task completion time;
+  \item number of agent iterations and tool calls;
+  \item latency and token consumption; and
+  \item reviewer confidence and traceability of the generated rationale.
+\end{itemize}
+
+Before final evaluation, we will define success thresholds jointly with the eBay collaborator. For example, a candidate approach must improve a pre-specified downstream outcome over the strongest practical baseline while remaining within an agreed latency and token budget; retrieval-only gains without downstream benefit will not be considered sufficient. We will use paired task comparisons, confidence intervals, and mixed-effects or hierarchical analyses to account for repository, task, and reviewer variability.
+
+The project’s deliverables will therefore distinguish among three outcomes: (1) demonstrable benefit and a candidate for integration, (2) benefit limited to particular task or repository conditions, or (3) no meaningful benefit over simpler alternatives. Each is a useful result for eBay’s agent-infrastructure decisions.
+
+\paragraph{Data governance and publication}
+We agree that the data boundary must be explicit. The project will use a three-tier release model:
+
+\begin{enumerate}
+  \item \textbf{Internal eBay tier:} raw source code, Git history, pull requests, JIRA content, and other restricted artifacts remain within approved eBay-controlled environments and are accessible only to authorized project personnel under applicable agreements.
+  \item \textbf{Sanitized research tier:} only artifacts approved through eBay’s security, privacy, legal, and export-control review may leave the internal environment. These may include anonymized schemas, aggregate statistics, synthetic or transformed examples, and non-reconstructable graph fragments.
+  \item \textbf{Public software and reproducibility tier:} the released code will operate on documented abstract schemas and public or synthetic examples. No proprietary source code, confidential JIRA text, private identifiers, credentials, or reconstructable internal development history will be released without explicit approval.
+\end{enumerate}
+
+Publications will report aggregate findings and approved examples only. The project will maintain an artifact inventory, access-control plan, retention policy, de-identification procedure, and release checklist. If raw or sanitized eBay data cannot be released, the reproducibility package will provide public benchmarks, synthetic data generators, configuration files, evaluation scripts, and documented interfaces instead. The proposal’s commitment is to reproducible methods and approved artifacts---not to public release of proprietary eBay data.
+
+\subsection*{[Reasons to Fund]}
+\textbf{1. Strategic Relevance to Enterprise Software Engineering
+The proposal addresses a genuine challenge in enterprise software development: understanding dependencies and implementing coordinated changes across multiple repositories. Improving cross-repository understanding could enhance coding-agent effectiveness and reduce developer effort.\\
+2. Potential Value of Provenance-Aware Historical Knowledge
+Historical commits, pull requests, and JIRA issues may contain architectural rationale and development patterns not readily apparent from the current codebase. Provenance-aware retrieval could improve explainability and traceability, although its incremental value remains unproven.\\
+3. Systematic Experimental Methodology
+The proposal presents a controlled comparison of retrieval strategies, supported by relevant baselines, evaluation metrics, and statistical methods. This could produce useful empirical findings about the effectiveness of different approaches to retrieving development knowledge.\\
+4. Relevant Research Expertise
+The research team has experience in software engineering, knowledge graphs, and AI-assisted development, providing a credible foundation for investigating the proposed questions.}
+
+We thank the reviewer for recognizing the proposal’s enterprise relevance, methodological rigor, and the team’s expertise. We agree that the incremental value of historical, provenance-aware knowledge must be demonstrated rather than assumed. Collaborating with eBay would provide access to realistic cross-repository development history and enables evaluation on enterprise-scale Java systems. Although the initial study focuses on a well-bounded change pattern, the framework is designed to extend to additional repositories and patterns. The project’s central contribution is to test whether a continuously updated, provenance-aware representation of software history can support both agentic code generation and convention-aware validation.
+
+\subsection*{[Reasons Not to Fund]}
+\textbf{1. Unproven Incremental Value of Historical Knowledge and Graph-Based Retrieval
+The proposal does not convincingly establish that historical development knowledge improves coding-agent performance over history-agnostic approaches using current code, dependencies, and documentation. Its primary experiment focuses on optimizing retrieval over a historical knowledge graph without sufficiently establishing the value of historical context or the necessity of graph-based representation. Although relevant baselines are included, the foundational hypothesis requires stronger validation.\\
+2. Limited Scientific Novelty and Differentiation
+Existing research already explores code knowledge graphs, historical change mining, repository memory, and agentic software engineering. The proposal does not sufficiently demonstrate how its combination of these techniques represents a significant scientific advance over existing approaches.\\
+3. Historical Knowledge Reliability and Evaluation Validity
+Historical development artifacts may contain obsolete conventions, deprecated APIs, and temporary workarounds. Additionally, reconstructing historical pull requests introduces potential information leakage and may not accurately reflect performance on genuinely new development tasks. These issues could undermine the reliability and generalizability of the research findings.\\
+4. Uncertain Impact on Engineering Productivity
+Improved retrieval accuracy or efficiency does not necessarily translate into better code generation, reduced review effort, or faster feature development. The proposal does not sufficiently establish how its research outcomes will deliver measurable engineering benefits.\\
+5. Unresolved Data Governance and Publication Risks
+The proposal's commitment to publicly releasing tools and data requires clearer safeguards for proprietary eBay source code, development history, and internal JIRA information. Data-access restrictions, confidentiality requirements, and publication boundaries should be explicitly defined.
+}
+
+
+
+\section*{Revised Work Plan}
+
+We will incorporate the following commitments into the work plan and evaluation protocol:
+
+\begin{enumerate}
+  \item \textbf{Causal ablations:} separately measure the value of historical context, graph representation, provenance, and retrieval strategy.
+  \item \textbf{Strong practical baselines:} include current-code retrieval, repository search, documentation/API retrieval, history-aware non-graph retrieval, and agent-harness navigation baselines.
+  \item \textbf{Leakage-resistant evaluation:} freeze graph state at task-specific cutoffs and perform temporal, future-task, prospective/shadow, and transfer evaluations.
+  \item \textbf{History-quality modeling:} identify superseded, reverted, deprecated, and conflicting evidence and preserve these statuses in provenance.
+  \item \textbf{Downstream success criteria:} require improvements in code correctness, acceptance, review effort, task time, or convention/contract validation---not retrieval metrics alone.
+  \item \textbf{Enterprise integration:} expose the system through an agent-tool interface and measure scale, latency, token cost, indexing cost, and operational constraints.
+  \item \textbf{Governance by design:} keep proprietary artifacts internal and release only approved software, schemas, aggregate results, synthetic data, and public benchmark components.
+\end{enumerate}
+
+We thank the reviewers for identifying the precise evidence needed to turn a promising prototype into a rigorous enterprise study. These additions strengthen the proposal without changing its central objective: determining when an auditable, historical knowledge substrate can make multi-repository coding agents more reliable, efficient, and useful in real software organizations.
+
+\end{document}
